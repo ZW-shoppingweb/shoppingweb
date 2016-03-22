@@ -1,5 +1,6 @@
 package com.thoughtworks.shoppingweb.service;
 
+
 /**
  * Created by cxzhao on 3/22/16.
  */
@@ -14,8 +15,22 @@ import java.util.List;
 @Service
 public class ProductService {
     @Autowired
+
     private ProductMapper productmapper ;
     public Product getProduct(String product_id) {
         return productmapper.findProductbyId(product_id);
+    }
+
+    public ProductMapper getProductMapper() {
+        return productmapper;
+    }
+
+    public void setProductMapper(ProductMapper productMapper) {
+        this.productmapper = productMapper;
+    }
+
+    public List<Product> getAllProduct(){
+        return productmapper.getAllProduct();
+
     }
 }

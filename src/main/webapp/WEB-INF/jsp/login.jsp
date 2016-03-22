@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -18,7 +16,6 @@
 <body ng-app="app">
 <div ng-controller="UserController as userCtrl">
 <div>Welcome:{{welcome}}</div>
-
 <form action="loginaction" >
     <div class="form-group">
         <label>Tel</label>

@@ -24,9 +24,8 @@ public class UserController {
         User user=new User();
         user.setUsername(username);
         user.setPassword(password);
-        System.out.println("===================="+user.getUsername()+user.getPassword());
+        //System.out.println("===================="+user.getUsername()+user.getPassword());
         boolean a=userService.validateUser(user);
-        System.out.println("a===================="+a);
         return "home";
     }
     @RequestMapping(method = RequestMethod.GET,  value = "/login")

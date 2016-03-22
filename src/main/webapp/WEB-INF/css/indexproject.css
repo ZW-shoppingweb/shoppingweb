@@ -1,0 +1,32 @@
+body{
+  background-color: #EAEAEA;
+}
+.indexproduct{
+  width: 300px;
+  float: left;
+  height: 400px;
+}
+.indexproduct a{
+  text-decoration:none;
+}
+.allprojectlist{
+  margin-left: 50px;
+  margin-top:10px;
+
+}
+.search{
+  position: relative;
+  left: 600px;
+  width: 600px;
+  height: 50px;
+  margin-top:100px;
+  display:block;
+}
+.search input {
+  width: 400px;
+  float: left;
+}
+.search button{
+  width: 100px;
+  float: left;
+}
