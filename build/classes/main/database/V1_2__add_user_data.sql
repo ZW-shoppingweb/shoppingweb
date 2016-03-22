@@ -1,0 +1,1 @@
+INSERT INTO USER(username,password) VALUES('123456','123456xin');
