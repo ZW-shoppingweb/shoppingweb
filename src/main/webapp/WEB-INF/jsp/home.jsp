@@ -24,7 +24,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-     <h1>Welcome to ShoppingMall</h1>
+     <h1><a href="indexofshoppingweb">Welcome to ShoppingMall</a></h1>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
