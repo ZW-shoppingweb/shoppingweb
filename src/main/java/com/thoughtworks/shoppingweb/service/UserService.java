@@ -4,10 +4,12 @@ import com.thoughtworks.shoppingweb.domain.User;
 import com.thoughtworks.shoppingweb.persistence.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.*;
+
 @Service
 public class UserService {
-   @Autowired
+    @Autowired
     UserMapper userMapper;
 
     public UserMapper getUserMapper() {
@@ -19,8 +21,9 @@ public class UserService {
     }
 
     public boolean validateUser(User user) {
-        System.out.println("+============"+user.getPassword()+user.getUsername());
-      User exitUser = userMapper.findUserByName("123456");
-            return (user== null && user.getPassword().equals(user.getPassword()));
+        System.out.println("+==============" + user.getPassword() + user.getUsername());
+        User exitUser = userMapper.findUserByName("123456");
+
+        return (user == null && user.getPassword().equals(user.getPassword()));
     }
 }
