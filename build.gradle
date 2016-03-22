@@ -1,0 +1,54 @@
+group 'shoppingweb'
+version '1.0-SNAPSHOT'
+apply plugin: "org.flywaydb.flyway"
+apply plugin: 'java'
+apply plugin: 'jetty'
+apply plugin: 'jacoco'
+apply plugin: 'war'
+
+sourceCompatibility = 1.5
+
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "org.flywaydb:flyway-gradle-plugin:3.2.1"
+    }
+}
+
+description = 'Shopping Web Site'
+
+flyway {
+    driver = 'com.mysql.jdbc.Driver'
+    url = 'jdbc:mysql://localhost:3306/shoppingdb?useSSL=false'
+    user = 'root'
+    password = 'root'
+    locations = [ 'classpath:database']
+    table = 'schema_version'
+    baselineDescription = "Let's go!"
+    baselineOnMigrate = true
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.powermock:powermock-mockito-release-full:1.4.12'
+
+    compile 'org.mybatis:mybatis:3.3.0'
+    compile 'org.mybatis:mybatis-spring:1.2.3'
+    compile 'org.springframework:spring-jdbc:4.2.5.RELEASE'
+    compile 'org.springframework:spring-web:4.2.5.RELEASE'
+    compile 'org.springframework:spring-webmvc:4.2.5.RELEASE'
+
+    compile 'log4j:log4j:1.2.17'
+    compile 'mysql:mysql-connector-java:5.1.38'
+    compile "org.projectlombok:lombok:1.16.6"
+}
+
