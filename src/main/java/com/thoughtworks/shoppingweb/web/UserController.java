@@ -26,7 +26,7 @@ public class UserController {
         user.setPassword(password);
         //System.out.println("===================="+user.getUsername()+user.getPassword());
         boolean a=userService.validateUser(user);
-        return "home";
+        return "index";
     }
     @RequestMapping(method = RequestMethod.GET,  value = "/login")
     public String loginPage() {

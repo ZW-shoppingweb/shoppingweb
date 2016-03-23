@@ -9,22 +9,45 @@
 <html>
 <head>
     <title>Product</title>
-    <script type="application/javascript" src="js/angular.min.js"></script>
+    <link href="css/libs/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/libs/bootstrap-theme.min.css" rel="stylesheet"/>
+    <link href="css/detail.css" rel="stylesheet"/>
+    <link href="css/header.css" rel="stylesheet"/>
+    <script type="application/javascript" src="js/jquery-2.2.1.min.js"></script>
     <script type="application/javascript" src="js/bootstrap.min.js"></script>
-    <%--<link href="css/libs/detail.css" rel="stylesheet"/>--%>
+    <script type="application/javascript" src="js/angular.min.js"></script>
+    <script type="application/javascript" src="scripts/index.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
 </head>
 <body>
-<div id="titledetail">
-<img src="${product.product_image}">
-    <div id="rightdetail">
-<h1 id="productname">${product.product_name}</h1>
-<p id="city">city:${product.product_city}</p>
-<p>price:${product.product_price}元</p>
-<p>vipprice:${product.product_vipprice}元</p>
-<p>introduce:${product.product_introduce}</p>
-<p>city:${product.product_city}</p>
+<%@ include file="head.jsp" %>
+<img id="leftimg" src="images/left.png">
+<div id="contenttext">
+    <div id="titledetail">
+        <img id="productimg" src="${product.product_image}">
+        <div id="rightdetail">
+            <h1 id="productname">${product.product_name}</h1>
+            <h2 id="price1">￥${product.product_price}</h2>
+            <h4 id="price2"> ￥${product.product_vipprice}/for VIP</h4>
+            <p id="number">数目: <input type="number" min="1"/></p>
+            <button>立即购买</button>
+            <button id="buy">加入购物车</button>
+        </div>
+        <img id="righttopimg" src="images/right-top.png">
+    </div>
+    <div>
+        <div id="productdetail">
+            <h3>商品详情</h3>
+            <hr color=#Gray>
+            <p id="detailinfo">city: ${product.product_city} &nbsp&nbsp&nbspintroduce: ${product.product_introduce}
+                &nbsp&nbsp&nbspcity: ${product.product_city}</p>
+            <img id="detailimg" src="${product.product_details_img}">
+            <img id="rightimg2" src="images/right2.png">
+            <img id="rightimg3" src="images/right3.png">
         </div>
     </div>
-<img src="${product.product_details_img}">
+</div>
+
 </body>
 </html>
