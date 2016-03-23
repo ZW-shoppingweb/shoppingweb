@@ -1,3 +1,4 @@
+
 .head_content{
     margin-top: -30px;
     width: 100%;
@@ -24,11 +25,12 @@
     height: 50px;
 
 }
+.search .form-control{
+    border: 2px solid #2b669a;
+}
 .search input {
     width: 400px;
-    float: right;
 }
 .search button{
     width: 100px;
-    float: right;
 }

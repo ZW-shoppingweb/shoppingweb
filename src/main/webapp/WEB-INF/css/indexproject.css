@@ -1,32 +1,66 @@
 body{
   background-color: #EAEAEA;
 }
+.allprojectlist{
+  text-align: center;
+  margin-left: 200px;
+  margin-top:20px;
+  display: inline-block;
+  width: 1000px;
+}
+
 .indexproduct{
-  width: 300px;
+  width: 250px;
   float: left;
   height: 400px;
+  text-align: left;
 }
 .indexproduct a{
   text-decoration:none;
 }
-.allprojectlist{
-  margin-left: 50px;
-  margin-top:10px;
+.price{
+  color: red;
+  font-size: 19px;
+}
+.products{
+  margin-top: -200px;
+}
 
+.navtag{
+  margin-left: 20px;
+  width: 150px;
 }
-.search{
-  position: relative;
-  left: 600px;
-  width: 600px;
-  height: 50px;
-  margin-top:100px;
-  display:block;
+ul.nav-tabs{
+  background-color: white;
+  width: 140px;
+  margin-top: 20px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
 }
-.search input {
-  width: 400px;
-  float: left;
+ul.nav-tabs li{
+  margin: 0;
+  border-top: 1px solid #ddd;
 }
-.search button{
-  width: 100px;
-  float: left;
+ul.nav-tabs li:first-child{
+  border-top: none;
+}
+ul.nav-tabs li a{
+  margin: 0;
+  padding: 8px 16px;
+  border-radius: 0;
+}
+ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover{
+  color: #fff;
+  background: #0088cc;
+  border: 1px solid #0088cc;
+}
+.astyle{
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+}
+.astyle a{
+  text-decoration: none;
+  color: black;
 }

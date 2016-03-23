@@ -4,7 +4,7 @@
 #productimg{float: left;padding-left: 300px;}
 #detailinfo{padding-left: 50px;padding-bottom: 50px}
 #price1{padding-left: 10px;color: red}
-#price2{color: red;float: right}
+#price2{color: red;}
 #productdetail{padding-left: 400px;}
 #rightdetail{float: left;padding-left: 100px;}
 #number{padding-bottom:50px;clear: both }
@@ -13,5 +13,9 @@ input{padding-left: 10px;width: 70px}
 #leftimg{width: 200px; float: left;position: fixed}
 #detailimg{  float: left; width: 500px;}
 #rightimg2{  float: left;  padding-left: 50px;  width: 300px;}
-#righttopimg{  padding-left:100px;  width:300px;}
+#righttopimg{ padding-left:100px; float: right; width:300px;}
 #rightimg3{padding-left: 100px;width: 300px;}
+h1{
+    display: block;
+    width: 270px;
+}
