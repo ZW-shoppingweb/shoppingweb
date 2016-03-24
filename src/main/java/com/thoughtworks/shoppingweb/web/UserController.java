@@ -27,12 +27,11 @@ public class UserController {
     ProductService productService;
 
     @RequestMapping(value = "/loginaction")
-    public String loginPage(String username,String password,Model model) {
+    public String loginPage(String userName,String passWord,Model model) {
         User user=new User();
-        user.setUsername(username);
-        user.setPassword(password);
+        user.setUserName(userName);
+        user.setPassWord(passWord);
         boolean a=userService.validateUser(user);
-
         List<Product> products = productService.getAllProduct();
         Page page=new Page();
         page.apartPage(1,products.size(),16);

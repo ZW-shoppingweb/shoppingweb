@@ -1,21 +1,14 @@
-#navright{float: right}
-#contenttext{width: 1200px;}
-#titledetail{padding-left: 10px;position: relative;height: 400px;padding-top: 50px;}
-#productimg{float: left;padding-left: 300px;}
-#detailinfo{padding-left: 50px;padding-bottom: 50px}
-#price1{padding-left: 10px;color: red}
-#price2{color: red;}
-#productdetail{padding-left: 400px;}
-#rightdetail{float: left;padding-left: 100px;}
-#number{padding-bottom:50px;clear: both }
-#buy{margin-left: 50px;}
+.contenttext{width: 1200px;}
+.titleDetail{padding-left: 10px;position: relative;height: 400px;padding-top: 50px;}
+.productImg{float: left;padding-left: 400px;}
+.rightDetail{float: left;padding-left: 100px;}
+.productName{font-size: 50px;  display: block;width: 270px;}
+.price1{padding-left: 10px;color: red;font-size: 30px;}
+.price2{color: red;font-size: 20px;}
+.number{padding-bottom:50px;clear: both }
 input{padding-left: 10px;width: 70px}
-#leftimg{width: 200px; float: left;position: fixed}
-#detailimg{  float: left; width: 500px;}
-#rightimg2{  float: left;  padding-left: 50px;  width: 300px;}
-#righttopimg{ padding-left:100px; float: right; width:300px;}
-#rightimg3{padding-left: 100px;width: 300px;}
-h1{
-    display: block;
-    width: 270px;
-}
+.buy{margin-left: 50px;}
+.productDetail{padding-left: 400px;}
+.detailInfo{padding-left: 50px;padding-bottom: 50px;font-size: 20px}
+.detailImg{width: 600px;}
+.navtag{position: fixed}

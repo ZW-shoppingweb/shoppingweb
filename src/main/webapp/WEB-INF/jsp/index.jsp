@@ -4,6 +4,8 @@
 <html>
 <head>
   <title>Shopping</title>
+  <link rel="StyleSheet" href="${pageContext.request.contextPath}/css/indexProject.css" type="text/css" media="screen"/>
+
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 
@@ -15,10 +17,10 @@
       <c:if test="${!empty allProducts }">
         <c:forEach items="${allProducts }" var="pro">
           <div class="indexProduct">
-            <a href="${pageContext.request.contextPath}/gotoDetails?productId=${pro.productId}">
+            <a href="${pageContext.request.contextPath}/product/${pro.productId}">
               <img src="${pro.productImage }"><br>
               <p class="price">¥${pro.productPrice}元</p>
-              <p>${pro.productName}kkkk</p>
+              <p>${pro.productName}</p>
               <br/></a>
           </div>
         </c:forEach>

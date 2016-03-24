@@ -6,7 +6,6 @@
 <script type="application/javascript" src="${pageContext.request.contextPath}/js/angular.min.js"></script>
 <script type="application/javascript" src="${pageContext.request.contextPath}/scripts/index.js"></script>
 <link rel="StyleSheet" href="${pageContext.request.contextPath}/css/headerStyle.css" type="text/css" media="screen"/>
-<link rel="StyleSheet" href="${pageContext.request.contextPath}/css/indexProject.css" type="text/css" media="screen"/>
 <nav class="navbar navbar-inverse" role="navigation">
     <div class="navbar-header">
         <a class="navbar-brand" href="#">购物网站</a>
@@ -23,9 +22,8 @@
         </ul>
     </div>
 </nav>
-
-<div class="headContent">
-    <div class="imgLogo">
+<div class="head_content">
+    <div class="imglogo">
         <img src="${pageContext.request.contextPath}/images/logo.jpg"/>
     </div>
     <div class="search">

@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.Model;
 
 import java.util.List;
@@ -20,17 +19,11 @@ public class ProductController {
     @Autowired
     ProductService productService;
     public static final int PAGE_SIZE = 16;
+    public static final String DEFAULT_PAGE_NUM = "1";
 
-    @RequestMapping(value = "/gotoDetails", method = RequestMethod.GET)
-    public @ResponseBody ModelAndView getProduct(String productId, Model model) {
-        //System.out.println("=====" + productId);
-        ModelAndView modelAndView = new ModelAndView("productdetail");
-        modelAndView.addObject("product", productService.getProduct(productId));
-        return modelAndView;
-
-    }
-    @RequestMapping(value = "/productList/{pageId}", method=RequestMethod.GET)
-    public String productList(@PathVariable("pageId") int pageId, Model model) {
+    @RequestMapping(value = "/productList", method=RequestMethod.GET)
+    public String productList(@RequestParam(value = "pageId", required = false,
+            defaultValue = DEFAULT_PAGE_NUM) int pageId, Model model) {
         List<Product> products = productService.getAllProduct();
         Page page = new Page();
         page.apartPage(pageId, products.size(), PAGE_SIZE);
@@ -48,11 +41,21 @@ public class ProductController {
             return "index";
         }
         else{
-            throw new pageNotFoundException();
+            throw new ProductNotFoundException();
         }
     }
 
     @ResponseStatus(value= HttpStatus.NOT_FOUND, reason="No such Page")  // 404
-    public class pageNotFoundException extends RuntimeException {
+    public class ProductNotFoundException extends RuntimeException {}
+
+    @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
+    public String getProduct(@PathVariable("id") String id, Model model) {
+        System.out.println("=====" + id);
+        Product product = productService.getProduct(id);
+        if (product == null) throw new ProductNotFoundException();
+        model.addAttribute(product);
+        return "productdetail";
+
+
     }
 }

@@ -22,6 +22,6 @@ public class UserService {
 
     public boolean validateUser(User user) {
         User exitUser = userMapper.findUserByName("123456");
-        return (user == null && user.getPassword().equals(user.getPassword()));
+        return (user == null && user.getPassWord().equals(user.getPassWord()));
     }
 }

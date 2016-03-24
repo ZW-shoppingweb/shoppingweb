@@ -17,6 +17,4 @@ public class Product {
     private String productDetailsImg;
     private String productIntroduce;
     private String productCategory;
-
-
 }

@@ -8,5 +8,5 @@ CREATE TABLE `product` (
   `productVipPrice` double(20,2) NOT NULL,
   `productIntroduce` varchar(4000) DEFAULT NULL,
   `productCategory` varchar(1000) NOT NULL,
-  PRIMARY KEY (`product_id`)
+  PRIMARY KEY (`productId`)
 )

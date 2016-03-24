@@ -1,6 +1,6 @@
 create table USER (
     id INTEGER not NULL auto_increment,
-    username varchar(40) not null,
-    password varchar(40) not NULL ,
+    userName varchar(40) not null,
+    passWord varchar(40) not NULL ,
     primary key (id)
 );
