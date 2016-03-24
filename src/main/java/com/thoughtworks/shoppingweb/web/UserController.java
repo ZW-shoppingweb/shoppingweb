@@ -6,17 +6,12 @@ import com.thoughtworks.shoppingweb.domain.User;
 import com.thoughtworks.shoppingweb.service.ProductService;
 import com.thoughtworks.shoppingweb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class UserController {
@@ -26,11 +21,13 @@ public class UserController {
     @Autowired
     ProductService productService;
 
-    @RequestMapping(value = "/loginaction")
-    public String loginPage(String userName,String passWord,Model model) {
+
+    @RequestMapping(value = "/loginAction")
+    public String loginPage(String userName,String password,Model model) {
         User user=new User();
         user.setUserName(userName);
-        user.setPassWord(passWord);
+        user.setPassword(password);
+
         boolean a=userService.validateUser(user);
         List<Product> products = productService.getAllProduct();
         Page page=new Page();
@@ -46,7 +43,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/index")
-    public String ss() {
+    public String home() {
         return "home";
     }
 }

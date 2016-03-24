@@ -1,18 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link href="${pageContext.request.contextPath}/css/libs/bootstrap.min.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/css/libs/bootstrap-theme.min.css" rel="stylesheet"/>
-<script type="application/javascript" src="${pageContext.request.contextPath}/js/jquery-2.2.1.min.js"></script>
-<script type="application/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-<script type="application/javascript" src="${pageContext.request.contextPath}/js/angular.min.js"></script>
-<script type="application/javascript" src="${pageContext.request.contextPath}/scripts/index.js"></script>
-<link rel="StyleSheet" href="${pageContext.request.contextPath}/css/headerStyle.css" type="text/css" media="screen"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link href="<c:url value="/css/libs/bootstrap.min.css"/>" rel="stylesheet"/>
+<link href="<c:url value="/css/libs/bootstrap-theme.min.css"/>" rel="stylesheet"/>
+<script type="application/javascript" src="<c:url value="/js/jquery-2.2.1.min.js"/>"></script>
+<script type="application/javascript" src="<c:url value="/js/bootstrap.min.js"/>"></script>
+<script type="application/javascript" src="<c:url value="/js/angular.min.js"/>"></script>
+<script type="application/javascript" src="<c:url value="/scripts/index.js"/>"></script>
+<link rel="StyleSheet" href="<c:url value="/css/headStyle.css"/>" type="text/css" media="screen"/>
+
 <nav class="navbar navbar-inverse" role="navigation">
     <div class="navbar-header">
         <a class="navbar-brand" href="#">购物网站</a>
     </div>
     <div>
         <ul class="nav navbar-nav">
-            <li><a href="productList/1">首页</a></li>
+            <li><a href="<c:url value="/productList?pageId=1"/>">首页</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#">我的购物车</a></li>
@@ -22,9 +24,9 @@
         </ul>
     </div>
 </nav>
-<div class="head_content">
-    <div class="imglogo">
-        <img src="${pageContext.request.contextPath}/images/logo.jpg"/>
+<div class="headContent">
+    <div class="imgLogo">
+        <img src="<c:url value="/images/logo.jpg"/>"/>
     </div>
     <div class="search">
         <div class="input-group">

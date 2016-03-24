@@ -4,8 +4,7 @@
 <html>
 <head>
   <title>Shopping</title>
-  <link rel="StyleSheet" href="${pageContext.request.contextPath}/css/indexProject.css" type="text/css" media="screen"/>
-
+  <link rel="StyleSheet" href="<c:url value="/css/indexProject.css"/>" type="text/css" media="screen"/>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 
@@ -17,7 +16,9 @@
       <c:if test="${!empty allProducts }">
         <c:forEach items="${allProducts }" var="pro">
           <div class="indexProduct">
+
             <a href="${pageContext.request.contextPath}/product/${pro.productId}">
+
               <img src="${pro.productImage }"><br>
               <p class="price">¥${pro.productPrice}元</p>
               <p>${pro.productName}</p>
@@ -30,10 +31,10 @@
 </div>
 <br/><br>
 <div class="aStyle">
-  <a href="${pageContext.request.contextPath}/productList/1">${firstPage}</a>
-  <a href="${pageContext.request.contextPath}/productList/${indexPage.prePage}">${indexPage.pre}</a>
-  <a href="${pageContext.request.contextPath}/productList/${indexPage.nextPage}">${indexPage.next}</a>
-  <a href="${pageContext.request.contextPath}/productList/${indexPage.totalPage}">${lastPage}</a></div>
+  <a href="<c:url value="/productList?pageId=1"/>">${firstPage}</a>
+  <a href="<c:url value="/productList?pageId=${indexPage.prePage}"/>">${indexPage.pre}</a>
+  <a href="<c:url value="/productList?pageId=${indexPage.nextPage}"/>">${indexPage.next}</a>
+  <a href="<c:url value="/productList?pageId=${indexPage.totalPage}"/>">${lastPage}</a></div>
 </div>
 <br/><br>
 </body>
