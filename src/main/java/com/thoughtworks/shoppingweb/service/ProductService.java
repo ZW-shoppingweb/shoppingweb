@@ -16,21 +16,21 @@ import java.util.List;
 public class ProductService {
     @Autowired
 
-    private ProductMapper productmapper ;
-    public Product getProduct(String product_id) {
-        return productmapper.findProductbyId(product_id);
+    private ProductMapper productMapper ;
+    public Product getProduct(String productId) {
+        return productMapper.findProductById(productId);
     }
 
     public ProductMapper getProductMapper() {
-        return productmapper;
+        return productMapper;
     }
 
     public void setProductMapper(ProductMapper productMapper) {
-        this.productmapper = productMapper;
+        this.productMapper = productMapper;
     }
 
     public List<Product> getAllProduct(){
-        return productmapper.getAllProduct();
+        return productMapper.getAllProduct();
 
     }
 }

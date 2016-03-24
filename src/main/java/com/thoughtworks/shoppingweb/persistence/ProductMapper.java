@@ -11,8 +11,8 @@ import java.util.*;
 
 import java.util.List;
 public interface ProductMapper {
-    @Select("select * from product where product_id=#{product_id}")
-    public Product findProductbyId(String product_id);
+    @Select("select * from product where productId=#{productId}")
+    public Product findProductById(String productId);
     @Select("select * from product")
     public List<Product> getAllProduct();
 }

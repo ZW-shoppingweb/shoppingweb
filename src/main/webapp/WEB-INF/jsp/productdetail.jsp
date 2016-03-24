@@ -1,24 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: cxzhao
-  Date: 3/22/16
-  Time: 3:21 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Product</title>
-    <link href="css/libs/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/libs/bootstrap-theme.min.css" rel="stylesheet"/>
-    <link href="css/detail.css" rel="stylesheet"/>
-    <link href="css/header.css" rel="stylesheet"/>
-    <script type="application/javascript" src="js/jquery-2.2.1.min.js"></script>
-    <script type="application/javascript" src="js/bootstrap.min.js"></script>
-    <script type="application/javascript" src="js/angular.min.js"></script>
-    <script type="application/javascript" src="scripts/index.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
 </head>
 <body>
 <%@ include file="head.jsp" %>

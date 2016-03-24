@@ -1,7 +1,7 @@
 body{
   background-color: #EAEAEA;
 }
-.allprojectlist{
+.allProjectList{
   text-align: center;
   margin-left: 200px;
   margin-top:20px;
@@ -9,13 +9,13 @@ body{
   width: 1000px;
 }
 
-.indexproduct{
+.indexProduct{
   width: 250px;
   float: left;
   height: 400px;
   text-align: left;
 }
-.indexproduct a{
+.indexProduct a{
   text-decoration:none;
 }
 .price{
@@ -26,41 +26,12 @@ body{
   margin-top: -200px;
 }
 
-.navtag{
-  margin-left: 20px;
-  width: 150px;
-}
-ul.nav-tabs{
-  background-color: white;
-  width: 140px;
-  margin-top: 20px;
-  border-radius: 4px;
-  border: 1px solid #ddd;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
-}
-ul.nav-tabs li{
-  margin: 0;
-  border-top: 1px solid #ddd;
-}
-ul.nav-tabs li:first-child{
-  border-top: none;
-}
-ul.nav-tabs li a{
-  margin: 0;
-  padding: 8px 16px;
-  border-radius: 0;
-}
-ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover{
-  color: #fff;
-  background: #0088cc;
-  border: 1px solid #0088cc;
-}
-.astyle{
+.aStyle{
   width: 100%;
   font-size: 16px;
   text-align: center;
 }
-.astyle a{
+.aStyle a{
   text-decoration: none;
   color: black;
 }

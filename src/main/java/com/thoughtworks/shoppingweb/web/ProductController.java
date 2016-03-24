@@ -7,10 +7,9 @@ import com.thoughtworks.shoppingweb.domain.Page;
 import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.Model;
 
@@ -20,48 +19,40 @@ import java.util.List;
 public class ProductController {
     @Autowired
     ProductService productService;
+    public static final int PAGE_SIZE = 16;
 
-    @RequestMapping(value = "/gotodetails", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    ModelAndView getProduct(String product_id, Model model) {
-        System.out.println("=====" + product_id);
+    @RequestMapping(value = "/gotoDetails", method = RequestMethod.GET)
+    public @ResponseBody ModelAndView getProduct(String productId, Model model) {
+        //System.out.println("=====" + productId);
         ModelAndView modelAndView = new ModelAndView("productdetail");
-        modelAndView.addObject("product", productService.getProduct(product_id));
+        modelAndView.addObject("product", productService.getProduct(productId));
         return modelAndView;
 
     }
-
-    @RequestMapping(value = "/indexofshoppingweb")
-    public String indexofshoppingweb(Model model) {
+    @RequestMapping(value = "/productList/{pageId}", method=RequestMethod.GET)
+    public String productList(@PathVariable("pageId") int pageId, Model model) {
         List<Product> products = productService.getAllProduct();
-        Page page=new Page();
-        page.apartPage(1,products.size(),16);
-        model.addAttribute("indexpage",page);
-        model.addAttribute("lastpage","尾页");
-        model.addAttribute("allproducts", products.subList(0,page.getPagesize()));
+        Page page = new Page();
+        page.apartPage(pageId, products.size(), PAGE_SIZE);
+        model.addAttribute("indexPage", page);
+        if(pageId > 0 && pageId <= page.getTotalPage()) {
 
-        return "index";
+
+            if (page.getPageId() != 1) {
+                model.addAttribute("firstPage", "首页");
+            }
+            if (page.getPageId() != page.getTotalPage()) {
+                model.addAttribute("lastPage", "尾页");
+            }
+            model.addAttribute("allProducts", products.subList(page.getShowContentBegin(), page.getShowContendEnd()));
+            return "index";
+        }
+        else{
+            throw new pageNotFoundException();
+        }
     }
-    @RequestMapping(value = "/page")
-    public String pageable(String pageid,Model model) {
-        List<Product> products = productService.getAllProduct();
 
-        Page page=new Page();
-        Integer curpageid=Integer.parseInt(pageid);
-        page.apartPage(curpageid,products.size(),16);
-        model.addAttribute("indexpage",page);
-        if(page.getPageidid() != 1){
-            model.addAttribute("firstpage","首页");
-        }
-        if(page.getPageidid() != page.getTotalpage()){
-            model.addAttribute("lastpage","尾页");
-        }
-        if(curpageid*page.getPagesize() > products.size()){
-
-        }
-        model.addAttribute("allproducts", products.subList(page.getShowcontentbegin(),page.getShowcontentend()));
-
-        return "index";
+    @ResponseStatus(value= HttpStatus.NOT_FOUND, reason="No such Page")  // 404
+    public class pageNotFoundException extends RuntimeException {
     }
 }

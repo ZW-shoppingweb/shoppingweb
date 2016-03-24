@@ -36,9 +36,9 @@ public class UserController {
         List<Product> products = productService.getAllProduct();
         Page page=new Page();
         page.apartPage(1,products.size(),16);
-        model.addAttribute("indexpage",page);
-        model.addAttribute("lastpage","尾页");
-        model.addAttribute("allproducts", products.subList(0,page.getPagesize()));
+        model.addAttribute("indexPage",page);
+        model.addAttribute("lastPage","尾页");
+        model.addAttribute("allProducts", products.subList(0,page.getPageSize()));
         return "index";
     }
     @RequestMapping(method = RequestMethod.GET,  value = "/login")
