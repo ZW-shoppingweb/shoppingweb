@@ -32,10 +32,6 @@ public class ProductService {
         this.productMapper = productMapper;
     }
 
-    public List<Product> getAllProduct() {
-        return productMapper.getAllProduct();
-
-    }
 
     public PaginationData getProductPaginationData(PaginationData paginationData) {
         long rowCount = productMapper.getNumOfProducts();

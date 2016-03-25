@@ -28,13 +28,13 @@ public class UserController {
         user.setUserName(userName);
         user.setPassword(password);
 
-        boolean a = userService.validateUser(user);
-        List<Product> products = productService.getAllProduct();
-        PaginationData paginationData = new PaginationData();
-        //paginationData.apartPage(1, products.size(), 16);
-        model.addAttribute("indexPage", paginationData);
-        model.addAttribute("lastPage", "尾页");
-        model.addAttribute("allProducts", products.subList(0, paginationData.getPageSize()));
+//        boolean a = userService.validateUser(user);
+//        List<Product> products = productService.getAllProduct();
+//        PaginationData paginationData = new PaginationData();
+//        //paginationData.apartPage(1, products.size(), 16);
+//        model.addAttribute("indexPage", paginationData);
+//        model.addAttribute("lastPage", "尾页");
+//        model.addAttribute("allProducts", products.subList(0, paginationData.getPageSize()));
         return "index";
     }
 

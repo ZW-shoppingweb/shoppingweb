@@ -1,4 +1,4 @@
-<%@ paginationData contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link href="<c:url value="/css/libs/bootstrap.min.css"/>" rel="stylesheet"/>
 <link href="<c:url value="/css/libs/bootstrap-theme.min.css"/>" rel="stylesheet"/>
@@ -14,11 +14,11 @@
     </div>
     <div>
         <ul class="nav navbar-nav">
-            <li><a href="<c:url value="/productList?pageId=1"/>">首页</a></li>
+            <li><a href="<c:url value="/productList"/>">首页</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#">我的购物车</a></li>
-            <li><a href="login">请登录</a></li>
+            <li><a href="#">请登录</a></li>
             <li><a href="#">免费注册</a></li>
             <li><a href="#"></a></li>
         </ul>

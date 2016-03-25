@@ -17,6 +17,9 @@ public class PaginationData {
 
     public int getPrevPageNum() {
 
+        if(currentPageNum == 1){
+            return currentPageNum;
+        }
         return currentPageNum - 1;
     }
 

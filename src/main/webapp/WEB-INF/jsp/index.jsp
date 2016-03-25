@@ -1,4 +1,4 @@
-<%@ paginationData contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -13,12 +13,10 @@
 <div>
   <div class="products">
     <div class="allProjectList">
-      <c:if test="${!empty allProducts }">
-        <c:forEach items="${allProducts }" var="pro">
+      <c:if test="${!empty indexPage.pageData }">
+        <c:forEach items="${indexPage.pageData }" var="pro">
           <div class="indexProduct">
-
-            <a href="${pageContext.request.contextPath}/product/${pro.productId}">
-
+            <a href="<c:url value="/product/${pro.productId}"/>">
               <img src="${pro.productImage }"><br>
               <p class="price">¥${pro.productPrice}元</p>
               <p>${pro.productName}</p>
@@ -30,12 +28,7 @@
   </div>
 </div>
 <br/><br>
-<div class="aStyle">
-  <a href="<c:url value="/productList?pageId=1"/>">${firstPage}</a>
-  <a href="<c:url value="/productList?pageId=${indexPage.prePage}"/>">${indexPage.pre}</a>
-  <a href="<c:url value="/productList?pageId=${indexPage.nextPage}"/>">${indexPage.next}</a>
-  <a href="<c:url value="/productList?pageId=${indexPage.totalPage}"/>">${lastPage}</a></div>
-</div>
+<%@ include file="paging.jsp" %>
 <br/><br>
 </body>
 </html>

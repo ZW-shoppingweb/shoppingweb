@@ -6,6 +6,7 @@ package com.thoughtworks.shoppingweb.persistence;
  */
 import com.thoughtworks.shoppingweb.domain.Product;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -19,10 +20,8 @@ public interface ProductMapper {
     public Product findProductById(String productId);
     @Select("select * from product")
     public List<Product> getAllProduct();
-
-    @Select("select * from product limit ${start}, ${size}")
-    public List<Product> getPaginationProductList(int start, int size);
-
+    @Select("select * from product limit #{start}, #{size}")
+    public List<Product> getPaginationProductList(@Param("start")int start,@Param("size") int size);
     @Select("select count(1) from product")
     public long getNumOfProducts();
 }
