@@ -1,6 +1,6 @@
 package com.thoughtworks.shoppingweb.web;
 
-import com.thoughtworks.shoppingweb.domain.Page;
+import com.thoughtworks.shoppingweb.service.page.PaginationData;
 import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.domain.User;
 import com.thoughtworks.shoppingweb.service.ProductService;
@@ -23,21 +23,22 @@ public class UserController {
 
 
     @RequestMapping(value = "/loginAction")
-    public String loginPage(String userName,String password,Model model) {
-        User user=new User();
+    public String loginPage(String userName, String password, Model model) {
+        User user = new User();
         user.setUserName(userName);
         user.setPassword(password);
 
-        boolean a=userService.validateUser(user);
+        boolean a = userService.validateUser(user);
         List<Product> products = productService.getAllProduct();
-        Page page=new Page();
-        page.apartPage(1,products.size(),16);
-        model.addAttribute("indexPage",page);
-        model.addAttribute("lastPage","尾页");
-        model.addAttribute("allProducts", products.subList(0,page.getPageSize()));
+        PaginationData paginationData = new PaginationData();
+        //paginationData.apartPage(1, products.size(), 16);
+        model.addAttribute("indexPage", paginationData);
+        model.addAttribute("lastPage", "尾页");
+        model.addAttribute("allProducts", products.subList(0, paginationData.getPageSize()));
         return "index";
     }
-    @RequestMapping(method = RequestMethod.GET,  value = "/login")
+
+    @RequestMapping(method = RequestMethod.GET, value = "/login")
     public String loginPage() {
         return "login";
     }
