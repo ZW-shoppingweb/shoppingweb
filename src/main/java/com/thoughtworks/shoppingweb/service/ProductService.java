@@ -34,9 +34,11 @@ public class ProductService {
 
 
     public PaginationData getProductPaginationData(PaginationData paginationData) {
-        long rowCount = productMapper.getNumOfProducts();
+        String filterName=paginationData.getQueryFilter().getFilterName();
+        String filterValue=paginationData.getQueryFilter().getFilterValue();
+        long rowCount = productMapper.getNumOfProducts(filterName,filterValue);
         paginationData.setMaxCount(rowCount);
-        List<Product> productList = productMapper.getPaginationProductList(
+        List<Product> productList = productMapper.getPaginationProductList(filterName,filterValue,
                 (paginationData.getCurrentPageNum() - 1) * paginationData.getPageSize(),
                 paginationData.getPageSize());
         paginationData.setPageData(productList);

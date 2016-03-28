@@ -3,6 +3,7 @@ package com.thoughtworks.shoppingweb.service.page;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Collection;
 
 /**
  * Created by szwang on 3/23/16.
@@ -13,6 +14,9 @@ public class PaginationData {
     private int pageSize;
     private long maxCount;
     private List<?> pageData;
+    private QueryFilter queryFilter;
+
+    private Collection<QueryFilter> filters;
 
 
     public int getPrevPageNum() {
@@ -35,5 +39,9 @@ public class PaginationData {
             return maxCount / pageSize + 1;
         }
         return maxCount / pageSize;
+    }
+
+    public void createQueryFilter(String filterName, String filterValue){
+        this.setQueryFilter(new QueryFilter(filterName, filterValue));
     }
 }

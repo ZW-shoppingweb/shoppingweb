@@ -6,9 +6,11 @@ package com.thoughtworks.shoppingweb.web;
 import com.thoughtworks.shoppingweb.service.page.PaginationData;
 import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.service.ProductService;
+import com.thoughtworks.shoppingweb.service.page.QueryFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
@@ -22,20 +24,22 @@ public class ProductController {
     public static final String DEFAULT_PAGE_NUM = "1";
 
     @RequestMapping(value = "/productList", method=RequestMethod.GET)
-    public String productList(@RequestParam(value = "pageId", required = false,
-            defaultValue = DEFAULT_PAGE_NUM) int pageId,
-            @RequestParam(value="pageSize",
-            defaultValue = DEFAULT_PAGE_SIZE, required = false) int pageSize,
-            Model model) {
-
+    public String productList(@RequestParam(value = "filterName", required = false) String filterName,
+                              @RequestParam(value = "filterValue", required = false) String filterValue,
+                              @RequestParam(value = "pageId", required = false,
+                                      defaultValue = DEFAULT_PAGE_NUM) int pageId,
+                              @RequestParam(value="pageSize",
+                                       defaultValue = DEFAULT_PAGE_SIZE, required = false) int pageSize,
+                              Model model) {
         PaginationData paginationData = new PaginationData();
+            paginationData.createQueryFilter(filterName, filterValue);
+
         paginationData.setCurrentPageNum(pageId);
         paginationData.setPageSize(pageSize);
         paginationData = productService.getProductPaginationData(paginationData);
         model.addAttribute("indexPage", paginationData);
         return "index";
     }
-
     @ResponseStatus(value= HttpStatus.NOT_FOUND, reason="No such PaginationData")  // 404
     public class ProductNotFoundException extends RuntimeException {}
 

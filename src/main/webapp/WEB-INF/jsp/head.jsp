@@ -56,16 +56,5 @@
                </span>
         </div>
     </div>
+
 </div>
-
-<div class="navTag">
-    <ul class="nav nav-tabs nav-stacked">
-        <li class="active"><a href="#section-1">女装</a></li>
-        <li><a href="#section-2">男装</a></li>
-        <li><a href="#section-3">家居家纺</a></li>
-        <li><a href="#section-4">汽车用品</a></li>
-        <li><a href="#section-5">玩具</a></li>
-    </ul>
-</div>
-
-

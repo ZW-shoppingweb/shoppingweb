@@ -10,6 +10,7 @@
 
 <body ng-app="userApp">
 <%@ include file="head.jsp" %>
+<%@ include file="search.jsp" %>
 <div>
   <div class="products">
     <div class="allProjectList">
