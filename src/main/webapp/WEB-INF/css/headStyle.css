@@ -1,3 +1,26 @@
+.loginForm{
+    width: 500px;
+    left:300px;
+    margin: 100px auto;
+    padding: 40px;
+    top:100px;
+    height: 300px;
+    position: fixed;
+    background-color: #999999;
+}
+.center{
+    text-align: center;
+}
+.loginForm p{
+    font-size: 20px;
+}
+.loginForm button{
+    width: 100px;
+}
+.navbar-nav{
+    padding-right: 40px;
+}
+
 
 .headContent{
     margin-top: -30px;

@@ -33,7 +33,6 @@ public class ProductController {
         paginationData.setPageSize(pageSize);
         paginationData = productService.getProductPaginationData(paginationData);
         model.addAttribute("indexPage", paginationData);
-
         return "index";
     }
 

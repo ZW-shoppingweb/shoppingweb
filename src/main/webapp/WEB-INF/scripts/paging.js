@@ -1,10 +1,7 @@
-var app = angular.module('myPagingApp', []);
-app.controller('myPagingCtrl', function($scope) {
-
+proapp.controller('myPagingCtrl', ['$scope',function ($scope) {
     var curNum=angular.element("#currentPage").html();
     var lastNum=angular.element("#lastPage").attr("pageNum");
-    if(curNum == 1) {
-        //$("#prePage").removeAttr();
+    if(curNum == "1") {
         angular.element("#prePage").removeAttr("href");
         angular.element("#firstPage").removeAttr("href");
     }
@@ -12,4 +9,4 @@ app.controller('myPagingCtrl', function($scope) {
         angular.element("#nextPage").removeAttr("href");
         angular.element("#lastPage").removeAttr("href");
     }
-});
+}]);

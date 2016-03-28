@@ -8,7 +8,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 
-<body>
+<body ng-app="userApp">
 <%@ include file="head.jsp" %>
 <div>
   <div class="products">
