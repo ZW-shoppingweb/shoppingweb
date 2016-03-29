@@ -17,7 +17,7 @@ proapp.controller('userController', ['$scope', '$http','$location',function ($sc
     }
 
     _this.loginAction=function(){
-        $http.get("/shoppingweb/loginAction/"+_this.userName+"/"+_this.password).success( function(data) {
+        $http.get("/com.thoughtworks.shoppingweb.com.thoughtworks.shoppingweb/loginAction/"+_this.userName+"/"+_this.password).success( function(data) {
             if(data.isLogin === "yes"){
                 storage["name"] = data.userName;
                 storage["isSignIn"]="yes";

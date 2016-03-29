@@ -40,12 +40,16 @@ public class ProductController {
         model.addAttribute("indexPage", paginationData);
         return "index";
     }
+
+    public void setProductService(ProductService productService) {
+        this.productService = productService;
+    }
+
     @ResponseStatus(value= HttpStatus.NOT_FOUND, reason="No such PaginationData")  // 404
     public class ProductNotFoundException extends RuntimeException {}
 
     @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
     public String getProduct(@PathVariable("id") String id, Model model) {
-        System.out.println("=====" + id);
         Product product = productService.getProduct(id);
         if (product == null) throw new ProductNotFoundException();
         model.addAttribute(product);

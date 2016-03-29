@@ -1,4 +1,4 @@
-group 'shoppingweb'
+group 'com.thoughtworks.shoppingweb'
 version '1.0-SNAPSHOT'
 apply plugin: "org.flywaydb.flyway"
 apply plugin: 'java'
@@ -46,7 +46,7 @@ dependencies {
     compile 'org.springframework:spring-jdbc:4.2.5.RELEASE'
     compile 'org.springframework:spring-web:4.2.5.RELEASE'
     compile 'org.springframework:spring-webmvc:4.2.5.RELEASE'
-
+    compile 'org.springframework:spring-test:4.2.5.RELEASE'
     compile 'log4j:log4j:1.2.17'
     compile 'mysql:mysql-connector-java:5.1.38'
     compile "org.projectlombok:lombok:1.16.6"

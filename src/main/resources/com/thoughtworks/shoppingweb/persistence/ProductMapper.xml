@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.thoughtworks.shoppingweb.persistence.ProductMapper">
+    <select id="findProductById" resultType="Product">
+    SELECT * FROM product WHERE productId=#{productId}
+</select>
+
+    <select id="getPaginationProductList" resultType="Product">
+        SELECT * FROM product
+        <if test="filterValue!=null and filterValue!=''">
+            WHERE ${filterName}=#{filterValue}
+        </if>
+        limit #{start},#{size}
+    </select>
+
+    <select id="getNumOfProducts" resultType="int" >
+        SELECT COUNT(1) FROM product
+        <if test="filterValue!=null and filterValue!=''">
+            WHERE ${filterName}=#{filterValue}
+        </if>
+    </select>
+
+</mapper>
