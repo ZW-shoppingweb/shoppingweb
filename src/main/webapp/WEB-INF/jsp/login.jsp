@@ -1,24 +1,16 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>Login</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-</head>
-<body ng-app="app">
-<%--<div ng-app="app" ng-controller="UserController as userCtrl">--%>
-<%--<div>Welcome:{{welcome}}</div>--%>
-<%--<form action="loginAction" >--%>
-    <%--<div class="form-group">--%>
-        <%--<label>User Name</label>--%>
-        <%--<input type="text" class="form-control" id="inputEmail1" placeholder="tel" name="userName" >--%>
-    <%--</div>--%>
-    <%--<div class="form-group">--%>
-        <%--<label for="inputPassword1">Password</label>--%>
-        <%--<input type="password" class="form-control" id="inputPassword1" placeholder="Password" name="password">--%>
-    <%--</div>--%>
-    <%--<input type="submit" value="Submit"/>--%>
-    <%--&lt;%&ndash;<button type="button" class="btn btn-default" ng-click="userCtrl.login()">Submit</button>&ndash;%&gt;--%>
-<%--</form>--%>
-    <%--</div>--%>
-</body>
-</html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<div class="loginForm">
+    <p class="center">欢迎!请登录</p>
+    <div class="form-group">
+        <label>用户名</label>
+        <input type="text" class="form-control"  placeholder="User Name" ng-model="userCtrl.userName">
+    </div>
+    <div class="form-group">
+        <label>密码</label>
+        <input type="password" class="form-control"  placeholder="Password" ng-model="userCtrl.password">
+    </div>
+    <div class="center">
+        <button type="button" class="btn btn-primary" ng-click="userCtrl.loginAction()">登陆</button>
+        <button type="button" class="btn btn-primary" ng-click="userCtrl.hideForm()">返回</button>
+    </div>
+</div>

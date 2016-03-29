@@ -31,19 +31,24 @@ public class ProductServiceTest {
 
     @Test
     public void testGetProductPaginationData() throws Exception {
+
         List<Product> mockedList = getProducts();
         Mockito.when(productMapper.getPaginationProductList("productCategory","1",0, 16)).thenReturn(mockedList.subList(0, 12));
         Mockito.when(productMapper.getPaginationProductList("productCategory","1",16, 16)).thenReturn(Collections.<Product>emptyList());
+
         PaginationData pd = new PaginationData();
 
         pd.setCurrentPageNum(1);
         pd.setPageSize(16);
         pd.createQueryFilter("productCategory","1");
+
         pd.setMaxCount(mockedList.size());
 
         pd = productService.getProductPaginationData(pd);
 
+
         assertEquals(12, pd.getPageData().size());
+
 
         pd.setCurrentPageNum(2);
 
@@ -61,8 +66,9 @@ public class ProductServiceTest {
             mockedList.add(product);
         }
         for (int i = 12; i < 28; i++) {
-        mockedList.add(new Product());
-    }
+            mockedList.add(new Product());
+        }
         return mockedList;
+
     }
 }

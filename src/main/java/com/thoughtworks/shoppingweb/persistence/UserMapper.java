@@ -7,5 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import java.util.*;
 public interface UserMapper {
 
-    public User findUserByName(@Param("userName")String userName, @Param("password")String password);
+   public User findUserByName(User user);
+   public int insertUser(User user);
+
 }

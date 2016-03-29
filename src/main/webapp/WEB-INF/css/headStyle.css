@@ -1,20 +1,20 @@
-.loginForm{
+.registerForm, .loginForm{
     width: 500px;
     left:300px;
     margin: 100px auto;
     padding: 40px;
-    top:100px;
-    height: 300px;
+    top:50px;
+    height: 350px;
     position: fixed;
     background-color: #999999;
 }
 .center{
     text-align: center;
 }
-.loginForm p{
+.registerForm p, .loginForm p{
     font-size: 20px;
 }
-.loginForm button{
+.registerForm button,.loginForm button{
     width: 100px;
 }
 .navbar-nav{

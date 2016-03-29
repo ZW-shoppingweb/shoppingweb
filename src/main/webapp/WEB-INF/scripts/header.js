@@ -2,6 +2,7 @@ var proapp = angular.module('userApp', []);
 proapp.controller('userController', ['$scope', '$http','$location',function ($scope, $http, $location) {
     _this=this;
     angular.element(".loginForm").hide();
+    angular.element(".registerForm").hide();
     var storage = window.localStorage;
     _this.isSignInFlag=storage["isSignIn"];
     if(_this.isSignInFlag == "no"){
@@ -15,11 +16,15 @@ proapp.controller('userController', ['$scope', '$http','$location',function ($sc
                angular.element(".loginForm").show();
         }
     }
-
+    _this.registerShow=function(){
+        if(_this.isSignInFlag == "no"){
+            angular.element(".registerForm").show();
+        }
+    }
     _this.loginAction=function(){
         $http.get("/com.thoughtworks.shoppingweb.com.thoughtworks.shoppingweb/loginAction/"+_this.userName+"/"+_this.password).success( function(data) {
             if(data.isLogin === "yes"){
-                storage["name"] = data.userName;
+                storage["name"] = _this.userName;
                 storage["isSignIn"]="yes";
                 signInInfo();
             }
@@ -28,11 +33,31 @@ proapp.controller('userController', ['$scope', '$http','$location',function ($sc
             }
         });
     }
+    _this.registerAction=function(){
+        if(_this.passwordOnce == _this.passwordTwice){
+            $http.get("/shoppingweb/registerAction/"+_this.userNameUnique+"/"+_this.passwordOnce).success( function(data) {
+                if(data.isLogin === "yes"){
+                    storage["name"] = _this.userNameUnique;
+                    storage["isSignIn"]="yes";
+                    signInInfo();
+                    angular.element(".registerForm").hide();
+                }
+                else{
+                    alert("用户已存在,注册失败");
+                }
+            });
+        }
+        else{
+            alert("两次密码不一致")
+        }
+
+    }
     _this.signOut=function(){
         signOutInfo();
     }
-    _this.hideLoginAction=function(){
+    _this.hideForm=function(){
         angular.element(".loginForm").hide();
+        angular.element(".registerForm").hide();
     }
     function signInInfo(){
         _this.userNameInNav=storage["name"];

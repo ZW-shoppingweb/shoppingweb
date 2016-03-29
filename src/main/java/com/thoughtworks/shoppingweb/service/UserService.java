@@ -21,8 +21,14 @@ public class UserService {
     }
 
     public boolean validateUser(User user) {
-        User exitUser = userMapper.findUserByName(user.getUserName(),user.getPassword());
-        return (exitUser != null);
-        //return (user == null && user.getPassword().equals(user.getPassword()));
+        User exitUser = userMapper.findUserByName(user);
+        return (exitUser != null && exitUser.getPassword().equals(user.getPassword()));
+    }
+    public boolean addUser(User user){
+        if(userMapper.findUserByName(user) != null){
+            return false;
+        }
+        int insertResult=userMapper.insertUser(user);
+        return (insertResult > 0);
     }
 }

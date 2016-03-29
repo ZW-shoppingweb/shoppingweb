@@ -32,7 +32,7 @@ public class ProductController {
                                        defaultValue = DEFAULT_PAGE_SIZE, required = false) int pageSize,
                               Model model) {
         PaginationData paginationData = new PaginationData();
-            paginationData.createQueryFilter(filterName, filterValue);
+        paginationData.createQueryFilter(filterName, filterValue);
 
         paginationData.setCurrentPageNum(pageId);
         paginationData.setPageSize(pageSize);
