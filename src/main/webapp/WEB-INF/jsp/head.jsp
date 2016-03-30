@@ -20,7 +20,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">我的购物车</a></li>
-                <li><a href="javascript:void(0);" ng-click="userCtrl.loginShow()" ng-model="userCtrl.isSignInFlag">{{userCtrl.isSignIn}}</a></li>
+                <li><a href="javascript:void(0);" ng-click="userCtrl.loginShow()">{{userCtrl.isSignIn}}</a></li>
                 <li><a>{{userCtrl.userNameInNav}}</a></li>
                 <li><a href="javascript:void(0);" ng-click="userCtrl.registerShow()">{{userCtrl.isRegister}}</a></li>
                 <li><a href="javascript:void(0);" ng-click="userCtrl.signOut()">{{userCtrl.isSignOut}}</a></li>

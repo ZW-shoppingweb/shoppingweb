@@ -12,3 +12,6 @@ input{padding-left: 10px;width: 70px}
 .detailInfo{padding-left: 50px;padding-bottom: 50px;font-size: 20px}
 .detailImg{width: 600px;}
 .navtag{position: fixed}
+.NotInCommonPrice{
+    text-decoration:line-through;
+}

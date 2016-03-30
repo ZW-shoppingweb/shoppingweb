@@ -1,5 +1,5 @@
 var proapp = angular.module('userApp', ['ngMessages']);
-proapp.controller('userController', ['$scope', '$http','$location',function ($scope, $http, $location) {
+proapp.controller('userController', ['$scope', '$http',function ($scope, $http) {
     _this=this;
     angular.element(".loginForm").hide();
     angular.element(".registerForm").hide();
@@ -7,20 +7,19 @@ proapp.controller('userController', ['$scope', '$http','$location',function ($sc
     _this.showExistedUserTips=false;
     _this.showNotCorrectLoginTips=false;
     var storage = window.localStorage;
-    _this.isSignInFlag=storage["isSignIn"];
-    if(_this.isSignInFlag == "no"){
+    if(storage["isSignIn"] =="no"){
         signOutInfo();
     }
     else{
         signInInfo();
     }
     _this.loginShow=function(){
-           if(_this.isSignInFlag == "no"){
+           if(storage["isSignIn"] =="no"){
                angular.element(".loginForm").show();
         }
     }
     _this.registerShow=function(){
-        if(_this.isSignInFlag == "no"){
+        if(storage["isSignIn"] =="no"){
             angular.element(".registerForm").show();
         }
     }
@@ -76,7 +75,6 @@ proapp.controller('userController', ['$scope', '$http','$location',function ($sc
         _this.userNameInNav=null;
         storage["isSignIn"]="no";
         storage["name"]=null;
-        _this.isSignInFlag=storage["isSignIn"];
     }
 
 

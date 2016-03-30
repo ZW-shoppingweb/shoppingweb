@@ -8,20 +8,22 @@
 </head>
 <body ng-app="userApp">
 <%@ include file="head.jsp"%>
-<div class="contenText">
+<script type="application/javascript" src="<c:url value="/scripts/price.js"/>"></script>
+<div class="contenText" >
     <div class="titleDetail">
         <img class="productImg" src="${product.productImage}">
-        <div class="rightDetail">
+        <div class="rightDetail" ng-controller="priceController">
             <span class="productName">${product.productName}</span>
-            <p class="price1">￥${product.productPrice}</p>
+            <p class="price1" ng-class={'NotInCommonPrice':noUsePrice}>￥${product.productPrice}</p>
             <p class="price2"> ￥${product.productVipPrice}/for VIP</p>
             <p class="number">数目: <input type="number" min="1"/></p>
             <button>立即购买</button>
-            <button class="buy">加入购物车</button>
+            <button class="buy">加入购物车</button> <br>
         </div>
     </div>
     <div>
         <div class="productDetail">
+
             <h3>商品详情</h3>
             <hr color=#Gray>
             <p class="detailInfo">city: ${product.productCity} &nbsp&nbsp&nbspintroduce: ${product.productIntroduce}
