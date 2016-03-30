@@ -76,8 +76,8 @@
     <ul class="nav nav-tabs nav-stacked">
         <li class="active"><a href="<c:url value="/productList?filterName=productCategory&filterValue=1&minPrice=${indexPage.queryFilter.minPrice}&maxPrice=${indexPage.queryFilter.maxPrice}&seqName=${indexPage.queryFilter.seqName}&sequence=${indexPage.queryFilter.sequence}"/>">女装</a></li>
         <li><a href="<c:url value="/productList?filterName=productCategory&filterValue=2&minPrice=${indexPage.queryFilter.minPrice}&maxPrice=${indexPage.queryFilter.maxPrice}&seqName=${indexPage.queryFilter.seqName}&sequence=${indexPage.queryFilter.sequence}"/>">男装</a></li>
-        <li><a href="<c:url value="/productList?category=家居家纺"/>">家居家纺</a></li>
-        <li><a href="<c:url value="/productList?category=汽车用品"/>">汽车用品</a></li>
-        <li><a href="<c:url value="/productList?category=玩具"/>">玩具</a></li>
+        <li><a href="<c:url value="/productList?filterName=productCategory&filterValue=3&minPrice=${indexPage.queryFilter.minPrice}&maxPrice=${indexPage.queryFilter.maxPrice}&seqName=${indexPage.queryFilter.seqName}&sequence=${indexPage.queryFilter.sequence}"/>">家居家纺</a></li>
+        <li><a href="<c:url value="/productList?filterName=productCategory&filterValue=4&minPrice=${indexPage.queryFilter.minPrice}&maxPrice=${indexPage.queryFilter.maxPrice}&seqName=${indexPage.queryFilter.seqName}&sequence=${indexPage.queryFilter.sequence}"/>">汽车用品</a></li>
+        <li><a href="<c:url value="/productList?filterName=productCategory&filterValue=5&minPrice=${indexPage.queryFilter.minPrice}&maxPrice=${indexPage.queryFilter.maxPrice}&seqName=${indexPage.queryFilter.seqName}&sequence=${indexPage.queryFilter.sequence}"/>">玩具</a></li>
     </ul>
 </div>

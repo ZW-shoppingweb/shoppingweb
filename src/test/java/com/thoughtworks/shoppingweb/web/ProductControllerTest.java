@@ -1,10 +1,14 @@
 package com.thoughtworks.shoppingweb.web;
+import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.service.ProductService;
+import com.thoughtworks.shoppingweb.service.page.PaginationData;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
-import  org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -22,8 +26,10 @@ public void setup(){
 
     @Test
     public void testProductList() throws Exception {
-        MockHttpServletRequest request = new MockHttpServletRequest();
-        MockHttpServletResponse response = new MockHttpServletResponse();
+        List<Product> mokitoList=new ArrayList<Product>();
+        productController.productList("productCategory","1",1,"0","500","price","ASC",0,16,mokitoList);
+        PaginationData pd = new PaginationData();
+     assertEquals("productCategory",);
 
     }
 }

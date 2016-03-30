@@ -36,7 +36,7 @@ public class ProductController {
                               @RequestParam(value = "seqName", required = false) String seqName,
                               @RequestParam(value = "sequence", required = false) String sequence,
                               @RequestParam(value="pageSize",
-                                       defaultValue = DEFAULT_PAGE_SIZE, required = false) int pageSize,
+                                      defaultValue = DEFAULT_PAGE_SIZE, required = false) int pageSize,
                               Model model) {
         PaginationData paginationData = new PaginationData();
         paginationData.createQueryFilter(filterName, filterValue,minPrice,maxPrice,seqName,sequence);
