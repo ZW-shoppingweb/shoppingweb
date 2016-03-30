@@ -29,6 +29,7 @@ public class ProductController {
                               @RequestParam(value = "filterValue", required = false) String filterValue,
                               @RequestParam(value = "pageId", required = false,
                                       defaultValue = DEFAULT_PAGE_NUM) int pageId,
+<<<<<<< Updated upstream
                               @RequestParam(value = "minPrice", required = false,
                                       defaultValue = DEFAULT_MIN_PRICE) String minPrice,
                               @RequestParam(value = "maxPrice", required = false,
@@ -40,17 +41,28 @@ public class ProductController {
                               Model model) {
         PaginationData paginationData = new PaginationData();
         paginationData.createQueryFilter(filterName, filterValue,minPrice,maxPrice,seqName,sequence);
+=======
+                              @RequestParam(value="pageSize",
+                                       defaultValue = DEFAULT_PAGE_SIZE, required = false) int pageSize,
+                              Model model) {
+        PaginationData paginationData = new PaginationData();
+            paginationData.createQueryFilter(filterName, filterValue);
+
+>>>>>>> Stashed changes
         paginationData.setCurrentPageNum(pageId);
         paginationData.setPageSize(pageSize);
         paginationData = productService.getProductPaginationData(paginationData);
         model.addAttribute("indexPage", paginationData);
         return "index";
     }
+<<<<<<< Updated upstream
 
     public void setProductService(ProductService productService) {
         this.productService = productService;
     }
 
+=======
+>>>>>>> Stashed changes
     @ResponseStatus(value= HttpStatus.NOT_FOUND, reason="No such PaginationData")  // 404
     public class ProductNotFoundException extends RuntimeException {}
 

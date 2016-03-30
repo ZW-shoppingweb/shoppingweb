@@ -9,6 +9,7 @@ import lombok.Data;
 public class QueryFilter {
     private String filterName;
     private String filterValue;
+<<<<<<< Updated upstream
     private String minPrice;
     private String maxPrice;
     private  String seqName;
@@ -23,5 +24,11 @@ public class QueryFilter {
         this.minPrice=minPrice;
         this.seqName=seqName;
         this.sequence=sequence;
+=======
+
+    public QueryFilter(String filterName, String filterValue) {
+        this.filterName = filterName;
+        this.filterValue = filterValue;
+>>>>>>> Stashed changes
     }
 }

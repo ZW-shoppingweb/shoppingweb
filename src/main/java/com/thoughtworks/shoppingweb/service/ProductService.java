@@ -36,6 +36,7 @@ public class ProductService {
     public PaginationData getProductPaginationData(PaginationData paginationData) {
         String filterName=paginationData.getQueryFilter().getFilterName();
         String filterValue=paginationData.getQueryFilter().getFilterValue();
+<<<<<<< Updated upstream
         String minPrice=paginationData.getQueryFilter().getMinPrice();
         String maxPrice=paginationData.getQueryFilter().getMaxPrice();
         String seqName=paginationData.getQueryFilter().getSeqName();
@@ -43,6 +44,11 @@ public class ProductService {
         int rowCount=productMapper.getNumOfProducts(filterName,filterValue,minPrice,maxPrice);
         paginationData.setMaxCount(rowCount);
         List<Product> productList = productMapper.getPaginationProductList(filterName,filterValue,minPrice,maxPrice,seqName,sequence,
+=======
+        long rowCount = productMapper.getNumOfProducts(filterName,filterValue);
+        paginationData.setMaxCount(rowCount);
+        List<Product> productList = productMapper.getPaginationProductList(filterName,filterValue,
+>>>>>>> Stashed changes
                 (paginationData.getCurrentPageNum() - 1) * paginationData.getPageSize(),
                 paginationData.getPageSize());
         paginationData.setPageData(productList);
