@@ -8,7 +8,7 @@
     SELECT * FROM user WHERE userName=#{userName}
   </select>
 
-  <insert id="insertUser" parameterType="User">
+  <insert id="insertUser" parameterType="User" >
   insert into user
   (userName,password,userType)
   values

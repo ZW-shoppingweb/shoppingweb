@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body ng-app="userApp">
-<%@ include file="head.jsp" %>
+<%@ include file="head.jsp"%>
 <div class="contenText">
     <div class="titleDetail">
         <img class="productImg" src="${product.productImage}">

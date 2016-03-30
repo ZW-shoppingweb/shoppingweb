@@ -52,7 +52,6 @@ public class UserServiceTest {
         User user=new User();
         user.setUserName("wsz");
         user.setPassword("123");
-        Mockito.when(userMapper.findUserByName(user)).thenReturn(user);
         Mockito.when(userMapper.insertUser(user)).thenReturn(0);
         assertFalse(userService.addUser(user));
     }

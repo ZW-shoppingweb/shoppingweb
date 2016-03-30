@@ -11,7 +11,7 @@ import java.util.*;
 public class UserService {
     @Autowired
     UserMapper userMapper;
-
+    public static final String DEFAULT_MEMBER_TYPE = "member";
     public UserMapper getUserMapper() {
         return userMapper;
     }
@@ -25,10 +25,15 @@ public class UserService {
         return (exitUser != null && exitUser.getPassword().equals(user.getPassword()));
     }
     public boolean addUser(User user){
-        if(userMapper.findUserByName(user) != null){
+        user.setUserType(DEFAULT_MEMBER_TYPE);
+        int insertResult=0;
+        try{
+            insertResult=userMapper.insertUser(user);
+        } catch(Exception e)
+        {
             return false;
         }
-        int insertResult=userMapper.insertUser(user);
         return (insertResult > 0);
+
     }
 }

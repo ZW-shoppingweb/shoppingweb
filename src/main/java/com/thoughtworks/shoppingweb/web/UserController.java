@@ -17,7 +17,7 @@ public class UserController {
 
     @Autowired
     UserService userService;
-    public static final String DEFAULT_MEMBER_TYPE = "member";
+
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
@@ -42,7 +42,6 @@ public class UserController {
         User user = new User();
         user.setUserName(userName);
         user.setPassword(password);
-        user.setUserType(DEFAULT_MEMBER_TYPE);
         Map result = new HashMap();
         if(userService.addUser(user)){
             result.put("isLogin","yes");
