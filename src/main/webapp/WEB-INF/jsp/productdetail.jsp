@@ -15,7 +15,7 @@
             <span class="productName">${product.productName}</span>
             <p class="price1">￥${product.productPrice}</p>
             <p class="price2"> ￥${product.productVipPrice}/for VIP</p>
-            <p class="number">数目: <input type="number" min="1"/></p>
+            <p class="number">数目: <input type="number" value="1" min="1"/></p>
             <button>立即购买</button>
             <button class="buy">加入购物车</button>
         </div>
