@@ -16,11 +16,9 @@ public class PaginationData {
     private List<?> pageData;
     private QueryFilter queryFilter;
 
-<<<<<<< Updated upstream
+
 //    private Collection<QueryFilter> filters;
-=======
-    private Collection<QueryFilter> filters;
->>>>>>> Stashed changes
+
 
 
     public int getPrevPageNum() {
@@ -45,16 +43,11 @@ public class PaginationData {
         return maxCount / pageSize;
     }
 
-<<<<<<< Updated upstream
+
     public void createQueryFilter(String filterName, String filterValue,String minPrice,
                                   String maxPrice,String seqName,String sequence)
     {
         this.setQueryFilter(new QueryFilter(filterName, filterValue ,minPrice, maxPrice,seqName,sequence));
     }
 
-=======
-    public void createQueryFilter(String filterName, String filterValue){
-        this.setQueryFilter(new QueryFilter(filterName, filterValue));
-    }
->>>>>>> Stashed changes
 }

@@ -52,7 +52,6 @@
                </span>
         </div>
     </div>
-<<<<<<< Updated upstream
     <div class="searchPrice">
         <label>价格区间</label>
         <input type="number"  placeholder="最小"  ng-model="minPrice">
@@ -91,6 +90,4 @@
         <li><a href="<c:url value="/productList?filterName=productCategory&filterValue=5&minPrice=${indexPage.queryFilter.minPrice}&maxPrice=${indexPage.queryFilter.maxPrice}&seqName=${indexPage.queryFilter.seqName}&sequence=${indexPage.queryFilter.sequence}"/>">玩具</a></li>
     </ul>
 </div>
-=======
-</div>
->>>>>>> Stashed changes
+
