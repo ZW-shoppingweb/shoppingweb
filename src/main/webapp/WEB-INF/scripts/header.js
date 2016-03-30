@@ -1,8 +1,11 @@
-var proapp = angular.module('userApp', []);
+var proapp = angular.module('userApp', ['ngMessages']);
 proapp.controller('userController', ['$scope', '$http','$location',function ($scope, $http, $location) {
     _this=this;
     angular.element(".loginForm").hide();
     angular.element(".registerForm").hide();
+    _this.showNotSamePasswordTips=false;
+    _this.showExistedUserTips=false;
+    _this.showNotCorrectLoginTips=false;
     var storage = window.localStorage;
     _this.isSignInFlag=storage["isSignIn"];
     if(_this.isSignInFlag == "no"){
@@ -29,7 +32,7 @@ proapp.controller('userController', ['$scope', '$http','$location',function ($sc
                 signInInfo();
             }
             else{
-                alert("请输入正确的用户名和密码");
+                _this.showNotCorrectLoginTips=true;
             }
         });
     }
@@ -43,12 +46,12 @@ proapp.controller('userController', ['$scope', '$http','$location',function ($sc
                     angular.element(".registerForm").hide();
                 }
                 else{
-                    alert("用户已存在,注册失败");
+                    _this.showExistedUserTips=true;
                 }
             });
         }
         else{
-            alert("两次密码不一致")
+            _this.showNotSamePasswordTips=true;
         }
 
     }
@@ -75,4 +78,6 @@ proapp.controller('userController', ['$scope', '$http','$location',function ($sc
         storage["name"]=null;
         _this.isSignInFlag=storage["isSignIn"];
     }
+
+
 }]);

@@ -3,8 +3,8 @@
     left:300px;
     margin: 100px auto;
     padding: 40px;
-    top:50px;
-    height: 350px;
+    top:30px;
+    height: 450px;
     position: fixed;
     background-color: #999999;
 }
@@ -19,6 +19,12 @@
 }
 .navbar-nav{
     padding-right: 40px;
+}
+.message{
+    color: brown;
+    display: block;
+    margin-top: -10px;
+    height: 25px;
 }
 
 

@@ -5,6 +5,7 @@
 <script type="application/javascript" src="<c:url value="/js/jquery-2.2.1.min.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/js/bootstrap.min.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/js/angular.min.js"/>"></script>
+<script type="application/javascript" src="<c:url value="/js/angular-messages.min.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/scripts/header.js"/>"></script>
 <link rel="StyleSheet" href='<c:url value="/css/headStyle.css"/>' type="text/css" media="screen"/>
 
@@ -26,6 +27,13 @@
             </ul>
         </div>
     </nav>
+    <script type="text/ng-template" id="my-common-messages">
+        <div ng-message="required">*必填项,不能为空</div>
+    </script>
+    <script type="text/ng-template" id="my-common-password-messages">
+        <div ng-message="minlength">密码长度不小于6</div>
+        <div ng-message="maxlength">密码长度不大于16</div>
+    </script>
     <%@ include file="login.jsp" %>
     <%@ include file="register.jsp" %>
 
