@@ -10,17 +10,31 @@
 
     <select id="getPaginationProductList" resultType="Product">
         SELECT * FROM product
-        <if test="filterValue!=null and filterValue!=''">
-            WHERE ${filterName}=#{filterValue}
-        </if>
+        <where>
+            <if test="filterValue!=null and filterValue!=''">
+                ${filterName}=#{filterValue}
+            </if>
+            <if test="minPrice!=null and minPrice!='' and maxPrice!=null and maxPrice!=''">
+                and productPrice BETWEEN #{minPrice} and #{maxPrice}
+            </if>
+            </where>
+        <if test="seqName != null and seqName!=''">
+            ORDER BY ${seqName} ${sequence}
+                </if>
         limit #{start},#{size}
+
     </select>
 
     <select id="getNumOfProducts" resultType="int" >
         SELECT COUNT(1) FROM product
+        <where>
         <if test="filterValue!=null and filterValue!=''">
-            WHERE ${filterName}=#{filterValue}
+            ${filterName}=#{filterValue}
         </if>
+        <if test="minPrice!=null and minPrice!='' and maxPrice!=null and maxPrice!=''">
+            and productPrice BETWEEN #{minPrice} and #{maxPrice}
+        </if>
+    </where>
     </select>
 
 </mapper>

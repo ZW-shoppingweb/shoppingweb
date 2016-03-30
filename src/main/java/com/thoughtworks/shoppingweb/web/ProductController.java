@@ -22,18 +22,24 @@ public class ProductController {
     ProductService productService;
     public static final String DEFAULT_PAGE_SIZE = "16";
     public static final String DEFAULT_PAGE_NUM = "1";
-
+    public static final String DEFAULT_MIN_PRICE = "0";
+    public static final String DEFAULT_MAX_PRICE = "100000";
     @RequestMapping(value = "/productList", method=RequestMethod.GET)
     public String productList(@RequestParam(value = "filterName", required = false) String filterName,
                               @RequestParam(value = "filterValue", required = false) String filterValue,
                               @RequestParam(value = "pageId", required = false,
                                       defaultValue = DEFAULT_PAGE_NUM) int pageId,
+                              @RequestParam(value = "minPrice", required = false,
+                                      defaultValue = DEFAULT_MIN_PRICE) String minPrice,
+                              @RequestParam(value = "maxPrice", required = false,
+                                      defaultValue = DEFAULT_MAX_PRICE) String maxPrice,
+                              @RequestParam(value = "seqName", required = false) String seqName,
+                              @RequestParam(value = "sequence", required = false) String sequence,
                               @RequestParam(value="pageSize",
-                                       defaultValue = DEFAULT_PAGE_SIZE, required = false) int pageSize,
+                                      defaultValue = DEFAULT_PAGE_SIZE, required = false) int pageSize,
                               Model model) {
         PaginationData paginationData = new PaginationData();
-        paginationData.createQueryFilter(filterName, filterValue);
-
+        paginationData.createQueryFilter(filterName, filterValue,minPrice,maxPrice,seqName,sequence);
         paginationData.setCurrentPageNum(pageId);
         paginationData.setPageSize(pageSize);
         paginationData = productService.getProductPaginationData(paginationData);
@@ -55,6 +61,15 @@ public class ProductController {
         model.addAttribute(product);
         return "productdetail";
 
+    }
+    @RequestMapping(value = "/searchByPrice", method = RequestMethod.POST)
+    public String getProductByPrice(@PathVariable("id") String id, Model model) {
+        Product product = productService.getProduct(id);
+        if (product == null) throw new ProductNotFoundException();
+        model.addAttribute(product);
+        return "productdetail";
+
 
     }
+
 }
