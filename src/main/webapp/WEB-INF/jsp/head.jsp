@@ -7,6 +7,7 @@
 <script type="application/javascript" src="<c:url value="/js/angular.min.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/js/angular-messages.min.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/scripts/header.js"/>"></script>
+<script type="application/javascript" src="<c:url value="/scripts/price.js"/>"></script>
 <link rel="StyleSheet" href='<c:url value="/css/headStyle.css"/>' type="text/css" media="screen"/>
 
 <div  ng-controller="userController as userCtrl">

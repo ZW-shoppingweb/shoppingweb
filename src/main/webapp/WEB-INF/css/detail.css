@@ -1,17 +1,63 @@
-.contenttext{width: 1200px;}
-.titleDetail{padding-left: 10px;height: 400px;padding-top: 50px;}
-.productImg{float: left;padding-left: 400px;}
-.rightDetail{float: left;padding-left: 100px;}
-.productName{font-size: 50px;  display: block;width: 270px;}
-.price1{padding-left: 10px;color: red;font-size: 30px;}
-.price2{color: red;font-size: 20px;}
-.number{padding-bottom:50px;clear: both }
-input{padding-left: 10px;width: 70px}
-.buy{margin-left: 50px;}
-.productDetail{padding-left: 400px;}
-.detailInfo{padding-left: 50px;padding-bottom: 50px;font-size: 20px}
-.detailImg{width: 600px;}
-.navtag{position: fixed}
+.contenttext{
+    width: 100%;
+}
+.titleDetail{
+    padding-left: 10px;
+    height: 400px;
+    padding-top: 50px;
+}
+.productImg{
+    float: left;
+    padding-left: 400px;
+}
+.rightDetail{
+    float: left;
+    padding-left: 100px;
+}
+.productName{
+    font-size: 30px;
+    font-weight:bolder;
+    display: block;
+    width: 400px;
+}
+.price1{
+    color: red;
+    font-size: 30px;
+}
+.price2{
+    color: red;
+    font-size: 23px;
+}
+.number input{
+    border: 1px solid black;
+}
+.number{
+    font-size: 18px;
+    padding-bottom:50px;
+    clear: both;
+}
+input{
+    padding-left: 10px;
+    width: 70px
+}
+.buy{
+    width: 150px;
+    margin-right: 50px;
+}
+.productDetail{
+    padding-left: 400px;
+}
+.detailInfo{
+    padding-left: 50px;
+    padding-bottom: 50px;
+    font-size: 20px;
+}
+.detailImg{
+    width: 600px;
+}
+.navtag{
+    position: fixed;
+}
 .NotInCommonPrice{
     text-decoration:line-through;
 }

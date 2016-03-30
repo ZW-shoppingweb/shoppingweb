@@ -17,13 +17,12 @@
             <p class="price1" ng-class={'NotInCommonPrice':noUsePrice}>￥${product.productPrice}</p>
             <p class="price2"> ￥${product.productVipPrice}/for VIP</p>
             <p class="number">数目: <input type="number" value="1" min="1"/></p>
-            <button>立即购买</button>
-            <button class="buy">加入购物车</button> <br>
+            <button class="buy btn btn-primary">立即购买</button>
+            <button class="buy btn btn-primary">加入购物车</button> <br>
         </div>
     </div>
     <div>
         <div class="productDetail">
-
             <h3>商品详情</h3>
             <hr color=#Gray>
             <p class="detailInfo">city: ${product.productCity} &nbsp&nbsp&nbspintroduce: ${product.productIntroduce}
