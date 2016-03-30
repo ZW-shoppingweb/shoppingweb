@@ -27,9 +27,8 @@ public void setup(){
     @Test
     public void testProductList() throws Exception {
         List<Product> mokitoList=new ArrayList<Product>();
-        productController.productList("productCategory","1",1,"0","500","price","ASC",0,16,mokitoList);
+        //productController.productList("productCategory","1",1,"0","500","price","ASC",0,16,mokitoList);
         PaginationData pd = new PaginationData();
-     assertEquals("productCategory",);
 
     }
 }
