@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,9 +23,9 @@ public class UserController {
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
-    @RequestMapping(value = "/loginAction/{userName}/{password}")
-    public ResponseEntity loginPage(@PathVariable("userName")String userName,
-                                    @PathVariable("password")String password) {
+    @RequestMapping(value = "/loginAction", method=RequestMethod.POST)
+    public ResponseEntity loginPage(@RequestParam(value = "userName", required = true) String userName,
+                                    @RequestParam(value = "password", required = true) String password) {
         User user = new User();
         user.setUserName(userName);
         user.setPassword(password);
@@ -36,9 +38,9 @@ public class UserController {
         }
         return new ResponseEntity(result, HttpStatus.OK);
     }
-    @RequestMapping(value = "/registerAction/{userName}/{password}")
-    public ResponseEntity registerPage(@PathVariable("userName")String userName,
-                                       @PathVariable("password")String password) {
+    @RequestMapping(value = "/registerAction", method=RequestMethod.POST)
+    public ResponseEntity registerPage(@RequestParam(value = "userName", required = true)String userName,
+                                       @RequestParam(value = "password", required = true)String password) {
         User user = new User();
         user.setUserName(userName);
         user.setPassword(password);

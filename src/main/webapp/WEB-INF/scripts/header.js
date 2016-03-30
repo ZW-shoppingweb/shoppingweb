@@ -22,7 +22,7 @@ proapp.controller('userController', ['$scope', '$http','$location',function ($sc
         }
     }
     _this.loginAction=function(){
-        $http.get("/com.thoughtworks.shoppingweb.com.thoughtworks.shoppingweb/loginAction/"+_this.userName+"/"+_this.password).success( function(data) {
+        $http.post("/shoppingweb/loginAction?userName="+_this.userName+"&password="+_this.password).success( function(data) {
             if(data.isLogin === "yes"){
                 storage["name"] = _this.userName;
                 storage["isSignIn"]="yes";
@@ -35,7 +35,7 @@ proapp.controller('userController', ['$scope', '$http','$location',function ($sc
     }
     _this.registerAction=function(){
         if(_this.passwordOnce == _this.passwordTwice){
-            $http.get("/shoppingweb/registerAction/"+_this.userNameUnique+"/"+_this.passwordOnce).success( function(data) {
+            $http.post("/shoppingweb/registerAction?userName="+_this.userNameUnique+"&password="+_this.passwordOnce).success( function(data) {
                 if(data.isLogin === "yes"){
                     storage["name"] = _this.userNameUnique;
                     storage["isSignIn"]="yes";
