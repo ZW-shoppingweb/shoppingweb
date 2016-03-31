@@ -1,6 +1,6 @@
 var proapp = angular.module('userApp', ['ngMessages']);
 proapp.controller('userController', ['$scope', '$http',function ($scope, $http) {
-    _this=this;
+    var _this=this;
     angular.element(".loginForm").hide();
     angular.element(".registerForm").hide();
     _this.showNotSamePasswordTips=false;
@@ -14,8 +14,8 @@ proapp.controller('userController', ['$scope', '$http',function ($scope, $http) 
         signInInfo();
     }
     _this.loginShow=function(){
-           if(storage["isSignIn"] =="no"){
-               angular.element(".loginForm").show();
+        if(storage["isSignIn"] =="no"){
+            angular.element(".loginForm").show();
         }
     }
     _this.registerShow=function(){
@@ -24,7 +24,14 @@ proapp.controller('userController', ['$scope', '$http',function ($scope, $http) 
         }
     }
     _this.loginAction=function(){
-        $http.post("/shoppingweb/loginAction?userName="+_this.userName+"&password="+_this.password).success( function(data) {
+        $http({
+            method : 'POST',
+            data:{
+                userName:_this.userName,
+                password:_this.password
+            },
+            url : "/shoppingweb/loginAction"
+        }).success(function(data, status, headers, config){
             if(data.isLogin === "yes"){
                 storage["name"] = _this.userName;
                 storage["isSignIn"]="yes";
@@ -36,8 +43,15 @@ proapp.controller('userController', ['$scope', '$http',function ($scope, $http) 
         });
     }
     _this.registerAction=function(){
-        if(_this.passwordOnce == _this.passwordTwice){
-            $http.post("/shoppingweb/registerAction?userName="+_this.userNameUnique+"&password="+_this.passwordOnce).success( function(data) {
+        if(_this.passwordOnce == _this.passwordTwice && _this.passwordOnce != undefined){
+            $http({
+                method :'POST',
+                data:{
+                    userName:_this.userNameUnique,
+                    password:_this.passwordOnce
+                },
+                url : "/shoppingweb/registerAction"
+            }).success(function(data){
                 if(data.isLogin === "yes"){
                     storage["name"] = _this.userNameUnique;
                     storage["isSignIn"]="yes";

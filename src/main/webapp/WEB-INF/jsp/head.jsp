@@ -21,10 +21,10 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">我的购物车</a></li>
-                <li><a href="javascript:void(0);" ng-click="userCtrl.loginShow()">{{userCtrl.isSignIn}}</a></li>
-                <li><a>{{userCtrl.userNameInNav}}</a></li>
-                <li><a href="javascript:void(0);" ng-click="userCtrl.registerShow()">{{userCtrl.isRegister}}</a></li>
-                <li><a href="javascript:void(0);" ng-click="userCtrl.signOut()">{{userCtrl.isSignOut}}</a></li>
+                <li><a href="javascript:void(0);" ng-click="userCtrl.loginShow()" ng-bind="userCtrl.isSignIn"></a></li>
+                <li><a ng-bind="userCtrl.userNameInNav"></a></li>
+                <li><a href="javascript:void(0);" ng-click="userCtrl.registerShow()" ng-bind="userCtrl.isRegister"></a></li>
+                <li><a href="javascript:void(0);" ng-click="userCtrl.signOut()" ng-bind="userCtrl.isSignOut"></a></li>
             </ul>
         </div>
     </nav>
@@ -77,9 +77,7 @@
                 </ul>
             </li>
         </ul>
-
     </div>
-
 </div>
 <div class="navTag">
     <ul class="nav nav-tabs nav-stacked">

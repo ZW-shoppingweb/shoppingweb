@@ -28,7 +28,7 @@
         <div ng-messages-include="my-common-messages"></div>
         <div ng-messages-include="my-common-password-messages"></div>
     </div>
-    <div class="message" ng-show="userCtrl.showNotSamePasswordTips" ng-cloak>两次密码不一致!</div>
+    <div class="message" ng-show="userCtrl.showNotSamePasswordTips" ng-cloak>两次密码不一致,或密码格式错误!</div>
     <div class="center">
         <button type="button" class="btn btn-primary" ng-click="userCtrl.registerAction()">注册</button>
         <button type="button" class="btn btn-primary" ng-click="userCtrl.hideForm()">返回</button>

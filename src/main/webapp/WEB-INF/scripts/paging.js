@@ -1,4 +1,5 @@
 proapp.controller('myPagingCtrl', ['$scope',function ($scope) {
+
     var curNum=angular.element("#currentPage").html();
     var lastNum=angular.element("#lastPage").attr("pageNum");
     if(curNum == "1") {
