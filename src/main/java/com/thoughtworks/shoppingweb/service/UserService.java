@@ -26,14 +26,14 @@ public class UserService {
     }
     public boolean addUser(User user){
         user.setUserType(DEFAULT_MEMBER_TYPE);
-        int insertResult=0;
+        boolean insertResult;
         try{
-            insertResult=userMapper.insertUser(user);
+            insertResult= (userMapper.insertUser(user)> 0);
         } catch(Exception e)
         {
-            return false;
+            insertResult=false;
         }
-        return (insertResult > 0);
+        return insertResult;
 
     }
 }

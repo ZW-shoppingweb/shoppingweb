@@ -13,6 +13,7 @@
 <div>
   <div class="products">
     <div class="allProjectList">
+
       <c:if test="${!empty indexPage.pageData }">
         <c:forEach items="${indexPage.pageData }" var="pro">
           <div class="indexProduct">

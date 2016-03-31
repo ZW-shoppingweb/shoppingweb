@@ -33,5 +33,7 @@ body{
 }
 .aStyle a{
   text-decoration: none;
-  color: black;
+}
+.NoUseHrefClass{
+  color:gray;
 }

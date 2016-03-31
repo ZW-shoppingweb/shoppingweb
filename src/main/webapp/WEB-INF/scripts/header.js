@@ -26,12 +26,15 @@ proapp.controller('userController', ['$scope', '$http',function ($scope, $http) 
     _this.loginAction=function(){
         $http({
             method : 'POST',
+            url : "/shoppingweb/loginAction",
+            headers: {
+                'Content-Type': 'application/json'
+            },
             data:{
                 userName:_this.userName,
                 password:_this.password
-            },
-            url : "/shoppingweb/loginAction"
-        }).success(function(data, status, headers, config){
+            }
+        }).success(function(data){
             if(data.isLogin === "yes"){
                 storage["name"] = _this.userName;
                 storage["isSignIn"]="yes";
@@ -45,7 +48,7 @@ proapp.controller('userController', ['$scope', '$http',function ($scope, $http) 
     _this.registerAction=function(){
         if(_this.passwordOnce == _this.passwordTwice && _this.passwordOnce != undefined){
             $http({
-                method :'POST',
+                method : 'POST',
                 data:{
                     userName:_this.userNameUnique,
                     password:_this.passwordOnce

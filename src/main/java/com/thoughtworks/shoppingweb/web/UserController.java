@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,16 +19,14 @@ public class UserController {
 
     @Autowired
     UserService userService;
-
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
     @RequestMapping(value = "/loginAction", method=RequestMethod.POST)
-    public ResponseEntity loginPage(@RequestParam(value = "userName", required = true) String userName,
-                                    @RequestParam(value = "password", required = true) String password) {
+    public ResponseEntity loginPage(@RequestBody Map<String, String> requestParams) {
         User user = new User();
-        user.setUserName(userName);
-        user.setPassword(password);
+        user.setUserName(requestParams.get("userName"));
+        user.setPassword(requestParams.get("password"));
         Map result = new HashMap();
         if(userService.validateUser(user)){
             result.put("isLogin","yes");
@@ -39,11 +37,10 @@ public class UserController {
         return new ResponseEntity(result, HttpStatus.OK);
     }
     @RequestMapping(value = "/registerAction", method=RequestMethod.POST)
-    public ResponseEntity registerPage(@RequestParam(value = "userName", required = true)String userName,
-                                       @RequestParam(value = "password", required = true)String password) {
+    public ResponseEntity registerPage(@RequestBody Map<String, String> requestParams) {
         User user = new User();
-        user.setUserName(userName);
-        user.setPassword(password);
+        user.setUserName(requestParams.get("userName"));
+        user.setPassword(requestParams.get("password"));
         Map result = new HashMap();
         if(userService.addUser(user)){
             result.put("isLogin","yes");
