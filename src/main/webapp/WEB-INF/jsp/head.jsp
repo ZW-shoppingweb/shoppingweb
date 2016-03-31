@@ -53,84 +53,54 @@
         </div>
     </div>
     <form action="/shoppingweb/productList" method="post">
-    <div class="searchPrice">
-        <label>价格区间</label>
-        <input type="number" placeholder="最小" name="minPrice">
-        <input type="number" placeholder="最大" name="maxPrice">
-        <button type="submit" class="btn btn-primary">筛选</button>
+        <div class="searchPrice">
+            <label>价格区间</label>
+            <input type="number" placeholder="最小" name="minPrice">
+            <input type="number" placeholder="最大" name="maxPrice">
+            <button type="submit" class="btn btn-primary">筛选</button>
 
 
-        <%--<a href="<c:url value="/productList?productCategory=${indexPage.queryFilter.productCategory}&filterValue=${indexPage.queryFilter.filterValue}&minPrice={{minPrice}}&maxPrice={{maxPrice}}&seqName=${indexPage.queryFilter.seqName}&productPrice=${indexPage.queryFilter.productPrice}"/>">筛选</a>--%>
-    </div>
-    <div class="row">
+            <%--<a href="<c:url value="/productList?productCategory=${indexPage.queryFilter.productCategory}&filterValue=${indexPage.queryFilter.filterValue}&minPrice={{minPrice}}&maxPrice={{maxPrice}}&seqName=${indexPage.queryFilter.seqName}&productPrice=${indexPage.queryFilter.productPrice}"/>">筛选</a>--%>
+        </div>
+        <div class="row">
 
             <div class="searchADSC">
-            <label>按价格筛选</label>
-            <input type="radio" id="q128" name="productPrice" value="ASC"/> ASC
-            <input type="radio" id="q129" name="productPrice" value="DESC"/> DESC
-            <button type="submit">筛选</button>
+                <label>按价格筛选</label>
+                <input type="radio" id="q128" name="productPrice" value="ASC"/> ASC
+                <input type="radio" id="q129" name="productPrice" value="DESC"/> DESC
+                <button type="submit">筛选</button>
                 <br>
-            <label>按价格筛选</label>
-            <input type="radio" name="productName" value="ASC"/> ASC
-            <input type="radio" name="productName" value="DESC"/> DESC
-            <button type="submit">筛选</button>
-    </div>
+                <label>按价格筛选</label>
+                <input type="radio" name="productName" value="ASC"/> ASC
+                <input type="radio" name="productName" value="DESC"/> DESC
+                <button type="submit">筛选</button>
+            </div>
+        </div>
+        <br/>
+        <div class="navTag">
+            <ul class="nav nav-tabs nav-stacked">
+                <li class="active">
+                    <input type="radio" name="productCategory" value="1"/>
+                    <button type="submit">女装</button>
 
+                </li>
+                <li>
+                    <input type="radio" name="productCategory" value="2"/>
+                    <button type="submit">男装</button>
+                </li>
+                <li>
+                    <input type="radio" name="productCategory" value="3"/>
+                    <button type="submit">家具家纺</button>
+                </li>
+                <li>
+                    <input type="radio" name="productCategory" value="4"/>
+                    <button type="submit">汽车用品</button>
+                </li>
+                <li>
+                    <input type="radio" name="productCategory" value="5"/>
+                    <button type="submit">玩具</button>
+                </li>
+            </ul>
 
-    </div>
+        </div>
     </form>
-    <br/>
-<%--<form action="/shoppingweb/productList" method="post">--%>
-    <%--<div class="navTag">--%>
-        <%--<ul class="nav nav-tabs nav-stacked">--%>
-            <%--<li class="active">--%>
-                <%--<label>--%>
-                    <%--<input type="radio" name="productCategory" value="1"/> 女装--%>
-                <%--</label>--%>
-            <%--</li>--%>
-            <%--<li>--%>
-                <%--<label>--%>
-                    <%--<input type="radio" name="productCategory" value="2"/> 男装--%>
-                <%--</label>--%>
-            <%--</li>--%>
-            <%--<li>--%>
-                <%--<label>--%>
-                    <%--<input type="radio" name="productCategory" value="3"/>家具家纺--%>
-                <%--</label>--%>
-            <%--</li>--%>
-            <%--<li>--%>
-                <%--<label>--%>
-                    <%--<input type="radio" name="productCategory" value="4"/>汽车用品--%>
-                <%--</label>--%>
-            <%--</li>--%>
-            <%--<li>--%>
-                <%--<label>--%>
-                    <%--<input type="radio" name="productCategory" value="5"/>玩具--%>
-                <%--</label>--%>
-            <%--</li>--%>
-        <%--</ul>--%>
-        <%--<button type="submit" class="btn btn-primary">筛选</button>--%>
-    <%--</div>--%>
-<%--</form>--%>
-
-    <div class="navTag">
-        <ul class="nav nav-tabs nav-stacked">
-            <li class="active">
-                <a
-                        href="<c:url value="/productList?productCategory=productCategory&filterValue=1&minPrice=${indexPage.queryFilter.minPrice}&maxPrice=${indexPage.queryFilter.maxPrice}&productName=${indexPage.queryFilter.productName}&productPrice=${indexPage.queryFilter.productPrice}"/>">女装</a>
-            </li>
-            <li>
-                <a href="<c:url value="/productList?productCategory=productCategory&filterValue=2&minPrice=${indexPage.queryFilter.minPrice}&maxPrice=${indexPage.queryFilter.maxPrice}&productName=${indexPage.queryFilter.productName}&productPrice=${indexPage.queryFilter.productPrice}"/>">男装</a>
-            </li>
-            <li>
-                <a href="<c:url value="/productList?productCategory=productCategory&filterValue=3&minPrice=${indexPage.queryFilter.minPrice}&maxPrice=${indexPage.queryFilter.maxPrice}&productName=${indexPage.queryFilter.productName}&productPrice=${indexPage.queryFilter.productPrice}"/>">家居家纺</a>
-            </li>
-            <li>
-                <a href="<c:url value="/productList?productCategory=productCategory&filterValue=4&minPrice=${indexPage.queryFilter.minPrice}&maxPrice=${indexPage.queryFilter.maxPrice}&productName=${indexPage.queryFilter.productName}&productPrice=${indexPage.queryFilter.productPrice}"/>">汽车用品</a>
-            </li>
-            <li>
-                <a href="<c:url value="/productList?productCategory=productCategory&filterValue=5&minPrice=${indexPage.queryFilter.minPrice}&maxPrice=${indexPage.queryFilter.maxPrice}&productName=${indexPage.queryFilter.productName}&productPrice=${indexPage.queryFilter.productPrice}"/>">玩具</a>
-            </li>
-        </ul>
-    </div>
-
