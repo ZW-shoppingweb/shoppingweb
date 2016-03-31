@@ -7,7 +7,6 @@ package com.thoughtworks.shoppingweb.service;
 
 import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.persistence.ProductMapper;
-import com.thoughtworks.shoppingweb.persistence.UserMapper;
 import com.thoughtworks.shoppingweb.service.page.PaginationData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,21 +31,20 @@ public class ProductService {
         this.productMapper = productMapper;
     }
 
+    public List<Product> getAllProduct(int start,int size){return productMapper.getAllProduct(start,size);}
 
     public PaginationData getProductPaginationData(PaginationData paginationData) {
-        String filterName=paginationData.getQueryFilter().getFilterName();
-        String filterValue=paginationData.getQueryFilter().getFilterValue();
+        String productCategory=paginationData.getQueryFilter().getProductCategory();
         String minPrice=paginationData.getQueryFilter().getMinPrice();
         String maxPrice=paginationData.getQueryFilter().getMaxPrice();
-        String seqName=paginationData.getQueryFilter().getSeqName();
-        String sequence=paginationData.getQueryFilter().getSequence();
-        int rowCount=productMapper.getNumOfProducts(filterName,filterValue,minPrice,maxPrice);
+        String productName=paginationData.getQueryFilter().getProductName();
+        String productPrice=paginationData.getQueryFilter().getProductPrice();
+        int rowCount=productMapper.getNumOfProducts(productCategory,minPrice,maxPrice);
         paginationData.setMaxCount(rowCount);
-        List<Product> productList = productMapper.getPaginationProductList(filterName,filterValue,minPrice,maxPrice,seqName,sequence,(paginationData.getCurrentPageNum() - 1) * paginationData.getPageSize(),
+        List<Product> productList = productMapper.getPaginationProductList(productCategory,minPrice,maxPrice,productPrice,productName,(paginationData.getCurrentPageNum() - 1) * paginationData.getPageSize(),
                 paginationData.getPageSize());
         paginationData.setPageData(productList);
         return paginationData;
-
 
     }
 }
