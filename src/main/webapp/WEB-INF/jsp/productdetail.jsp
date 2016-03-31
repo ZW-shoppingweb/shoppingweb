@@ -10,7 +10,7 @@
 <%@ include file="head.jsp"%>
 <script type="application/javascript" src="<c:url value="/scripts/price.js"/>"></script>
 <div class="contenText" >
-    <div class="titleDetail">
+    <div class="titleDetail" ng-controller="priceController">
         <img class="productImg" src="${product.productImage}">
         <div class="rightDetail" ng-controller="priceController">
             <span class="productName">${product.productName}</span>

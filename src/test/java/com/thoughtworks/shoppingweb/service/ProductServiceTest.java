@@ -1,5 +1,4 @@
 package com.thoughtworks.shoppingweb.service;
-
 import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.persistence.ProductMapper;
 import com.thoughtworks.shoppingweb.service.page.PaginationData;
