@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<form class="loginForm" name="loginForm">
+<form class="loginForm" name="loginForm" ng-submit="userCtrl.loginAction()">
     <p class="center">欢迎!请登录</p>
     <div class="form-group">
         <label>用户名</label>
@@ -21,7 +21,7 @@
     <div class="message" ng-show="userCtrl.showNotCorrectLoginTips" ng-cloak>用户名或密码错误!</div>
     <br><br>
     <div class="center">
-        <button type="button" class="btn btn-primary" ng-click="userCtrl.loginAction()">登陆</button>
+        <input type="submit" class="btn btn-primary" value="登陆"/>
         <button type="button" class="btn btn-primary" ng-click="userCtrl.hideForm()">返回</button>
     </div>
 </form>

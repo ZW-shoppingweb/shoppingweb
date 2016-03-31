@@ -6,6 +6,7 @@
     top:30px;
     height: 450px;
     position: fixed;
+    display: none;
     background-color: #999999;
 }
 .center{
@@ -14,7 +15,7 @@
 .registerForm p, .loginForm p{
     font-size: 20px;
 }
-.registerForm button,.loginForm button{
+.registerForm .btn-primary,.loginForm .btn-primary{
     width: 100px;
 }
 .navbar-nav{

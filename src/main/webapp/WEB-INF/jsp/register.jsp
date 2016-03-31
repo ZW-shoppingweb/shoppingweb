@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<form class="registerForm" name="registerForm">
+<form class="registerForm" name="registerForm" ng-submit="userCtrl.registerAction()">
     <p class="center">欢迎!请注册</p>
     <div class="form-group">
         <label>用户名</label>
@@ -30,7 +30,7 @@
     </div>
     <div class="message" ng-show="userCtrl.showNotSamePasswordTips" ng-cloak>两次密码不一致,或密码格式错误!</div>
     <div class="center">
-        <button type="button" class="btn btn-primary" ng-click="userCtrl.registerAction()">注册</button>
+        <input type="submit" class="btn btn-primary" value="注册"/>
         <button type="button" class="btn btn-primary" ng-click="userCtrl.hideForm()">返回</button>
     </div>
 
