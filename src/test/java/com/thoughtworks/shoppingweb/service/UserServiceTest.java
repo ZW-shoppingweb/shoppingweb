@@ -15,6 +15,7 @@ public class UserServiceTest {
     UserService userService;
     UserMapper userMapper;
 
+
     @Before
     public void setUp() throws Exception {
         userService=new UserService();

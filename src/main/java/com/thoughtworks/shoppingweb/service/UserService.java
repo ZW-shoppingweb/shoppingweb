@@ -2,6 +2,7 @@ package com.thoughtworks.shoppingweb.service;
 
 import com.thoughtworks.shoppingweb.domain.User;
 import com.thoughtworks.shoppingweb.persistence.UserMapper;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,7 @@ import java.util.*;
 public class UserService {
     @Autowired
     UserMapper userMapper;
+    private final static Logger logPrint=Logger.getLogger(UserService.class);
     public static final String DEFAULT_MEMBER_TYPE = "member";
     public UserMapper getUserMapper() {
         return userMapper;
@@ -31,6 +33,7 @@ public class UserService {
             insertResult= (userMapper.insertUser(user)> 0);
         } catch(Exception e)
         {
+            logPrint.error(e);
             insertResult=false;
         }
         return insertResult;
