@@ -11,8 +11,11 @@ public class QueryFilter {
     private String productCategory;
     private String minPrice;
     private String maxPrice;
-    private String productName;
-    private String productPrice;
-    private int start;
-    private int size;
+    private  String productName;
+    private  String productPrice;
+    private String pageId;
+    private  int start;
+    private  int size;
+
+
 }

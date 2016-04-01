@@ -18,8 +18,8 @@ proapp.controller('myPagingCtrl', ['$scope','$http',function ($scope,$http) {
         });
     }, 0);
     $scope.nextPage=function(pageId){
-        console.log("**"+pageId);
         $scope.nextPageId=pageId;
+        $("#nextPageId").val(pageId);
         $("#formp").submit();
     }
 }]);

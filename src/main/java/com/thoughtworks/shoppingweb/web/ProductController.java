@@ -7,6 +7,7 @@ import com.thoughtworks.shoppingweb.service.page.PaginationData;
 import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.service.ProductService;
 import com.thoughtworks.shoppingweb.service.page.QueryFilter;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -22,13 +23,18 @@ public class ProductController {
     ProductService productService;
     public static final String DEFAULT_PAGE_SIZE = "16";
     public static final String DEFAULT_PAGE_NUM = "1";
-
+    private final static Logger log=Logger.getLogger(ProductController.class);
 
     @RequestMapping(value = "/productList", method=RequestMethod.POST)
     public String productList(@ModelAttribute QueryFilter queryFilter, Model model) {
+        System.out.println("===pageId==" + queryFilter.getPageId());
+        System.out.println("===maxPrice==" + queryFilter.getMaxPrice());
         PaginationData paginationData = new PaginationData();
         paginationData.setQueryFilter(queryFilter);
         paginationData.setCurrentPageNum(1);
+        if(queryFilter.getPageId() !="" && queryFilter.getPageId() != null) {
+            paginationData.setCurrentPageNum(Integer.parseInt(queryFilter.getPageId()));
+        }
         paginationData.setPageSize(16);
         paginationData.getMaxPageNum();
         paginationData = productService.getProductPaginationData(paginationData);
