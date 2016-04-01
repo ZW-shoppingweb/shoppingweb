@@ -17,13 +17,9 @@ public class PaginationData {
     private QueryFilter queryFilter;
 
 
-//    private Collection<QueryFilter> filters;
-
-
-
     public int getPrevPageNum() {
 
-        if(currentPageNum == 1){
+        if (currentPageNum == 1) {
             return currentPageNum;
         }
         return currentPageNum - 1;

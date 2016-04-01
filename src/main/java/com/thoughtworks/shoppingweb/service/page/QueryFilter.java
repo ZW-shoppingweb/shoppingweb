@@ -11,14 +11,8 @@ public class QueryFilter {
     private String productCategory;
     private String minPrice;
     private String maxPrice;
-    private  String productName;
-    private  String productPrice;
-    private  int start;
-    private  int size;
-
-
-    public QueryFilter() {
-
-    }
-
+    private String productName;
+    private String productPrice;
+    private int start;
+    private int size;
 }

@@ -3,6 +3,7 @@ package com.thoughtworks.shoppingweb.web;
 /**
  * Created by cxzhao on 3/22/16.
  */
+
 import com.thoughtworks.shoppingweb.service.page.PaginationData;
 import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.service.ProductService;
@@ -24,7 +25,7 @@ public class ProductController {
     public static final String DEFAULT_PAGE_NUM = "1";
 
 
-    @RequestMapping(value = "/productList", method=RequestMethod.POST)
+    @RequestMapping(value = "/productList", method = RequestMethod.POST)
     public String productList(@ModelAttribute QueryFilter queryFilter, Model model) {
         PaginationData paginationData = new PaginationData();
         paginationData.setQueryFilter(queryFilter);
@@ -33,20 +34,21 @@ public class ProductController {
         paginationData.getMaxPageNum();
         paginationData = productService.getProductPaginationData(paginationData);
         model.addAttribute("indexPage", paginationData);
-        model.addAttribute("query",queryFilter);
+        model.addAttribute("query", queryFilter);
         return "index";
     }
-    @RequestMapping(value = "/productList", method=RequestMethod.GET)
+
+    @RequestMapping(value = "/productList", method = RequestMethod.GET)
     public String productListAll(
-                              @RequestParam(value = "pageId", required = false,
-                                      defaultValue = DEFAULT_PAGE_NUM) int pageId,
-                              @RequestParam(value="pageSize",
-                                      defaultValue = DEFAULT_PAGE_SIZE, required = false) int pageSize,
-                              Model model) {
+            @RequestParam(value = "pageId", required = false,
+                    defaultValue = DEFAULT_PAGE_NUM) int pageId,
+            @RequestParam(value = "pageSize",
+                    defaultValue = DEFAULT_PAGE_SIZE, required = false) int pageSize,
+            Model model) {
         PaginationData paginationData = new PaginationData();
-        QueryFilter queryFilter=new QueryFilter();
+        QueryFilter queryFilter = new QueryFilter();
         paginationData.setQueryFilter(queryFilter);
-        paginationData.setPageData(productService.getAllProduct(pageId,pageSize));
+        paginationData.setPageData(productService.getAllProduct(pageId, pageSize));
         paginationData.setCurrentPageNum(pageId);
         paginationData.setPageSize(pageSize);
         paginationData = productService.getProductPaginationData(paginationData);
@@ -58,8 +60,10 @@ public class ProductController {
     public void setProductService(ProductService productService) {
         this.productService = productService;
     }
-    @ResponseStatus(value= HttpStatus.NOT_FOUND, reason="No such PaginationData")  // 404
-    public class ProductNotFoundException extends RuntimeException {}
+
+    @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such PaginationData")  // 404
+    public class ProductNotFoundException extends RuntimeException {
+    }
 
     @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
     public String getProduct(@PathVariable("id") String id, Model model) {
@@ -69,6 +73,7 @@ public class ProductController {
         return "productdetail";
 
     }
+
     @RequestMapping(value = "/searchByPrice", method = RequestMethod.POST)
     public String getProductByPrice(@PathVariable("id") String id, Model model) {
         Product product = productService.getProduct(id);

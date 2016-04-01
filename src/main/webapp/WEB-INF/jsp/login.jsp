@@ -3,16 +3,16 @@
     <p class="center">欢迎!请登录</p>
     <div class="form-group">
         <label>用户名</label>
-        <input type="text" class="form-control"  placeholder="用户名" ng-model="userCtrl.userName"
-               required  name="userName">
+        <input type="text" class="form-control" placeholder="用户名" ng-model="userCtrl.userName"
+               required name="userName">
     </div>
     <div ng-messages="loginForm.userName.$error" role="alert" class="message">
         <div ng-messages-include="my-common-messages"></div>
     </div>
     <div class="form-group">
         <label>密码</label>
-        <input type="password" class="form-control"  placeholder="请输入6-16位密码" ng-model="userCtrl.password"
-               required minlength="6" maxlength="16" name="password" >
+        <input type="password" class="form-control" placeholder="请输入6-16位密码" ng-model="userCtrl.password"
+               required minlength="6" maxlength="16" name="password">
     </div>
     <div ng-messages="loginForm.password.$error" role="alert" class="message">
         <div ng-messages-include="my-common-messages"></div>

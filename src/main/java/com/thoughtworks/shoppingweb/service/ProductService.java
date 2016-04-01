@@ -31,13 +31,15 @@ public class ProductService {
         this.productMapper = productMapper;
     }
 
-    public List<Product> getAllProduct(int start,int size){return productMapper.getAllProduct(start,size);}
+    public List<Product> getAllProduct(int start, int size) {
+        return productMapper.getAllProduct(start, size);
+    }
 
     public PaginationData getProductPaginationData(PaginationData paginationData) {
-        String productCategory=paginationData.getQueryFilter().getProductCategory();
-        String minPrice=paginationData.getQueryFilter().getMinPrice();
-        String maxPrice=paginationData.getQueryFilter().getMaxPrice();
-        int rowCount=productMapper.getNumOfProducts(productCategory,minPrice,maxPrice);
+        String productCategory = paginationData.getQueryFilter().getProductCategory();
+        String minPrice = paginationData.getQueryFilter().getMinPrice();
+        String maxPrice = paginationData.getQueryFilter().getMaxPrice();
+        int rowCount = productMapper.getNumOfProducts(productCategory, minPrice, maxPrice);
         paginationData.getQueryFilter().setStart((paginationData.getCurrentPageNum() - 1) * paginationData.getPageSize());
         paginationData.getQueryFilter().setSize(paginationData.getPageSize());
         paginationData.setMaxCount(rowCount);

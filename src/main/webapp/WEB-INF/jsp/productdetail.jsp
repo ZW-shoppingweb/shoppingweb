@@ -7,9 +7,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body ng-app="userApp">
-<%@ include file="head.jsp"%>
+<%@ include file="head.jsp" %>
 <script type="application/javascript" src="<c:url value="/scripts/price.js"/>"></script>
-<div class="contenText" >
+<div class="contenText">
     <div class="titleDetail" ng-controller="priceController">
         <img class="productImg" src="${product.productImage}">
         <div class="rightDetail" ng-controller="priceController">
@@ -18,7 +18,8 @@
             <p class="price2"> ￥${product.productVipPrice}/for VIP</p>
             <p class="number">数目: <input type="number" value="1" min="1"/></p>
             <button class="buy btn btn-primary">立即购买</button>
-            <button class="buy btn btn-primary">加入购物车</button> <br>
+            <button class="buy btn btn-primary">加入购物车</button>
+            <br>
         </div>
     </div>
     <div>
