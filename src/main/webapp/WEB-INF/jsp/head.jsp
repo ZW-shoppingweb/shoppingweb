@@ -53,7 +53,7 @@
                </span>
         </div>
     </div>
-    <form action="/shoppingweb/productList" method="post">
+    <form action="/shoppingweb/productList" method="post" id="processForm">
         <div class="searchPrice">
             <label>价格区间</label>
             <input type="number" placeholder="最小" name="minPrice">
@@ -67,42 +67,40 @@
 
             <div class="searchADSC">
                 <label>按价格筛选</label>
-                <input type="radio" id="q128" name="productPrice" value="ASC"/> ASC
-                <input type="radio" id="q129" name="productPrice" value="DESC"/> DESC
-                <button type="submit">筛选</button>
+                <input type="radio" ng-model="priceA" name="productPrice" value="ASC"/> ASC
+                <input type="radio" id="q129" ng-model="priceA"name="productPrice" value="DESC"/> DESC
                 <br>
-                <label>按价格筛选</label>
+                <label>按姓名筛选</label>
                 <input type="radio" name="productName" value="ASC"/> ASC
                 <input type="radio" name="productName" value="DESC"/> DESC
-                <button type="submit">筛选</button>
             </div>
         </div>
         <br/>
         <div class="navTag">
             <ul class="nav nav-tabs nav-stacked">
                 <li class="active">
-                    <input type="radio" name="productCategory" value="1"/>
-                    <button type="submit">女装</button>
+                    <a ng-click="category(1)">女装</a>
+                    <input type="radio" name="productCategory" id="check1" value="1" hidden/>
+                </li>
+                <li>
+                    <a ng-click="category(2)">男装</a>
+                    <input type="radio" name="productCategory" id="check2" value="2" hidden/>
+                </li>
+                <li>
+                    <a ng-click="category(3)">家居家纺</a>
+                    <input type="radio" name="productCategory" id="check3" value="3" hidden/>
 
                 </li>
                 <li>
-                    <input type="radio" name="productCategory" value="2"/>
-                    <button type="submit">男装</button>
+                    <a ng-click="category(4)">汽车用品</a>
+                    <input type="radio" name="productCategory" id="check4" value="4" hidden/>
+
                 </li>
                 <li>
-                    <input type="radio" name="productCategory" value="3"/>
-                    <button type="submit">家具家纺</button>
-                </li>
-                <li>
-                    <input type="radio" name="productCategory" value="4"/>
-                    <button type="submit">汽车用品</button>
-                </li>
-                <li>
-                    <input type="radio" name="productCategory" value="5"/>
-                    <button type="submit">玩具</button>
+                    <a ng-click="category(5)">玩具</a>
+                    <input type="radio" name="productCategory" id="check5" value="5" hidden/>
                 </li>
             </ul>
-
         </div>
     </form>
 </div>

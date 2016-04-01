@@ -4,20 +4,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.thoughtworks.shoppingweb.persistence.ProductMapper">
-    <select id="findProductById" resultType="Product">
+    <select id="findProductById"  resultType="Product">
     SELECT * FROM product WHERE productId=#{productId}
 </select>
     <select id="getAllProduct" resultType="Product">
         SELECT * FROM product  limit #{start},#{size}
     </select>
-    <select id="getPaginationProductList" resultType="Product">
+    <select id="getPaginationProductList" parameterType="com.thoughtworks.shoppingweb.service.page.QueryFilter" resultType="Product">
         SELECT * FROM product
         <where>
             <if test="productCategory!=null and productCategory!=''">
-                productCategory=#{productCategory}
+                productCategory=${productCategory}
             </if>
             <if test="minPrice!=null and minPrice!='' and maxPrice!=null and maxPrice!=''">
-                and productPrice BETWEEN #{minPrice} and #{maxPrice}
+                and productPrice BETWEEN ${minPrice} and ${maxPrice}
             </if>
         </where>
         <if test="productPrice != null and productPrice!=''">
@@ -27,7 +27,7 @@
             ORDER BY productName ${productName}
         </if>
 
-        limit #{start},#{size}
+        limit ${start},${size}
 
     </select>
 

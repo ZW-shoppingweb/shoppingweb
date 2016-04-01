@@ -13,18 +13,12 @@ public class QueryFilter {
     private String maxPrice;
     private  String productName;
     private  String productPrice;
+    private  int start;
+    private  int size;
+
 
     public QueryFilter() {
 
     }
 
-    public QueryFilter(String productCategory, String minPrice,
-                       String maxPrice, String productName, String productPrice)
-    {
-        this.productCategory = productCategory;
-        this.maxPrice=maxPrice;
-        this.minPrice=minPrice;
-        this.productName=productName;
-        this.productPrice=productPrice;
-    }
 }
