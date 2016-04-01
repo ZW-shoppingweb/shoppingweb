@@ -9,9 +9,10 @@
      id="firstPage" ng-class={'NoUseHrefClass':noUseHrefHome} >首页</a>
   <a href="<c:url value="/productList?productCategory=${indexPage.queryFilter.productCategory}&minPrice=${indexPage.queryFilter.minPrice}&maxPrice=${indexPage.queryFilter.maxPrice}&productName=${indexPage.queryFilter.productName}&productPrice=${indexPage.queryFilter.productPrice}&pageId=${indexPage.prevPageNum}"/>"
      id="prePage"  ng-class={'NoUseHrefClass':noUseHrefPre}>上一页</a>
-  <a  id="currentPage" class='NoUseHrefClass'>${indexPage.currentPageNum}</a>
+  <a  id="currentPage" class='NoUseHrefClass'>{{ currentPageNum='${indexPage.currentPageNum}'}}</a>
   <a href="<c:url value="/productList?productCategory=${indexPage.queryFilter.productCategory}&minPrice=${indexPage.queryFilter.minPrice}&maxPrice=${indexPage.queryFilter.maxPrice}&productName=${indexPage.queryFilter.productName}&productPrice=${indexPage.queryFilter.productPrice}&pageId=${indexPage.nextPageNum}"/>"
      id="nextPage" ng-class={'NoUseHrefClass':noUseHrefNext}>下一页</a>
-  <a href="<c:url value="/productList?productCategory=${indexPage.queryFilter.productCategory}&minPrice=${indexPage.queryFilter.minPrice}&maxPrice=${indexPage.queryFilter.maxPrice}&productName=${indexPage.queryFilter.productName}&productPrice=${indexPage.queryFilter.productPrice}&pageId=${indexPage.maxPageNum}"/>" pageNum="${indexPage.maxPageNum}"
-     id="lastPage" ng-class={'NoUseHrefClass':noUseHrefEnd}>尾页</a></div>
+  <a href="<c:url value="/productList?productCategory=${indexPage.queryFilter.productCategory}&minPrice=${indexPage.queryFilter.minPrice}&maxPrice=${indexPage.queryFilter.maxPrice}&productName=${indexPage.queryFilter.productName}&productPrice=${indexPage.queryFilter.productPrice}&pageId=${indexPage.maxPageNum}"/>"
+     id="lastPage" ng-class={'NoUseHrefClass':noUseHrefEnd}>尾页</a>
+  <a hidden>{{ maxPageNum='${indexPage.maxPageNum}'}}</a>
 </div>

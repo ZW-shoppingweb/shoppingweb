@@ -26,11 +26,11 @@ public class ProductController {
 
     @RequestMapping(value = "/productList", method=RequestMethod.POST)
     public String productList(@ModelAttribute QueryFilter queryFilter, Model model) {
-        System.out.println("==============="+queryFilter.getMinPrice());
         PaginationData paginationData = new PaginationData();
         paginationData.setQueryFilter(queryFilter);
         paginationData.setCurrentPageNum(1);
         paginationData.setPageSize(16);
+        paginationData.getMaxPageNum();
         paginationData = productService.getProductPaginationData(paginationData);
         model.addAttribute("indexPage", paginationData);
         return "index";
@@ -44,9 +44,12 @@ public class ProductController {
                               Model model) {
 
         PaginationData paginationData = new PaginationData();
+        QueryFilter queryFilter=new QueryFilter();
+        paginationData.setQueryFilter(queryFilter);
         paginationData.setPageData(productService.getAllProduct(pageId,pageSize));
         paginationData.setCurrentPageNum(pageId);
         paginationData.setPageSize(pageSize);
+        paginationData = productService.getProductPaginationData(paginationData);
         model.addAttribute("indexPage", paginationData);
         return "index";
     }

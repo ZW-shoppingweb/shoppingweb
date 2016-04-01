@@ -8,7 +8,7 @@
 <script type="application/javascript" src="<c:url value="/js/angular-messages.min.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/scripts/header.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/scripts/price.js"/>"></script>
-<script type="application/javascript" src="<c:url value="/scripts/search.js"/>"></script>
+<%--<script type="application/javascript" src="<c:url value="/scripts/search.js"/>"></script>--%>
 <link rel="StyleSheet" href='<c:url value="/css/headStyle.css"/>' type="text/css" media="screen"/>
 
 <div ng-controller="userController as userCtrl">
@@ -40,7 +40,8 @@
     <%@ include file="register.jsp" %>
 
 </div>
-<div class="headContent" ng-controller="SearchController as searchCtrl">
+<%--ng-controller="SearchController as searchCtrl"--%>
+<div class="headContent" >
     <div class="imgLogo">
         <img src="<c:url value="/images/logo.jpg"/>"/>
     </div>
@@ -104,3 +105,4 @@
 
         </div>
     </form>
+</div>

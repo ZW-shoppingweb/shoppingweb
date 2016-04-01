@@ -4,9 +4,9 @@ body{
 .allProjectList{
   text-align: center;
   margin-left: 200px;
-  margin-top:20px;
-  display: inline-block;
+  margin-top:220px;
   width: 1000px;
+  display: inline-block;
 }
 
 .indexProduct{
@@ -42,4 +42,5 @@ body{
 }
 .NoUseHrefClass{
   color:gray;
+  pointer-events: none;
 }

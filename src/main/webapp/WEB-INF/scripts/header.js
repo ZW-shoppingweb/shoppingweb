@@ -14,12 +14,12 @@ proapp.controller('userController', ['$scope', '$http',function ($scope, $http) 
         signInInfo();
     }
     _this.loginShow=function(){
-        if(storage["isSignIn"] =="no"){
+        if(storage["isSignIn"] === "no"){
             angular.element(".loginForm").show();
         }
     }
     _this.registerShow=function(){
-        if(storage["isSignIn"] =="no"){
+        if(storage["isSignIn"] === "no"){
             angular.element(".registerForm").show();
         }
     }
