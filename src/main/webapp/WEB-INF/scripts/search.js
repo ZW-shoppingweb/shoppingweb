@@ -2,7 +2,6 @@
  * Created by cxzhao on 3/30/16.
  */
 proapp.controller('SearchController', ['$scope', '$location', '$http', function ($scope, $location, $http) {
-
     setTimeout(function () {
         $scope.$apply(function () {
             if($scope.productPrice=="ASC")
@@ -21,8 +20,9 @@ proapp.controller('SearchController', ['$scope', '$location', '$http', function 
                 case '3':$scope.active3=true;break;
                 case '4':$scope.active4=true;break;
                 case '5':$scope.active5=true;break;
+                default:$scope.active6=true;
             }
-
+            document.getElementById("check"+$scope.productCategory).checked="checked";
         });
     }, 0);
 

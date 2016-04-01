@@ -101,6 +101,10 @@
                     <a ng-click="category(5)">玩具</a>
                     <input type="radio" name="productCategory" id="check5" value="5" hidden/>
                 </li>
+                <li ng-class={'activeStyle':active6}>
+                    <a ng-click="category(6)">全部</a>
+                    <input type="radio" name="productCategory" id="check6" value="" hidden/>
+                </li>
                 <a hidden>{{ productCategory='${query.productCategory}'}}</a>
             </ul>
         </div>
