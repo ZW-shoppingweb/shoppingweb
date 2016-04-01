@@ -8,7 +8,7 @@
 <script type="application/javascript" src="<c:url value="/js/angular-messages.min.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/scripts/header.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/scripts/price.js"/>"></script>
-<%--<script type="application/javascript" src="<c:url value="/scripts/search.js"/>"></script>--%>
+<script type="application/javascript" src="<c:url value="/scripts/search.js"/>"></script>
 <link rel="StyleSheet" href='<c:url value="/css/headStyle.css"/>' type="text/css" media="screen"/>
 
 <div ng-controller="userController as userCtrl">
@@ -40,8 +40,8 @@
     <%@ include file="register.jsp" %>
 
 </div>
-<%--ng-controller="SearchController as searchCtrl"--%>
-<div class="headContent" >
+
+<div class="headContent" ng-controller="SearchController as searchCtrl">
     <div class="imgLogo">
         <img src="<c:url value="/images/logo.jpg"/>"/>
     </div>
@@ -59,9 +59,6 @@
             <input type="number" placeholder="最小" name="minPrice">
             <input type="number" placeholder="最大" name="maxPrice">
             <button type="submit" class="btn btn-primary">筛选</button>
-
-
-            <%--<a href="<c:url value="/productList?productCategory=${indexPage.queryFilter.productCategory}&filterValue=${indexPage.queryFilter.filterValue}&minPrice={{minPrice}}&maxPrice={{maxPrice}}&seqName=${indexPage.queryFilter.seqName}&productPrice=${indexPage.queryFilter.productPrice}"/>">筛选</a>--%>
         </div>
         <div class="row">
 
@@ -82,28 +79,29 @@
         <br/>
         <div class="navTag">
             <ul class="nav nav-tabs nav-stacked">
-                <li class="active">
+                <li ng-class={'activeStyle':active1}>
                     <a ng-click="category(1)">女装</a>
                     <input type="radio" name="productCategory" id="check1" value="1" hidden/>
                 </li>
-                <li>
+                <li ng-class={'activeStyle':active2}>
                     <a ng-click="category(2)">男装</a>
                     <input type="radio" name="productCategory" id="check2" value="2" hidden/>
                 </li>
-                <li>
+                <li ng-class={'activeStyle':active3}>
                     <a ng-click="category(3)">家居家纺</a>
                     <input type="radio" name="productCategory" id="check3" value="3" hidden/>
 
                 </li>
-                <li>
+                <li ng-class={'activeStyle':active4}>
                     <a ng-click="category(4)">汽车用品</a>
                     <input type="radio" name="productCategory" id="check4" value="4" hidden/>
 
                 </li>
-                <li>
+                <li ng-class={'activeStyle':active5}>
                     <a ng-click="category(5)">玩具</a>
                     <input type="radio" name="productCategory" id="check5" value="5" hidden/>
                 </li>
+                <a hidden>{{ productCategory='${query.productCategory}'}}</a>
             </ul>
         </div>
     </form>

@@ -1,6 +1,5 @@
 proapp.controller('myPagingCtrl', ['$scope',function ($scope) {
-    var lastNum=angular.element("#lastPage").attr("pageNum");
-    $scope.noUseHrefHome=false;
+   $scope.noUseHrefHome=false;
     $scope.noUseHrefPre=false;
     $scope.noUseHrefNext=false;
     $scope.noUseHrefEnd=false;

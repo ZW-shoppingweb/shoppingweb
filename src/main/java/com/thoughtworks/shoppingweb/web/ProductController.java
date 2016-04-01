@@ -43,7 +43,6 @@ public class ProductController {
                               @RequestParam(value="pageSize",
                                       defaultValue = DEFAULT_PAGE_SIZE, required = false) int pageSize,
                               Model model) {
-
         PaginationData paginationData = new PaginationData();
         QueryFilter queryFilter=new QueryFilter();
         paginationData.setQueryFilter(queryFilter);
