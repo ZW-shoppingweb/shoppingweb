@@ -5,14 +5,16 @@
 <link rel="StyleSheet" href="<c:url value="/css/indexProject.css"/>" type="text/css" media="screen"/>
 
 <div class="aStyle" ng-controller="myPagingCtrl">
-  <a href="<c:url value="/productList?productCategory=${indexPage.queryFilter.productCategory}&minPrice=${indexPage.queryFilter.minPrice}&maxPrice=${indexPage.queryFilter.maxPrice}&productName=${indexPage.queryFilter.productName}&productPrice=${indexPage.queryFilter.productPrice}&pageId=1"/>"
-     id="firstPage" ng-class={'NoUseHrefClass':noUseHrefHome} >首页</a>
-  <a href="<c:url value="/productList?productCategory=${indexPage.queryFilter.productCategory}&minPrice=${indexPage.queryFilter.minPrice}&maxPrice=${indexPage.queryFilter.maxPrice}&productName=${indexPage.queryFilter.productName}&productPrice=${indexPage.queryFilter.productPrice}&pageId=${indexPage.prevPageNum}"/>"
-     id="prePage"  ng-class={'NoUseHrefClass':noUseHrefPre}>上一页</a>
-  <a  id="currentPage" class='NoUseHrefClass'>{{ currentPageNum='${indexPage.currentPageNum}'}}</a>
-  <a href="<c:url value="/productList?productCategory=${indexPage.queryFilter.productCategory}&minPrice=${indexPage.queryFilter.minPrice}&maxPrice=${indexPage.queryFilter.maxPrice}&productName=${indexPage.queryFilter.productName}&productPrice=${indexPage.queryFilter.productPrice}&pageId=${indexPage.nextPageNum}"/>"
-     id="nextPage" ng-class={'NoUseHrefClass':noUseHrefNext}>下一页</a>
-  <a href="<c:url value="/productList?productCategory=${indexPage.queryFilter.productCategory}&minPrice=${indexPage.queryFilter.minPrice}&maxPrice=${indexPage.queryFilter.maxPrice}&productName=${indexPage.queryFilter.productName}&productPrice=${indexPage.queryFilter.productPrice}&pageId=${indexPage.maxPageNum}"/>"
-     id="lastPage" ng-class={'NoUseHrefClass':noUseHrefEnd}>尾页</a>
-  <a hidden>{{ maxPageNum='${indexPage.maxPageNum}'}}</a>
+  <form id="formp" action="/shoppingweb/productList" method="post">
+    <input hidden name="productCategory" value="${indexPage.queryFilter.productCategory}">
+    <input hidden name="minPrice" value="${indexPage.queryFilter.minPrice}">
+    <input hidden name="maxPrice" value="${indexPage.queryFilter.maxPrice}">
+    <input hidden name="productName" value="${indexPage.queryFilter.productName}">
+    <input hidden name="productPrice" value="${indexPage.queryFilter.productPrice}">
+    <a href="" ng-class={'NoUseHrefClass':noUseHrefHome} ng-click="nextPage(1)"></a>
+    <a href="" ng-class={'NoUseHrefClass':noUseHrefPre} ng-click="nextPage(${indexPage.prevPageNum})">上一页</a>
+    <a class='NoUseHrefClass'>{{ currentPageNum='${indexPage.currentPageNum}'}}</a>
+    <a href="" ng-class={'NoUseHrefClass':noUseHrefNext} ng-click="nextPage(${indexPage.nextPageNum})">下一页</a>
+    <a href="" ng-class={'NoUseHrefClass':noUseHrefEnd} ng-click="nextPage(${indexPage.maxPageNum})">尾页</a>
+  </form>
 </div>
