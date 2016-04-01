@@ -32,6 +32,7 @@ proapp.controller('SearchController', ['$scope', '$location', '$http', function 
                 default:
                     $scope.active6 = true;
             }
+            document.getElementById("productCategoryInput").value = $scope.productCategory;
         });
     }, 0);
 

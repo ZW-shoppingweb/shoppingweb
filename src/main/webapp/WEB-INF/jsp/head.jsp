@@ -98,7 +98,7 @@
                     <a ng-click="category(5)">玩具</a>
                 </li>
                 <li ng-class={'activeStyle':active6}>
-                    <a ng-click="category(6)">全部</a>
+                    <a ng-click="category('')">全部</a>
                 </li>
                 <a hidden>{{ productCategory='${query.productCategory}'}}</a>
             </ul>
