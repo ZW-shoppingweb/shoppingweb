@@ -67,12 +67,16 @@
 
             <div class="searchADSC">
                 <label>按价格筛选</label>
-                <input type="radio" ng-model="priceA" name="productPrice" value="ASC"/> ASC
-                <input type="radio" id="q129" ng-model="priceA"name="productPrice" value="DESC"/> DESC
+                <input type="radio" ng-model="priceA" name="productPrice" id="price1" value="ASC"/> ASC
+                <input type="radio" ng-model="priceA"name="productPrice" id="price2" value="DESC"/> DESC
+                <input type="radio" name="productPrice" checked="checked" value=""/> Default
+                <a hidden>{{ productPrice='${query.productPrice}'}}</a>
                 <br>
                 <label>按姓名筛选</label>
-                <input type="radio" name="productName" value="ASC"/> ASC
-                <input type="radio" name="productName" value="DESC"/> DESC
+                <input type="radio" name="productName"  id="name1" value="ASC"/> ASC
+                <input type="radio" name="productName"  id="name2" value="DESC"/> DESC
+                <input type="radio" name="productName" checked="checked" value=""/> Default
+                <a hidden>{{ productName='${query.productName}'}}</a>
             </div>
         </div>
         <br/>

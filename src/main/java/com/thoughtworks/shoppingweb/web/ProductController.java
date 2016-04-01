@@ -33,6 +33,7 @@ public class ProductController {
         paginationData.getMaxPageNum();
         paginationData = productService.getProductPaginationData(paginationData);
         model.addAttribute("indexPage", paginationData);
+        model.addAttribute("query",queryFilter);
         return "index";
     }
     @RequestMapping(value = "/productList", method=RequestMethod.GET)
