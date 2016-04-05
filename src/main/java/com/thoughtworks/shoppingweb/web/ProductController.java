@@ -3,6 +3,7 @@ package com.thoughtworks.shoppingweb.web;
 /**
  * Created by cxzhao on 3/22/16.
  */
+
 import com.thoughtworks.shoppingweb.service.page.PaginationData;
 import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.service.ProductService;
@@ -10,12 +11,16 @@ import com.thoughtworks.shoppingweb.service.page.QueryFilter;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
 import java.util.UUID;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ProductController {
@@ -49,6 +54,7 @@ public class ProductController {
                               @RequestParam(value="pageSize",
                                       defaultValue = DEFAULT_PAGE_SIZE, required = false) int pageSize,
                               Model model) {
+
         PaginationData paginationData = new PaginationData();
         QueryFilter queryFilter = new QueryFilter();
         paginationData.setQueryFilter(queryFilter);
@@ -82,14 +88,13 @@ public class ProductController {
 
     }
 @RequestMapping(value = "/productCart", method = RequestMethod.POST)
-public String loginPage(@ModelAttribute ShopCart shopCart, Model model) {
-    if (productService.insertToCart(shopCart))
-    {
-        List<Product> cartproduct=productService.cartProduct();
-        Product product = productService.getProduct(shopCart.getProductId());
-        model.addAttribute("cartproduct", cartproduct);
-        model.addAttribute("product",product);
+    public ResponseEntity loginPage(@ModelAttribute ShopCart shopCart, Model model) {
+    Map result = new HashMap();
+        if (productService.insertToCart(shopCart))
+        {
+            List<Product> cartproduct=productService.cartProduct();
+            result.put("cartproduct", cartproduct);
+        }
+    return new ResponseEntity(result, HttpStatus.OK);
     }
-    return "productdetail";
-}
 }
