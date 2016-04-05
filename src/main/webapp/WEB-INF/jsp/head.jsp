@@ -20,8 +20,28 @@
             <ul class="nav navbar-nav">
                 <li><a href="<c:url value="/productList"/>">首页</a></li>
             </ul>
+            <div class="dropdown">
+            <button type="button" class="btn dropdown-toggle"
+            data-toggle="dropdown">我的购物车
+            <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <c:if test="${!empty cartproduct}">
+                    <c:forEach items="${cartproduct}" var="pro">
+                        <div class="indexProduct">
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#">${pro.productName}   ￥${pro.productPrice}</a>
+                            </li>
+                        </div>
+                    </c:forEach>
+                </c:if>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">总价:</a>
+            </li>
+            </ul>
+            </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">我的购物车</a></li>
                 <li><a href="javascript:void(0);" ng-click="userCtrl.loginShow()" ng-bind="userCtrl.isSignIn"></a></li>
                 <li><a ng-bind="userCtrl.userNameInNav"></a></li>
                 <li><a href="javascript:void(0);" ng-click="userCtrl.registerShow()" ng-bind="userCtrl.isRegister"></a>
@@ -62,18 +82,17 @@
             <button type="submit" class="btn btn-primary">筛选</button>
         </div>
         <div class="row">
-
             <div class="searchADSC">
                 <label>按价格筛选</label>
-                <input type="radio" ng-model="priceA" name="productPrice" id="price1" value="ASC"/> ASC
-                <input type="radio" ng-model="priceA" name="productPrice" id="price2" value="DESC"/> DESC
-                <input type="radio" name="productPrice" checked="checked" value=""/> Default
+                <input type="radio" ng-model="priceA" name="productPrice" id="price1" value="ASC"/>升序
+                <input type="radio" ng-model="priceA" name="productPrice" id="price2" value="DESC"/>降序
+                <input type="radio" name="productPrice" checked="checked" value=""/>默认
                 <a hidden>{{ productPrice='${query.productPrice}'}}</a>
                 <br>
                 <label>按姓名筛选</label>
-                <input type="radio" name="productName" id="name1" value="ASC"/> ASC
-                <input type="radio" name="productName" id="name2" value="DESC"/> DESC
-                <input type="radio" name="productName" checked="checked" value=""/> Default
+                <input type="radio" name="productName" id="name1" value="ASC"/> 升序
+                <input type="radio" name="productName" id="name2" value="DESC"/> 降序
+                <input type="radio" name="productName" checked="checked" value=""/> 默认
                 <a hidden>{{ productName='${query.productName}'}}</a>
             </div>
         </div>

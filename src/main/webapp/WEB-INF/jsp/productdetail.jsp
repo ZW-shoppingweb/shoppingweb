@@ -11,15 +11,18 @@
 <script type="application/javascript" src="<c:url value="/scripts/price.js"/>"></script>
 
 <div class="contenText">
+    <form action="/shoppingweb/productCart" method="post">
     <div class="titleDetail" ng-controller="priceController">
+        <input type="hidden" name="userName" id="userName"/>
+        <input type="hidden" name="productId" value="${product.productId}"/>
         <img class="productImg" src="${product.productImage}">
         <div class="rightDetail">
             <span class="productName">${product.productName}</span>
             <p class="price1" ng-class={'NotInCommonPrice':noUsePrice}>￥${product.productPrice}</p>
             <p class="price2"> ￥${product.productVipPrice}/for VIP</p>
-            <p class="number">数目: <input type="number" value="1" min="1"/></p>
-            <button class="buy btn btn-primary">立即购买</button>
-            <button class="buy btn btn-primary">加入购物车</button>
+            <p class="number">数目: <input type="number" name="productNum" value="1" min="1"/></p>
+            <button class="buy btn btn-primary" >立即购买</button>
+            <button type="submit" class="buy btn btn-primary" ng-click="submit()">加入购物车</button>
             <br>
         </div>
     </div>

@@ -8,6 +8,8 @@ package com.thoughtworks.shoppingweb.service;
 import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.persistence.ProductMapper;
 import com.thoughtworks.shoppingweb.service.page.PaginationData;
+import com.thoughtworks.shoppingweb.web.ShopCart;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,7 @@ public class ProductService {
 
     @Autowired
     private ProductMapper productMapper;
+    private final static Logger logPrint = Logger.getLogger(UserService.class);
 
     public Product getProduct(String productId) {
         return productMapper.findProductById(productId);
@@ -47,5 +50,18 @@ public class ProductService {
         paginationData.setPageData(productList);
         return paginationData;
 
+    }
+    public boolean insertToCart(ShopCart shopCart){
+        boolean insertResult;
+        try {
+            insertResult= (productMapper.insertToCart(shopCart)>0);
+        }catch (Exception e) {
+            logPrint.error(e);
+            insertResult = false;
+        }
+        return insertResult;
+    }
+    public List<Product> cartProduct(){
+       return productMapper.cartProduct();
     }
 }

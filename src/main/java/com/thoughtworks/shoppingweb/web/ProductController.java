@@ -3,7 +3,6 @@ package com.thoughtworks.shoppingweb.web;
 /**
  * Created by cxzhao on 3/22/16.
  */
-import com.thoughtworks.shoppingweb.service.HistoryService;
 import com.thoughtworks.shoppingweb.service.page.PaginationData;
 import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.service.ProductService;
@@ -12,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
@@ -59,12 +59,9 @@ public class ProductController {
         model.addAttribute("indexPage", paginationData);
         return "index";
     }
-
-
     public void setProductService(ProductService productService) {
         this.productService = productService;
     }
-
     @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No such PaginationData")  // 404
     public class ProductNotFoundException extends RuntimeException {
     }
@@ -84,14 +81,15 @@ public class ProductController {
         return "productdetail";
 
     }
-    @RequestMapping(value = "/searchByPrice", method = RequestMethod.POST)
-    public String getProductByPrice(@PathVariable("id") String id, Model model) {
-        Product product = productService.getProduct(id);
-        if (product == null) throw new ProductNotFoundException();
-        model.addAttribute(product);
-        return "productdetail";
-
-
+@RequestMapping(value = "/productCart", method = RequestMethod.POST)
+public String loginPage(@ModelAttribute ShopCart shopCart, Model model) {
+    if (productService.insertToCart(shopCart))
+    {
+        List<Product> cartproduct=productService.cartProduct();
+        Product product = productService.getProduct(shopCart.getProductId());
+        model.addAttribute("cartproduct", cartproduct);
+        model.addAttribute("product",product);
     }
-
+    return "productdetail";
+}
 }
