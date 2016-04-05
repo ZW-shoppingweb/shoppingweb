@@ -10,8 +10,12 @@ proapp.controller('priceController', ['$scope', function ($scope) {
 proapp.controller('historyController', ['$scope', function ($scope) {
     var storage = window.localStorage;
     $scope.userNameInHistory="";
-    if (storage["isSignIn"] === "yes") {
+    if (storage["name"] != undefined) {
         $scope.userNameInHistory = storage["name"];
     }
-
+    setTimeout(function () {
+        $scope.$apply(function () {
+            storage["name"] = $scope.userNameInHistory;
+        });
+    }, 10);
 }]);

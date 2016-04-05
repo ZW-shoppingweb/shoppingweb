@@ -7,7 +7,7 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
     _this.showExistedUserTips = false;
     _this.showNotCorrectLoginTips = false;
     var storage = window.localStorage;
-    if (storage["isSignIn"] == "no") {
+    if (storage["name"] === undefined || storage["name"] === "") {
         signOutInfo();
     }
     else {
@@ -38,7 +38,6 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
             if (data.isLogin === "yes") {
                 storage["name"] = _this.userName;
                 storage["isSignIn"] = "yes";
-                location.reload();
                 signInInfo();
             }
             else {
@@ -74,7 +73,6 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
 
     }
     _this.signOut = function () {
-        location.reload();
         signOutInfo();
     }
     _this.hideForm = function () {
@@ -95,8 +93,7 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
         _this.isSignOut = null;
         _this.userNameInNav = null;
         storage["isSignIn"] = "no";
-        storage["name"] = null;
+        window.localStorage.removeItem("name");
+
     }
-
-
 }]);

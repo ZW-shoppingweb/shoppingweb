@@ -26,7 +26,8 @@ public class HistoryService {
     private HistoryMapper historyMapper;
     @Autowired
     private UserMapper userMapper;
-
+    public static final String DEFAULT_TOURIST_TYPE = "tourist";
+    public static final String DEFAULT_PASSWORD = "123456";
     public HistoryMapper getHistoryMapper() {
         return historyMapper;
     }
@@ -41,12 +42,12 @@ public class HistoryService {
     public int insertHistory(String userName,String id){
         User user =new User();
         user.setUserName(userName);
+        History history = new History();
+        history.setUserName(userName);
+        history.setProductId(id);
+        long nowtime = System.currentTimeMillis();
+        history.setSeeTime(new java.sql.Timestamp(nowtime));
         if(userMapper.findUserByName(user)  != null) {
-            History history = new History();
-            history.setUserName(userName);
-            history.setProductId(id);
-            long nowtime = System.currentTimeMillis();
-            history.setSeeTime(new java.sql.Timestamp(nowtime));
             if(historyMapper.findHistory(history) != null){
                 return historyMapper.updateTime(history);
             }
@@ -55,7 +56,10 @@ public class HistoryService {
             }
         }
         else {
-            return 0;
+            user.setUserType(DEFAULT_TOURIST_TYPE);
+            user.setPassword(DEFAULT_PASSWORD);
+            userMapper.insertUser(user);
+            return historyMapper.insertHistory(history);
         }
     }
 
