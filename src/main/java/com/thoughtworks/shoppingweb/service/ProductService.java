@@ -61,7 +61,8 @@ public class ProductService {
         }
         return insertResult;
     }
-    public List<Product> cartProduct(){
-       return productMapper.cartProduct();
+    public List<Product> cartProduct(String userName){
+       return productMapper.cartProduct(userName);
     }
+    public  List<Product>allCartProduct(String userName){return productMapper.allCartProduct(userName);}
 }

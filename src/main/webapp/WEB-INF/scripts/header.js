@@ -58,7 +58,6 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
                 if (data.isLogin === "yes") {
                     storage["name"] = _this.userNameUnique;
                     storage["isSignIn"] = "yes";
-                    location.reload();
                     signInInfo();
                     angular.element(".registerForm").hide();
                 }
@@ -93,7 +92,27 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
         _this.isSignOut = null;
         _this.userNameInNav = null;
         storage["isSignIn"] = "no";
-        window.localStorage.removeItem("name");
-
+        storage["name"] = null;
     }
+    _this.shopCartShow = function () {
+        $http({
+            method: 'POST',
+            data: storage["name"],
+            url: "/shoppingweb/shopCartShow"
+
+        })
+            .success(function (data, status, headers, config) {
+                $scope.productName1=data.cartProduct[0].productName;
+                $scope.productName2=data.cartProduct[1].productName;
+                $scope.productTotalPrice=0;
+                for (var i=0;i<data.allCartProduct.length;i++)
+                $scope.productTotalPrice+=data.allCartProduct[i].productPrice;
+
+                console.log("success devilery data", data);
+            })
+            .error(function (response, status, headers, config) {
+
+            });
+    }
+
 }]);

@@ -8,10 +8,13 @@
     SELECT * FROM product WHERE productId=#{productId}
 </select>
     <insert id="insertToCart" parameterType="com.thoughtworks.shoppingweb.web.ShopCart">
-        INSERT INTO shopCart(userName,productId,productNum) VALUES (${userName},${productId},${productNum})
+        INSERT INTO shopCart(userName,productId,productNum) VALUES (#{userName},#{productId},#{productNum})
     </insert>
-    <select id="cartProduct"  resultType="Product">
-         SELECT * FROM product,shopCart WHERE product.productId=shopCart.productId ORDER BY shopCart.id DESC LIMIT 0,2
+    <select id="cartProduct" resultType="Product">
+         SELECT * FROM (shopcart left join USER on shopcart.userName=USER .userName)left join product on shopcart.productId=product.productId WHERE shopcart.userName=#{userName}  ORDER BY shopCart.id DESC LIMIT 0,2
+    </select>
+    <select id="allCartProduct" resultType="Product">
+        SELECT * FROM (shopcart left join USER on shopcart.userName=USER .userName)left join product on shopcart.productId=product.productId WHERE shopcart.userName=#{userName}
     </select>
     <select id="getAllProduct" resultType="Product">
         SELECT * FROM product  limit #{start},#{size}

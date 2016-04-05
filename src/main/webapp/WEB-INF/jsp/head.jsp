@@ -7,8 +7,8 @@
 <script type="application/javascript" src="<c:url value="/js/angular.min.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/js/angular-messages.min.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/scripts/header.js"/>"></script>
-<script type="application/javascript" src="<c:url value="/scripts/price.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/scripts/search.js"/>"></script>
+
 <link rel="StyleSheet" href='<c:url value="/css/headStyle.css"/>' type="text/css" media="screen"/>
 
 <div ng-controller="userController as userCtrl">
@@ -21,25 +21,22 @@
                 <li><a href="<c:url value="/productList"/>">首页</a></li>
             </ul>
             <div class="dropdown">
-            <button type="button" class="btn dropdown-toggle"
-            data-toggle="dropdown">我的购物车
-            <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <c:if test="${!empty cartproduct}">
-                    <c:forEach items="${cartproduct}" var="pro">
-                        <div class="indexProduct">
-                            <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="#">${pro.productName}   ￥${pro.productPrice}</a>
-                            </li>
-                        </div>
-                    </c:forEach>
-                </c:if>
-            <li role="presentation" class="divider"></li>
-            <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="#">总价:</a>
-            </li>
-            </ul>
+                <button type="button" class="btn dropdown-toggle"
+                        data-toggle="dropdown" ng-click="userCtrl.shopCartShow()">我的购物车
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">商品:{{productName1}}</a>
+                    </li>
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">商品:{{productName2}}</a>
+                    </li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">总价:{{productTotalPrice}}</a>
+                    </li>
+                </ul>
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="javascript:void(0);" ng-click="userCtrl.loginShow()" ng-bind="userCtrl.isSignIn"></a></li>
