@@ -12,12 +12,11 @@
 <%@ include file="head.jsp" %>
 <div>
     <div class="products">
-        <div class="allProjectList">
-
+        <div class="allProjectList" ng-controller="historyController">
             <c:if test="${!empty indexPage.pageData }">
                 <c:forEach items="${indexPage.pageData }" var="pro">
                     <div class="indexProduct">
-                        <a href="<c:url value="/product/${pro.productId}"/>">
+                        <a href="<c:url value="/product/${pro.productId}/{{userNameInHistory}}"/>">
                             <img src="${pro.productImage }"><br>
                             <p class="price">¥${pro.productPrice}元</p>
                             <p>${pro.productName}</p>

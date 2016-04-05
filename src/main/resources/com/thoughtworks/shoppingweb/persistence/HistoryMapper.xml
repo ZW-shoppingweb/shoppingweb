@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.thoughtworks.shoppingweb.persistence.HistoryMapper">
+    <select id="findHistory" resultType="History">
+        SELECT * FROM history WHERE userName=#{userName} AND productId=#{productId}
+    </select>
+    <select id="getHistoryByUser"  resultMap="HistoryInfo">
+        SELECT * FROM history WHERE userName=#{userName}
+    </select>
+    <insert id="insertHistory" parameterType="History" >
+        insert into history
+        (userName,productId,seeTime)
+        values
+        (#{userName},#{productId},#{seeTime})
+    </insert>
+    <update id="updateTime" parameterType="History">
+        update history set seeTime=#{seeTime}
+        where userName=#{userName} AND productId=#{productId}
+    </update>
+
+    <!--<select id="getstudentclass" resultMap="StudentRm">-->
+        <!--SELECT * FROM  student WHERE id=#{id}-->
+    <!--</select>-->
+
+    <resultMap id="HistoryInfo" type="History">
+        <collection property="product" javaType="Product" column="priductId" ofType="Product" select="selectProductInHistory" />
+    </resultMap>
+    <select id="selectProductInHistory" resultType="Product">
+        SELECT * FROM  product WHERE productId=#{productId}
+    </select>
+</mapper>

@@ -3,6 +3,7 @@ package com.thoughtworks.shoppingweb.web;
 /**
  * Created by cxzhao on 3/22/16.
  */
+import com.thoughtworks.shoppingweb.service.HistoryService;
 import com.thoughtworks.shoppingweb.service.page.PaginationData;
 import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.service.ProductService;
@@ -11,24 +12,24 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
 public class ProductController {
     @Autowired
     ProductService productService;
+    @Autowired
+    HistoryService historyService;
     public static final String DEFAULT_PAGE_SIZE = "16";
     public static final String DEFAULT_PAGE_NUM = "1";
     private final static Logger log=Logger.getLogger(ProductController.class);
 
     @RequestMapping(value = "/productList", method=RequestMethod.POST)
     public String productList(@ModelAttribute QueryFilter queryFilter, Model model) {
-        System.out.println("===pageId==" + queryFilter.getPageId());
-        System.out.println("===maxPrice==" + queryFilter.getMaxPrice());
         PaginationData paginationData = new PaginationData();
         paginationData.setQueryFilter(queryFilter);
         paginationData.setCurrentPageNum(1);
@@ -70,11 +71,16 @@ public class ProductController {
     public class ProductNotFoundException extends RuntimeException {
     }
 
-    @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
-    public String getProduct(@PathVariable("id") String id, Model model) {
+    @RequestMapping(value = "/product/{id}/{userName}", method = RequestMethod.GET)
+    public String getProduct(@PathVariable("id") String id, @PathVariable("userName") String userName, Model model) {
         Product product = productService.getProduct(id);
         if (product == null) throw new ProductNotFoundException();
         model.addAttribute(product);
+        if(userName != null && userName != "") {
+            model.addAttribute("history", historyService.getHistoryByUser(userName));
+            historyService.insertHistory(userName,id);
+        }
+
         return "productdetail";
 
     }

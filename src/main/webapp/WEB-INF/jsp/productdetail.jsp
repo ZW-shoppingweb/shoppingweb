@@ -9,10 +9,24 @@
 <body ng-app="userApp">
 <%@ include file="head.jsp" %>
 <script type="application/javascript" src="<c:url value="/scripts/price.js"/>"></script>
+<div ng-controller="historyController">
+    <c:if test="${!empty history }">
+        <c:forEach items="${history }" var="hy">
+            <div class="indexProduct">
+                <a href="<c:url value="/product/${hy.productId}/{{userNameInHistory}}"/>">
+                    <%--<img src="${hy.product.productImage }"><br>--%>
+                    <%--<p class="price">¥${pro.productPrice}元</p>--%>
+                    <p>${hy.productId}</p>
+                        <p>${hy.seeTime}</p>
+                    <br/></a>
+            </div>
+        </c:forEach>
+    </c:if>
+</div>
 <div class="contenText">
     <div class="titleDetail" ng-controller="priceController">
         <img class="productImg" src="${product.productImage}">
-        <div class="rightDetail" ng-controller="priceController">
+        <div class="rightDetail">
             <span class="productName">${product.productName}</span>
             <p class="price1" ng-class={'NotInCommonPrice':noUsePrice}>￥${product.productPrice}</p>
             <p class="price2"> ￥${product.productVipPrice}/for VIP</p>

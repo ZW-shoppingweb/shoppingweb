@@ -38,6 +38,7 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
             if (data.isLogin === "yes") {
                 storage["name"] = _this.userName;
                 storage["isSignIn"] = "yes";
+                location.reload();
                 signInInfo();
             }
             else {
@@ -58,6 +59,7 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
                 if (data.isLogin === "yes") {
                     storage["name"] = _this.userNameUnique;
                     storage["isSignIn"] = "yes";
+                    location.reload();
                     signInInfo();
                     angular.element(".registerForm").hide();
                 }
