@@ -1,5 +1,6 @@
-.contenttext{
-    width: 100%;
+.contenText{
+    width: 1000px;
+    float: left;
 }
 .titleDetail{
     padding-left: 10px;
@@ -8,17 +9,17 @@
 }
 .productImg{
     float: left;
-    padding-left: 400px;
+    padding-left: 200px;
 }
 .rightDetail{
     float: left;
-    padding-left: 100px;
+    padding-left: 50px;
 }
 .productName{
     font-size: 30px;
     font-weight:bolder;
     display: block;
-    width: 400px;
+    width: 200px;
 }
 .price1{
     color: red;
@@ -36,7 +37,7 @@
     padding-bottom:50px;
     clear: both;
 }
-input{
+.number input{
     padding-left: 10px;
     width: 70px
 }
@@ -45,7 +46,7 @@ input{
     margin-right: 50px;
 }
 .productDetail{
-    padding-left: 400px;
+    padding-left: 200px;
 }
 .detailInfo{
     padding-left: 50px;

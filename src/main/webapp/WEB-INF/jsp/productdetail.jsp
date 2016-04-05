@@ -9,20 +9,7 @@
 <body ng-app="userApp">
 <%@ include file="head.jsp" %>
 <script type="application/javascript" src="<c:url value="/scripts/price.js"/>"></script>
-<div ng-controller="historyController">
-    <c:if test="${!empty history }">
-        <c:forEach items="${history }" var="hy">
-            <div class="indexProduct">
-                <a href="<c:url value="/product/${hy.productId}/{{userNameInHistory}}"/>">
-                    <%--<img src="${hy.product.productImage }"><br>--%>
-                    <%--<p class="price">¥${pro.productPrice}元</p>--%>
-                    <p>${hy.productId}</p>
-                        <p>${hy.seeTime}</p>
-                    <br/></a>
-            </div>
-        </c:forEach>
-    </c:if>
-</div>
+
 <div class="contenText">
     <div class="titleDetail" ng-controller="priceController">
         <img class="productImg" src="${product.productImage}">
@@ -46,6 +33,20 @@
 
         </div>
     </div>
+</div>
+<div ng-controller="historyController">
+    <h3>我的足迹</h3>
+    <c:if test="${!empty history }">
+        <c:forEach items="${history }" var="hy">
+            <div class="indexProduct">
+                <a href="<c:url value="/product/${hy.product.productId}?userName={{userNameInHistory}}"/>">
+                    <img src="${hy.product.productImage }"><br>
+                    <p>${hy.product.productName}</p>
+                    <%--<p>${hy.seeTime}</p>--%>
+                    <br/></a>
+            </div>
+        </c:forEach>
+    </c:if>
 </div>
 </body>
 </html>

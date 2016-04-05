@@ -7,9 +7,7 @@
     <select id="findHistory" resultType="History">
         SELECT * FROM history WHERE userName=#{userName} AND productId=#{productId}
     </select>
-    <select id="getHistoryByUser"  resultMap="HistoryInfo">
-        SELECT * FROM history WHERE userName=#{userName}
-    </select>
+
     <insert id="insertHistory" parameterType="History" >
         insert into history
         (userName,productId,seeTime)
@@ -21,12 +19,11 @@
         where userName=#{userName} AND productId=#{productId}
     </update>
 
-    <!--<select id="getstudentclass" resultMap="StudentRm">-->
-        <!--SELECT * FROM  student WHERE id=#{id}-->
-    <!--</select>-->
-
+    <select id="getHistoryByUser"  resultMap="HistoryInfo">
+        SELECT * FROM history WHERE userName=#{userName} order by seeTime desc limit 4;
+    </select>
     <resultMap id="HistoryInfo" type="History">
-        <collection property="product" javaType="Product" column="priductId" ofType="Product" select="selectProductInHistory" />
+        <collection property="product" javaType="Product" column="productId" ofType="Product" select="selectProductInHistory" />
     </resultMap>
     <select id="selectProductInHistory" resultType="Product">
         SELECT * FROM  product WHERE productId=#{productId}

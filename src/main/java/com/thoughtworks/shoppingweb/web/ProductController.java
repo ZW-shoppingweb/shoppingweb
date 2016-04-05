@@ -3,6 +3,7 @@ package com.thoughtworks.shoppingweb.web;
 /**
  * Created by cxzhao on 3/22/16.
  */
+import com.thoughtworks.shoppingweb.domain.History;
 import com.thoughtworks.shoppingweb.service.HistoryService;
 import com.thoughtworks.shoppingweb.service.page.PaginationData;
 import com.thoughtworks.shoppingweb.domain.Product;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -71,16 +73,18 @@ public class ProductController {
     public class ProductNotFoundException extends RuntimeException {
     }
 
-    @RequestMapping(value = "/product/{id}/{userName}", method = RequestMethod.GET)
-    public String getProduct(@PathVariable("id") String id, @PathVariable("userName") String userName, Model model) {
+    @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
+    public String getProduct(@PathVariable("id") String id, @RequestParam(value="userName",
+            defaultValue = "", required = false) String userName, Model model) {
         Product product = productService.getProduct(id);
         if (product == null) throw new ProductNotFoundException();
         model.addAttribute(product);
+        List<History> histories=new ArrayList<History>();
         if(userName != null && userName != "") {
-            model.addAttribute("history", historyService.getHistoryByUser(userName));
+            histories=historyService.getHistoryByUser(userName);
             historyService.insertHistory(userName,id);
         }
-
+        model.addAttribute("history",histories);
         return "productdetail";
 
     }

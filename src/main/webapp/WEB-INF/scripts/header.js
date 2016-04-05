@@ -74,6 +74,7 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
 
     }
     _this.signOut = function () {
+        location.reload();
         signOutInfo();
     }
     _this.hideForm = function () {
