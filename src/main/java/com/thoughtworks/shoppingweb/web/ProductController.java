@@ -6,7 +6,7 @@ package com.thoughtworks.shoppingweb.web;
 
 import com.thoughtworks.shoppingweb.service.page.PaginationData;
 import com.thoughtworks.shoppingweb.domain.Product;
-import com.thoughtworks.shoppingweb.service.ProductService;
+import com.thoughtworks.shoppingweb.service.*;
 import com.thoughtworks.shoppingweb.service.page.QueryFilter;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

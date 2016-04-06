@@ -92,7 +92,7 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
         _this.isSignOut = null;
         _this.userNameInNav = null;
         storage["isSignIn"] = "no";
-        storage["name"] = null;
+        window.localStorage.removeItem("name");
     }
     _this.shopCartShow = function () {
         $http({

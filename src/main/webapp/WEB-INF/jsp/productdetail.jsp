@@ -9,7 +9,6 @@
 </head>
 <body ng-app="userApp">
 <%@ include file="head.jsp" %>
-<script type="application/javascript" src="<c:url value="/scripts/price.js"/>"></script>
 <div class="contenText">
     <div class="titleDetail" ng-controller="priceController">
             <a hidden>{{productId='${product.productId}'}}</a>

@@ -1,12 +1,12 @@
 /**
  * Created by cxzhao on 3/30/16.
  */
-proapp.config(['$locationProvider', function ($locationProvider) {
-    $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false
-    });
-}]);
+//proapp.config(['$locationProvider', function ($locationProvider) {
+//    $locationProvider.html5Mode({
+//        enabled: true,
+//        requireBase: false
+//    });
+//}]);
 proapp.controller('priceController', ['$scope', '$location', '$http', function ($scope, $location, $http) {
     $scope.productNum=1;
     var storage = window.localStorage;
@@ -36,6 +36,7 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
 proapp.controller('historyController', ['$scope', function ($scope) {
     var storage = window.localStorage;
     $scope.userNameInHistory="";
+    console.log("*****");
     if (storage["name"] != undefined) {
         $scope.userNameInHistory = storage["name"];
     }
