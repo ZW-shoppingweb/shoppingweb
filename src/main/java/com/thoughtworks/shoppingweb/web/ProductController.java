@@ -23,6 +23,8 @@ public class ProductController {
     ProductService productService;
     @Autowired
     HistoryService historyService;
+    @Autowired
+    UserService userService;
     public static final String DEFAULT_PAGE_SIZE = "16";
     public static final String DEFAULT_PAGE_NUM = "1";
     private final static Logger log = Logger.getLogger(ProductController.class);
@@ -85,5 +87,18 @@ public class ProductController {
         model.addAttribute("user",userName);
         return "productdetail";
     }
+    @RequestMapping(value = "/shopCartShow", method = RequestMethod.POST)
+    public ResponseEntity loginPage(@RequestBody String userName) {
+        Map result = new HashMap();
+        List<Product> cartProduct = productService.cartProduct(userName);
+        List<Product> allCartProduct = productService.allCartProduct(userName);
+        boolean searchUser=userService.searchUser(userName);
+        result.put("cartProduct",cartProduct);
+        result.put("allCartProduct",allCartProduct);
+        result.put("searchUser",searchUser);
+
+        return new ResponseEntity(result, HttpStatus.OK);
+    }
+
 
 }

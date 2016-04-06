@@ -18,6 +18,9 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
             url: "/shoppingweb/productCart"
         })
             .success(function (response, status, headers, config) {
+                //$("#cartShow").click(function(){
+                //
+                //});
                 console.log("success devilery data", response);
             })
             .error(function (response, status, headers, config) {

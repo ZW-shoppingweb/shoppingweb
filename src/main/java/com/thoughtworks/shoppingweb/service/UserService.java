@@ -40,4 +40,12 @@ public class UserService {
         return insertResult;
 
     }
+    public boolean searchUser(String userName){
+        boolean searchUser;
+        if(userMapper.searchUser(userName).getUserType().equalsIgnoreCase("member"))
+            searchUser=true;
+        else searchUser=false;
+
+        return  searchUser;
+    }
 }

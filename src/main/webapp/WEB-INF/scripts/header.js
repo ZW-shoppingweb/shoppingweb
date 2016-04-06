@@ -95,6 +95,7 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
         window.localStorage.removeItem("name");
     }
     _this.shopCartShow = function () {
+        signInInfo();
         $http({
             method: 'POST',
             data: storage["name"],
@@ -105,8 +106,16 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
                 $scope.productName1=data.cartProduct[0].product.productName;
                 $scope.productName2=data.cartProduct[1].product.productName;
                 $scope.productTotalPrice=0;
-                for (var i=0;i<data.allCartProduct.length;i++)
-                $scope.productTotalPrice+=data.allCartProduct[i].product.productPrice;
+                if(data.searchUser)
+                {
+                    for (var i=0;i<data.allCartProduct.length;i++)
+                        $scope.productTotalPrice+=data.allCartProduct[i].product.productVipPrice*data.allCartProduct[i].productNum;
+                }
+                else
+                {
+                    for (var i=0;i<data.allCartProduct.length;i++)
+                        $scope.productTotalPrice+=data.allCartProduct[i].product.productPrice*data.allCartProduct[i].productNum;
+                }
 
                 console.log("success devilery data", data);
             })

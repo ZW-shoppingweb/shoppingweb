@@ -15,5 +15,8 @@
   (#{userName},#{password},#{userType})
   </insert>
 
+  <select id="searchUser" resultType="User">
+    SELECT * FROM  USER WHERE userName=#{userName}
+  </select>
 </mapper>
 

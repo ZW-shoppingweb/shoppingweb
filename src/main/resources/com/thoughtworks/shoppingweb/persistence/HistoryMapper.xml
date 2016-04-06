@@ -28,4 +28,5 @@
     <select id="selectProductInHistory" resultType="Product">
         SELECT * FROM  product WHERE productId=#{productId}
     </select>
+
 </mapper>
