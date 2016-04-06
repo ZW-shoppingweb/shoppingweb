@@ -40,7 +40,7 @@
         <c:forEach items="${history }" var="hy">
             <div class="indexProduct">
                 <a hidden>{{ userNameInHistory='${user}'}}</a>
-                <a href="<c:url value="/product/${hy.product.productId}?userName={{userNameInHistory}}"/>">
+                <a href="<c:url value="/product/${hy.product.productId}?userName=${memberName}"/>">
                     <img src="${hy.product.productImage }"><br>
                     <p>${hy.product.productName}</p>
                     <%--<p>${hy.seeTime}</p>--%>

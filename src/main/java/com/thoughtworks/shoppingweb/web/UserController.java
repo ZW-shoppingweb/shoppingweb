@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,13 +23,16 @@ public class UserController {
     }
 
     @RequestMapping(value = "/loginAction", method = RequestMethod.POST)
-    public ResponseEntity loginPage(@RequestBody UserParams userParams) {
+    public ResponseEntity loginPage(@RequestBody UserParams userParams,HttpServletRequest request) {
         User user = new User();
         user.setUserName(userParams.getUserName());
+        HttpSession session = request.getSession(true);
+        session.setAttribute("memberName",userParams.getUserName());
         user.setPassword(userParams.getPassword());
         Map result = new HashMap();
         if (userService.validateUser(user)) {
             result.put("isLogin", "yes");
+            result.put("name",userParams.getUserName());
         } else {
             result.put("isLogin", "no");
         }
@@ -35,17 +40,27 @@ public class UserController {
     }
 
     @RequestMapping(value = "/registerAction", method = RequestMethod.POST)
-    public ResponseEntity registerPage(@RequestBody UserParams userParams) {
+    public ResponseEntity registerPage(@RequestBody UserParams userParams,HttpServletRequest request) {
         User user = new User();
         user.setUserName(userParams.getUserName());
         user.setPassword(userParams.getPassword());
+        HttpSession session = request.getSession(true);
+        session.setAttribute("memberName",userParams.getUserName());
         Map result = new HashMap();
         if (userService.addUser(user)) {
             result.put("isLogin", "yes");
+            result.put("name",userParams.getUserName());
         } else {
             result.put("isLogin", "no");
         }
         return new ResponseEntity(result, HttpStatus.OK);
     }
-
+    @RequestMapping(value = "/signOutAction", method = RequestMethod.GET)
+    public ResponseEntity signOutAction(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        session.removeAttribute("memberName");
+        Map result = new HashMap();
+        result.put("isLogin", "no");
+        return new ResponseEntity(result, HttpStatus.OK);
+    }
 }

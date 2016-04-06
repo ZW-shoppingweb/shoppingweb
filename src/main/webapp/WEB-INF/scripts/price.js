@@ -3,7 +3,7 @@
  */
 proapp.controller('priceController', ['$scope', '$location', '$http', function ($scope, $location, $http) {
     $scope.productNum=1;
-    var storage = window.localStorage;
+    var storage = window.sessionStorage;
     if (storage["isSignIn"] === "no") {
         $scope.noUsePrice = false;
     }
@@ -11,7 +11,7 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
         $scope.noUsePrice = true;
     }
     $scope.addCart = function () {
-        var storage = window.localStorage;
+        var storage = window.sessionStorage;
         $http({
             method: 'POST',
             data: {userName: storage["name"], productId: $scope.productId, productNum: $scope.productNum},
@@ -58,16 +58,16 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
 
 }]);
 proapp.controller('historyController', ['$scope','$http', function ($scope,$http) {
-    var storage = window.localStorage;
-    $scope.userNameInHistory = "";
+    var storage = window.sessionStorage;
+    $scope.userNameInHistory="";
     if (storage["name"] != undefined) {
         $scope.userNameInHistory = storage["name"];
     }
-    setTimeout(function () {
-        $scope.$apply(function () {
-            storage["name"] = $scope.userNameInHistory;
-        });
-    }, 10);
+    //setTimeout(function () {
+    //    $scope.$apply(function () {
+    //        storage["name"] = $scope.userNameInHistory;
+    //    });
+    //}, 10);
     function notshow(){
         $scope.isnotVipAndNoChange=false;
         $scope.isVipAndNoChange=false;
@@ -98,7 +98,6 @@ proapp.controller('historyController', ['$scope','$http', function ($scope,$http
             data: {userName: storage["name"], productId: productId, productNum: currentNumber},
             url: "/shoppingweb/productCart"
         }).success(function (response, status, headers, config) {
-            console.log("success devilery data", response);
         });
         if(currentNumber === '0'){
             location.reload();

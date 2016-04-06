@@ -6,13 +6,14 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
     _this.showNotSamePasswordTips = false;
     _this.showExistedUserTips = false;
     _this.showNotCorrectLoginTips = false;
-    var storage = window.localStorage;
+    var storage = window.sessionStorage;
     if (storage["name"] === undefined || storage["name"] === "") {
         signOutInfo();
     }
     else {
         signInInfo();
     }
+
     _this.loginShow = function () {
         if (storage["isSignIn"] === "no") {
             angular.element(".loginForm").show();
@@ -36,9 +37,10 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
             }
         }).success(function (data) {
             if (data.isLogin === "yes") {
-                storage["name"] = _this.userName;
+                storage["name"] =data.name;
                 storage["isSignIn"] = "yes";
                 signInInfo();
+                location.reload();
             }
             else {
                 _this.showNotCorrectLoginTips = true;
@@ -56,9 +58,10 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
                 url: "/shoppingweb/registerAction"
             }).success(function (data) {
                 if (data.isLogin === "yes") {
-                    storage["name"] = _this.userNameUnique;
+                    storage["name"] =data.name;
                     storage["isSignIn"] = "yes";
                     signInInfo();
+                    location.reload();
                     angular.element(".registerForm").hide();
                 }
                 else {
@@ -72,10 +75,12 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
 
     }
     _this.signOut = function () {
-        signOutInfo();
-        _this.userNameInNav="";
-        console.log($scope.userNameInNav);
-        location.reload();
+        var url = '/shoppingweb/signOutAction';
+        $http.get(url).success(function (data) {
+            if (data.isLogin === "no") {
+                signOutInfo();
+            }
+        });
 
     }
     _this.hideForm = function () {
@@ -83,7 +88,6 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
         angular.element(".registerForm").hide();
     }
     function signInInfo() {
-        _this.userNameInNav = storage["name"];
         _this.isSignIn = "欢迎!";
         _this.isSignOut = "退出登录";
         _this.isRegister = null;
@@ -94,9 +98,9 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
         _this.isSignIn = "请登录";
         _this.isRegister = "免费注册";
         _this.isSignOut = null;
-        //_this.userNameInNav = null;
         storage["isSignIn"] = "no";
-        window.localStorage.removeItem("name");
+        angular.element("#userNameInNav").html("");
+        window.sessionStorage.removeItem("name");
     }
     _this.shopCartShow = function () {
         signInInfo();

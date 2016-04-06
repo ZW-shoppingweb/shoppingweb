@@ -40,13 +40,14 @@
                         <a role="menuitem" tabindex="-1" href="#" id="productTotalPrice">总价:{{productTotalPrice}}</a>
                     </li>
                     <li role="presentation">
-                        <a href="/shoppingweb/goToMyShopCart?userName={{userCtrl.userNameInNav}}">去我的购物车</a>
+                        <a href="/shoppingweb/goToMyShopCart?userName=${memberName}">去我的购物车</a>
                     </li>
                 </ul>
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="javascript:void(0);" ng-click="userCtrl.loginShow()" ng-bind="userCtrl.isSignIn"></a></li>
-                <li><a ng-bind="userCtrl.userNameInNav"></a></li>
+                <li><a id="userNameInNav">${memberName}</a></li>
+                <%--<a ng-bind="userCtrl.userNameInNav"></a>--%>
                 <li><a href="javascript:void(0);" ng-click="userCtrl.registerShow()" ng-bind="userCtrl.isRegister"></a>
                 </li>
                 <li><a href="javascript:void(0);" ng-click="userCtrl.signOut()" ng-bind="userCtrl.isSignOut"></a></li>

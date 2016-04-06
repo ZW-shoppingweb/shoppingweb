@@ -16,7 +16,7 @@
             <c:if test="${!empty indexPage.pageData }">
                 <c:forEach items="${indexPage.pageData }" var="pro">
                     <div class="indexProduct">
-                        <a href="<c:url value="/product/${pro.productId}?userName={{userNameInHistory}}"/>">
+                        <a href="<c:url value="/product/${pro.productId}?userName=${memberName}"/>">
                             <img src="${pro.productImage }"><br>
                             <p class="price">¥${pro.productPrice}元</p>
                             <p>${pro.productName}</p>

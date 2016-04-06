@@ -15,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.UUID;
 
 @Controller
@@ -75,7 +77,7 @@ public class ProductController {
 
     @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
     public String getProduct(@PathVariable("id") String id, @RequestParam(value="userName",
-            defaultValue = "", required = false) String userName, Model model) {
+            defaultValue = "", required = false) String userName, Model model,HttpServletRequest request) {
         Product product = productService.getProduct(id);
         if (product == null) throw new ProductNotFoundException();
         model.addAttribute(product);
@@ -83,6 +85,8 @@ public class ProductController {
             userName = UUID.randomUUID().toString();
         }
         historyService.insertHistory(userName,id);
+        HttpSession session = request.getSession(true);
+        session.setAttribute("memberName",userName);
         model.addAttribute("history",historyService.getHistoryByUser(userName));
         model.addAttribute("user",userName);
         return "productdetail";
