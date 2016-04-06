@@ -2,7 +2,7 @@
  * Created by cxzhao on 3/30/16.
  */
 proapp.controller('priceController', ['$scope', '$location', '$http', function ($scope, $location, $http) {
-    $scope.productNum = 1;
+    $scope.productNum=1;
     var storage = window.localStorage;
     if (storage["isSignIn"] === "no") {
         $scope.noUsePrice = false;
@@ -55,8 +55,9 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
 
     }
 
+
 }]);
-proapp.controller('historyController', ['$scope', '$http', function ($scope, $http) {
+proapp.controller('historyController', ['$scope','$http', function ($scope,$http) {
     var storage = window.localStorage;
     $scope.userNameInHistory = "";
     if (storage["name"] != undefined) {
@@ -67,16 +68,15 @@ proapp.controller('historyController', ['$scope', '$http', function ($scope, $ht
             storage["name"] = $scope.userNameInHistory;
         });
     }, 10);
-    function notshow() {
-        $scope.isnotVipAndNoChange = false;
-        $scope.isVipAndNoChange = false;
-        $scope.isnotVipAndChange = false;
-        $scope.isVipAndChange = false;
+    function notshow(){
+        $scope.isnotVipAndNoChange=false;
+        $scope.isVipAndNoChange=false;
+        $scope.isnotVipAndChange=false;
+        $scope.isVipAndChange=false;
     }
-
     if (storage["isSignIn"] === "no") {
         notshow();
-        $scope.isnotVipAndNoChange = true;
+        $scope.isnotVipAndNoChange=true;
     }
     else {
         notshow();
@@ -100,10 +100,9 @@ proapp.controller('historyController', ['$scope', '$http', function ($scope, $ht
         }).success(function (response, status, headers, config) {
             console.log("success devilery data", response);
         });
-        if (currentNumber == '0') {
+        if(currentNumber === '0'){
             location.reload();
         }
 
     }
-
 }]);

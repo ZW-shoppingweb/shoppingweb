@@ -73,7 +73,10 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
     }
     _this.signOut = function () {
         signOutInfo();
+        _this.userNameInNav="";
+        console.log($scope.userNameInNav);
         location.reload();
+
     }
     _this.hideForm = function () {
         angular.element(".loginForm").hide();
@@ -91,10 +94,9 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
         _this.isSignIn = "请登录";
         _this.isRegister = "免费注册";
         _this.isSignOut = null;
-        _this.userNameInNav = null;
+        //_this.userNameInNav = null;
         storage["isSignIn"] = "no";
         window.localStorage.removeItem("name");
-
     }
     _this.shopCartShow = function () {
         signInInfo();
@@ -129,7 +131,6 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
             .error(function (response, status, headers, config) {
 
             });
-
     }
 
 }]);
