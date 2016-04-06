@@ -19,10 +19,6 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
         })
             .success(function (response, status, headers, config) {
                 $("#cartShow").dropdown('toggle');
-                    console.log("click");
-
-
-
                 console.log("success devilery data", response);
             })
             .error(function (response, status, headers, config) {
@@ -34,8 +30,8 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
             url: "/shoppingweb/shopCartShow"
 
         }).success(function (data, status, headers, config) {
-                $("#productName1").text(data.cartProduct[0].product.productName);
-                $("#productName2").text(data.cartProduct[1].product.productName);
+                $("#productName1").html(data.cartProduct[0].product.productName);
+                $("#productName2").html(data.cartProduct[1].product.productName);
                  var productTotalPrice=0;
                 if(data.searchUser)
                 {
@@ -48,7 +44,7 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
                 {
                     for (var i=0;i<data.allCartProduct.length;i++)
                         productTotalPrice+=data.allCartProduct[i].product.productPrice*data.allCartProduct[i].productNum;
-                    $("productTotalPrice").text("总价:"+productTotalPrice);
+                    $("#productTotalPrice").text("总价:"+productTotalPrice);
                 }
 
                 console.log("success devilery data", data);
