@@ -11,17 +11,11 @@ import com.thoughtworks.shoppingweb.service.page.QueryFilter;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
-import java.util.ArrayList;
 import java.util.UUID;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Controller
 public class ProductController {
@@ -68,6 +62,7 @@ public class ProductController {
         return "index";
     }
 
+
     public void setProductService(ProductService productService) {
         this.productService = productService;
     }
@@ -89,12 +84,6 @@ public class ProductController {
         model.addAttribute("history",historyService.getHistoryByUser(userName));
         model.addAttribute("user",userName);
         return "productdetail";
-
-    }
-
-    @RequestMapping(value = "/productCart", method = RequestMethod.POST)
-    public ResponseEntity loginPage(@RequestBody ShopCart shopCart) {
-        return new ResponseEntity(productService.insertToCart(shopCart), HttpStatus.OK);
     }
 
 }

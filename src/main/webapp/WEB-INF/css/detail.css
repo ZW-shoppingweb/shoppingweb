@@ -1,5 +1,6 @@
 .contenText{
-    width: 1000px;
+    width: 800px;
+    margin-left: 200px;
     float: left;
 }
 .titleDetail{
@@ -9,7 +10,6 @@
 }
 .productImg{
     float: left;
-    padding-left: 200px;
 }
 .rightDetail{
     float: left;
@@ -45,9 +45,6 @@
     width: 150px;
     margin-right: 50px;
 }
-.productDetail{
-    padding-left: 200px;
-}
 .detailInfo{
     padding-left: 50px;
     padding-bottom: 50px;
@@ -61,4 +58,21 @@
 }
 .NotInCommonPrice{
     text-decoration:line-through;
+}
+.cartProduct{
+    width: 800px;
+    height: 200px;
+}
+.cartProduct img{
+    width: 100px;
+    float: left;
+}
+.cartProduct p{
+    width: 150px;
+    float: left;
+}
+.cartProduct input{
+    float: left;
+    width: 100px;
+    border: 1px solid black;
 }

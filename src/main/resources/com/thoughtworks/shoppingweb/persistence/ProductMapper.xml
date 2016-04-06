@@ -4,18 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.thoughtworks.shoppingweb.persistence.ProductMapper">
-    <select id="findProductById"  resultType="Product">
-    SELECT * FROM product WHERE productId=#{productId}
-</select>
-    <insert id="insertToCart" parameterType="com.thoughtworks.shoppingweb.domain.ShopCart">
-        INSERT INTO shopCart(userName,productId,productNum) VALUES (#{userName},#{productId},#{productNum})
-    </insert>
-    <select id="cartProduct" resultType="ShopCart">
-         SELECT * FROM (shopcart left join USER on shopcart.userName=USER .userName)left join product on shopcart.productId=product.productId WHERE shopcart.userName=#{userName}  ORDER BY shopCart.id DESC LIMIT 0,2
+    <select id="findProductById" resultType="Product">
+        SELECT * FROM product WHERE productId=#{productId}
     </select>
-    <select id="allCartProduct" resultType="ShopCart">
-        SELECT * FROM (shopcart left join USER on shopcart.userName=USER .userName)left join product on shopcart.productId=product.productId WHERE shopcart.userName=#{userName}
-    </select>
+
     <select id="getAllProduct" resultType="Product">
         SELECT * FROM product  limit #{start},#{size}
     </select>
@@ -51,6 +43,5 @@
         </if>
     </where>
     </select>
-
 
 </mapper>

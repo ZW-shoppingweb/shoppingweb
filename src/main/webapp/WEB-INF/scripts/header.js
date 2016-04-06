@@ -102,11 +102,11 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
 
         })
             .success(function (data, status, headers, config) {
-                $scope.productName1=data.cartProduct[0].productName;
-                $scope.productName2=data.cartProduct[1].productName;
+                $scope.productName1=data.cartProduct[0].product.productName;
+                $scope.productName2=data.cartProduct[1].product.productName;
                 $scope.productTotalPrice=0;
                 for (var i=0;i<data.allCartProduct.length;i++)
-                $scope.productTotalPrice+=data.allCartProduct[i].productPrice;
+                $scope.productTotalPrice+=data.allCartProduct[i].product.productPrice;
 
                 console.log("success devilery data", data);
             })

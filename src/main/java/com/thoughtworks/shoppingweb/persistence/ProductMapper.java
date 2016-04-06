@@ -25,9 +25,7 @@ public interface ProductMapper {
                                 @Param("minPrice") String minPrice,
                                 @Param("maxPrice") String maxPrice);
 
-    public int insertToCart(ShopCart shopCart);
-    public List<Product> cartProduct(String userName);
-    public List<Product>allCartProduct(String userName);
+
 
 }
 

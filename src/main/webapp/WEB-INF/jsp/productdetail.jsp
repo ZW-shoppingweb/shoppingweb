@@ -24,7 +24,7 @@
         </div>
     </div>
     <div>
-        <div class="productDetail">
+        <div>
             <h3>商品详情</h3>
             <hr color=#Gray>
             <p class="detailInfo">city: ${product.productCity} &nbsp&nbsp&nbspintroduce: ${product.productIntroduce}

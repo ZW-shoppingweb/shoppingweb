@@ -36,6 +36,9 @@
                     <li role="presentation">
                         <a role="menuitem" tabindex="-1" href="#">总价:{{productTotalPrice}}</a>
                     </li>
+                    <li role="presentation">
+                        <a href="/shoppingweb/goToMyShopCart?userName={{userCtrl.userNameInNav}}">去我的购物车</a>
+                    </li>
                 </ul>
             </div>
             <ul class="nav navbar-nav navbar-right">
