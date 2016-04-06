@@ -3,6 +3,7 @@ create table shopCart (
     userName varchar(40),
     `productId` varchar(32) NOT NULL,
      productNum INT NOT NULL ,
+     `addProductTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
       constraint userName foreign key (userName) references USER (userName),
       constraint productId foreign key (productId) references product (productId),
     primary key (`id`)

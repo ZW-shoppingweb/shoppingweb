@@ -2,6 +2,8 @@ package com.thoughtworks.shoppingweb.domain;
 
 import lombok.Data;
 
+import java.sql.Timestamp;
+
 /**
  * Created by cxzhao on 4/5/16.
  */
@@ -11,4 +13,5 @@ public class ShopCart {
     private String productId;
     private String productNum;
     private Product product;
+    private Timestamp addProductTime;
 }

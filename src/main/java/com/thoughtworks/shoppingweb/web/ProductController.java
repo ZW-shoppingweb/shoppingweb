@@ -87,18 +87,6 @@ public class ProductController {
         model.addAttribute("user",userName);
         return "productdetail";
     }
-    @RequestMapping(value = "/shopCartShow", method = RequestMethod.POST)
-    public ResponseEntity loginPage(@RequestBody String userName) {
-        Map result = new HashMap();
-        List<ShopCart> cartProduct = productService.cartProduct(userName);
-        List<ShopCart> allCartProduct = productService.allCartProduct(userName);
-        boolean searchUser=userService.searchUser(userName);
-        result.put("cartProduct",cartProduct);
-        result.put("allCartProduct",allCartProduct);
-        result.put("searchUser",searchUser);
-
-        return new ResponseEntity(result, HttpStatus.OK);
-    }
 
 
 }

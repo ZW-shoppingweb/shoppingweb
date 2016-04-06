@@ -30,10 +30,10 @@
                         <a role="menuitem" tabindex="-1"  href="#">最新加入购物车的两件商品:</a>
                     </li>
                     <li role="presentation">
-                        <a role="menuitem" tabindex="-1" id="productName1"  href="#">{{productName1}}</a>
+                        <a role="menuitem" tabindex="-1" id="productName1"  href="#">{{productName1}} 数目:{{productNum1}}</a>
                     </li>
                     <li role="presentation">
-                        <a role="menuitem" tabindex="-1" id="productName2" href="#">{{productName2}}</a>
+                        <a role="menuitem" tabindex="-1" id="productName2" href="#">{{productName2}} 数目:{{productNum2}}</a>
                     </li>
                     <li role="presentation" class="divider"></li>
                     <li role="presentation">

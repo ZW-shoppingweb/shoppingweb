@@ -19,39 +19,42 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
         })
             .success(function (response, status, headers, config) {
                 $("#cartShow").dropdown('toggle');
+                $http({
+                    method: 'POST',
+                    data: storage["name"],
+                    url: "/shoppingweb/shopCartShow"
+
+                }).success(function (data, status, headers, config) {
+                        $("#productName1").html(data.cartProduct[0].product.productName+"数目:"+data.cartProduct[0].productNum);
+                        $("#productName2").html(data.cartProduct[1].product.productName+"数目:"+data.cartProduct[1].productNum);
+
+
+                        var productTotalPrice=0;
+                        if(data.searchUser)
+                        {
+                            for (var i=0;i<data.allCartProduct.length;i++)
+                                productTotalPrice+=data.allCartProduct[i].product.productVipPrice*data.allCartProduct[i].productNum;
+                            console.log(productTotalPrice);
+                            $("#productTotalPrice").text("总价:"+productTotalPrice);
+                        }
+                        else
+                        {
+                            for (var i=0;i<data.allCartProduct.length;i++)
+                                productTotalPrice+=data.allCartProduct[i].product.productPrice*data.allCartProduct[i].productNum;
+                            $("#productTotalPrice").text("总价:"+productTotalPrice);
+                        }
+
+                        console.log("success devilery data", data);
+                    })
+                    .error(function (response, status, headers, config) {
+
+                    });
                 console.log("success devilery data", response);
             })
             .error(function (response, status, headers, config) {
 
             });
-        $http({
-            method: 'POST',
-            data: storage["name"],
-            url: "/shoppingweb/shopCartShow"
 
-        }).success(function (data, status, headers, config) {
-                $("#productName1").html(data.cartProduct[0].product.productName);
-                $("#productName2").html(data.cartProduct[1].product.productName);
-                 var productTotalPrice=0;
-                if(data.searchUser)
-                {
-                    for (var i=0;i<data.allCartProduct.length;i++)
-                        productTotalPrice+=data.allCartProduct[i].product.productVipPrice*data.allCartProduct[i].productNum;
-                    console.log(productTotalPrice);
-                    $("#productTotalPrice").text("总价:"+productTotalPrice);
-                }
-                else
-                {
-                    for (var i=0;i<data.allCartProduct.length;i++)
-                        productTotalPrice+=data.allCartProduct[i].product.productPrice*data.allCartProduct[i].productNum;
-                    $("#productTotalPrice").text("总价:"+productTotalPrice);
-                }
-
-                console.log("success devilery data", data);
-            })
-            .error(function (response, status, headers, config) {
-
-            });
     }
 
 

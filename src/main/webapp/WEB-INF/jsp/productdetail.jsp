@@ -17,7 +17,7 @@
             <span class="productName">${product.productName}</span>
             <p class="price1" ng-class={'NotInCommonPrice':noUsePrice}>￥${product.productPrice}</p>
             <p class="price2"> ￥${product.productVipPrice}/for VIP</p>
-            <p class="number">数目: <input type="number" name="productNum" ng-model="productNum" min="1"/></p>
+            <p class="number">数目: <input type="number" name="productNum" ng-model="productNum" max="10" min="1"/></p>
             <button class="buy btn btn-primary" >立即购买</button>
             <button class="buy btn btn-primary" ng-click="addCart()">加入购物车</button>
             <br>
