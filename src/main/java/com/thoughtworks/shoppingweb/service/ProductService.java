@@ -8,7 +8,7 @@ package com.thoughtworks.shoppingweb.service;
 import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.persistence.ProductMapper;
 import com.thoughtworks.shoppingweb.service.page.PaginationData;
-import com.thoughtworks.shoppingweb.web.ShopCart;
+import com.thoughtworks.shoppingweb.domain.ShopCart;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -7,7 +7,7 @@ package com.thoughtworks.shoppingweb.persistence;
 
 import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.service.page.QueryFilter;
-import com.thoughtworks.shoppingweb.web.ShopCart;
+import com.thoughtworks.shoppingweb.domain.ShopCart;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
