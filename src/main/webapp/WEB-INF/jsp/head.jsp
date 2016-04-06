@@ -27,14 +27,17 @@
                 </button>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                     <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="#">商品:{{productName1}}</a>
+                        <a role="menuitem" tabindex="-1"  href="#">最新加入购物车的两件商品:</a>
                     </li>
                     <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="#">商品:{{productName2}}</a>
+                        <a role="menuitem" tabindex="-1" id="productName1"  href="#">{{productName1}}</a>
+                    </li>
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1" id="productName2" href="#">{{productName2}}</a>
                     </li>
                     <li role="presentation" class="divider"></li>
                     <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="#">总价:{{productTotalPrice}}</a>
+                        <a role="menuitem" tabindex="-1" href="#" id="productTotalPrice">总价:{{productTotalPrice}}</a>
                     </li>
                     <li role="presentation">
                         <a href="/shoppingweb/goToMyShopCart?userName={{userCtrl.userNameInNav}}">去我的购物车</a>

@@ -18,10 +18,40 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
             url: "/shoppingweb/productCart"
         })
             .success(function (response, status, headers, config) {
-                //$("#cartShow").click(function(){
-                //
-                //});
+                $("#cartShow").dropdown('toggle');
+                    console.log("click");
+
+
+
                 console.log("success devilery data", response);
+            })
+            .error(function (response, status, headers, config) {
+
+            });
+        $http({
+            method: 'POST',
+            data: storage["name"],
+            url: "/shoppingweb/shopCartShow"
+
+        }).success(function (data, status, headers, config) {
+                $("#productName1").text(data.cartProduct[0].product.productName);
+                $("#productName2").text(data.cartProduct[1].product.productName);
+                 var productTotalPrice=0;
+                if(data.searchUser)
+                {
+                    for (var i=0;i<data.allCartProduct.length;i++)
+                        productTotalPrice+=data.allCartProduct[i].product.productVipPrice*data.allCartProduct[i].productNum;
+                    console.log(productTotalPrice);
+                    $("#productTotalPrice").text("总价:"+productTotalPrice);
+                }
+                else
+                {
+                    for (var i=0;i<data.allCartProduct.length;i++)
+                        productTotalPrice+=data.allCartProduct[i].product.productPrice*data.allCartProduct[i].productNum;
+                    $("productTotalPrice").text("总价:"+productTotalPrice);
+                }
+
+                console.log("success devilery data", data);
             })
             .error(function (response, status, headers, config) {
 

@@ -50,4 +50,19 @@ public class ProductService {
         return paginationData;
 
     }
+    public boolean insertToCart(ShopCart shopCart){
+        boolean insertResult;
+        try {
+            insertResult= (productMapper.insertToCart(shopCart)>0);
+        }catch (Exception e) {
+            logPrint.error(e);
+            insertResult = false;
+        }
+        return insertResult;
+    }
+
+    public List<Product> cartProduct(String userName){
+       return productMapper.cartProduct(userName);
+    }
+    public  List<Product>allCartProduct(String userName){return productMapper.allCartProduct(userName);}
 }

@@ -90,8 +90,8 @@ public class ProductController {
     @RequestMapping(value = "/shopCartShow", method = RequestMethod.POST)
     public ResponseEntity loginPage(@RequestBody String userName) {
         Map result = new HashMap();
-        List<Product> cartProduct = productService.cartProduct(userName);
-        List<Product> allCartProduct = productService.allCartProduct(userName);
+        List<ShopCart> cartProduct = productService.cartProduct(userName);
+        List<ShopCart> allCartProduct = productService.allCartProduct(userName);
         boolean searchUser=userService.searchUser(userName);
         result.put("cartProduct",cartProduct);
         result.put("allCartProduct",allCartProduct);
