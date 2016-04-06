@@ -4,14 +4,8 @@ package com.thoughtworks.shoppingweb.web;
  * Created by cxzhao on 3/22/16.
  */
 
-import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.domain.ShopCart;
-import com.thoughtworks.shoppingweb.service.HistoryService;
-import com.thoughtworks.shoppingweb.service.ProductService;
 import com.thoughtworks.shoppingweb.service.ShopCartService;
-import com.thoughtworks.shoppingweb.service.page.PaginationData;
-import com.thoughtworks.shoppingweb.service.page.QueryFilter;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 @Controller
 public class ShopCartController {

@@ -5,11 +5,8 @@ package com.thoughtworks.shoppingweb.service;
  * Created by cxzhao on 3/22/16.
  */
 
-import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.domain.ShopCart;
-import com.thoughtworks.shoppingweb.persistence.ProductMapper;
 import com.thoughtworks.shoppingweb.persistence.ShopCartMapper;
-import com.thoughtworks.shoppingweb.service.page.PaginationData;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +26,6 @@ public class ShopCartService {
     public void setShopCartMapper(ShopCartMapper shopCartMapper) {
         this.shopCartMapper = shopCartMapper;
     }
-
 
     public boolean insertToCart(ShopCart shopCart){
         if(shopCartMapper.findExistedShopCart(shopCart) !=null){

@@ -5,7 +5,6 @@ package com.thoughtworks.shoppingweb.persistence;
  * Created by cxzhao on 3/22/16.
  */
 
-import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.domain.ShopCart;
 
 import java.util.List;
