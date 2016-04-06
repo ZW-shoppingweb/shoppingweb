@@ -73,6 +73,7 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
     }
     _this.signOut = function () {
         signOutInfo();
+        location.reload();
     }
     _this.hideForm = function () {
         angular.element(".loginForm").hide();
@@ -93,9 +94,15 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
         _this.userNameInNav = null;
         storage["isSignIn"] = "no";
         window.localStorage.removeItem("name");
+
     }
     _this.shopCartShow = function () {
         signInInfo();
+        showCart();
+
+    }
+    function showCart()
+    {
         $http({
             method: 'POST',
             data: storage["name"],
@@ -103,20 +110,18 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
 
         })
             .success(function (data, status, headers, config) {
-                $scope.productName1=data.cartProduct[0].product.productName;
-                $scope.productName2=data.cartProduct[1].product.productName;
-                $scope.productNum1=data.cartProduct[0].productNum;
-                $scope.productNum2=data.cartProduct[1].productNum;
-                $scope.productTotalPrice=0;
-                if(data.searchUser)
-                {
-                    for (var i=0;i<data.allCartProduct.length;i++)
-                        $scope.productTotalPrice+=data.allCartProduct[i].product.productVipPrice*data.allCartProduct[i].productNum;
+                $scope.productName1 = data.cartProduct[0].product.productName;
+                $scope.productName2 = data.cartProduct[1].product.productName;
+                $scope.productNum1 = data.cartProduct[0].productNum;
+                $scope.productNum2 = data.cartProduct[1].productNum;
+                $scope.productTotalPrice = 0;
+                if (data.searchUser) {
+                    for (var i = 0; i < data.allCartProduct.length; i++)
+                        $scope.productTotalPrice += data.allCartProduct[i].product.productVipPrice * data.allCartProduct[i].productNum;
                 }
-                else
-                {
-                    for (var i=0;i<data.allCartProduct.length;i++)
-                        $scope.productTotalPrice+=data.allCartProduct[i].product.productPrice*data.allCartProduct[i].productNum;
+                else {
+                    for (var i = 0; i < data.allCartProduct.length; i++)
+                        $scope.productTotalPrice += data.allCartProduct[i].product.productPrice * data.allCartProduct[i].productNum;
                 }
 
                 console.log("success devilery data", data);
@@ -124,6 +129,7 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
             .error(function (response, status, headers, config) {
 
             });
+
     }
 
 }]);

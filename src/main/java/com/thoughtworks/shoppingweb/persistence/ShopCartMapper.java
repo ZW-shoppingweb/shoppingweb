@@ -12,9 +12,13 @@ import java.util.List;
 public interface ShopCartMapper {
 
     public int insertToCart(ShopCart shopCart);
+
     public List<ShopCart> cartProduct(String userName);
-    public List<ShopCart>allCartProduct(String userName);
+
+    public List<ShopCart> allCartProduct(String userName);
+
     public int updateShopCart(ShopCart shopCart);
+
     public ShopCart findExistedShopCart(ShopCart shopCart);
 }
 

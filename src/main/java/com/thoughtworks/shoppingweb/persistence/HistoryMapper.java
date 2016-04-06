@@ -6,11 +6,6 @@ package com.thoughtworks.shoppingweb.persistence;
  */
 
 import com.thoughtworks.shoppingweb.domain.History;
-import com.thoughtworks.shoppingweb.domain.Product;
-import com.thoughtworks.shoppingweb.domain.User;
-import com.thoughtworks.shoppingweb.service.page.QueryFilter;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 
 public interface HistoryMapper {
