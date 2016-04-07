@@ -59,15 +59,11 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
 }]);
 proapp.controller('historyController', ['$scope','$http', function ($scope,$http) {
     var storage = window.sessionStorage;
-    $scope.userNameInHistory="";
-    if (storage["name"] != undefined) {
-        $scope.userNameInHistory = storage["name"];
-    }
-    //setTimeout(function () {
-    //    $scope.$apply(function () {
-    //        storage["name"] = $scope.userNameInHistory;
-    //    });
-    //}, 10);
+    setTimeout(function () {
+        $scope.$apply(function () {
+            storage["name"] = $scope.userNameInHistory;
+        });
+    }, 10);
     function notshow(){
         $scope.isnotVipAndNoChange=false;
         $scope.isVipAndNoChange=false;

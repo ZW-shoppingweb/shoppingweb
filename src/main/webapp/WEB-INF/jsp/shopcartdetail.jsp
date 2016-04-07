@@ -14,7 +14,7 @@
     <c:if test="${!empty allCartProduct }">
         <c:forEach items="${allCartProduct }" var="cart">
             <div class="cartProduct">
-                <a hidden>{{ userNameInHistory='${user}'}}</a>
+                <a hidden>{{ userNameInHistory='${memberName}'}}</a>
                 <a href="<c:url value="/product/${cart.product.productId}?userName=${memberName}"/>">
                     <img src="${cart.product.productImage }"><br>
                     <p>${cart.product.productName}</p>

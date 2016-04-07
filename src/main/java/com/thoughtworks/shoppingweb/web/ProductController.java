@@ -88,7 +88,7 @@ public class ProductController {
         HttpSession session = request.getSession(true);
         session.setAttribute("memberName",userName);
         model.addAttribute("history",historyService.getHistoryByUser(userName));
-        model.addAttribute("user",userName);
+//        model.addAttribute("user",userName);
         return "productdetail";
     }
 
