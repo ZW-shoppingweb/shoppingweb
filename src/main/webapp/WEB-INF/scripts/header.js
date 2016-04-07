@@ -12,7 +12,6 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
             storage["name"] = _this.currentUserName;
         });
     }, 10);
-    console.log("11"+storage["name"]);
     if (storage["name"] === undefined || storage["name"] === "") {
         signOutInfo();
     }
@@ -42,7 +41,7 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
             }
         }).success(function (data) {
             if (data.isLogin === "yes") {
-                storage["name"] =data.name;
+                //storage["name"] =data.name;
                 storage["isSignIn"] = "yes";
                 signInInfo();
                 location.reload();
@@ -63,7 +62,7 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
                 url: "/shoppingweb/registerAction"
             }).success(function (data) {
                 if (data.isLogin === "yes") {
-                    storage["name"] =data.name;
+                    //storage["name"] =data.name;
                     storage["isSignIn"] = "yes";
                     signInInfo();
                     location.reload();
@@ -82,10 +81,11 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
     _this.signOut = function () {
         var url = '/shoppingweb/signOutAction';
         $http.get(url).success(function (data) {
-            if (data.isLogin === "no") {
-                signOutInfo();
-            }
         });
+        var web=location.href;
+        var pos=web.indexOf('=');
+        location.href=web.substring(0,pos+1);
+        signOutInfo();
         window.localStorage.removeItem("name");
     }
     _this.hideForm = function () {
@@ -104,6 +104,7 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
         _this.isRegister = "免费注册";
         _this.isSignOut = null;
         storage["isSignIn"] = "no";
+        storage["name"] = "";
         angular.element("#userNameInNav").html("");
     }
     _this.shopCartShow = function (memberName) {

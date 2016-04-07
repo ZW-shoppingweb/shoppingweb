@@ -10,14 +10,14 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
     else {
         $scope.noUsePrice = true;
     }
-    $scope.addCart = function () {
+    $scope.addCart = function (memberName) {
         $http({
             method: 'POST',
-            data: {userName: storage["name"], productId: $scope.productId, productNum: $scope.productNum},
+            data: {userName: memberName, productId: $scope.productId, productNum: $scope.productNum},
             url: "/shoppingweb/productCart"
         })
             .success(function (response, status, headers, config) {
-                showCart();
+                showCart(memberName);
                 console.log("success devilery data", response);
             })
             .error(function (response, status, headers, config) {
@@ -25,11 +25,11 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
             });
 
     }
-    function showCart() {
+    function showCart(memberName) {
         $("#cartShow").dropdown('toggle');
         $http({
             method: 'POST',
-            data: storage["name"],
+            data: memberName,
             url: "/shoppingweb/shopCartShow"
 
         }).success(function (data, status, headers, config) {
@@ -58,13 +58,14 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
 }]);
 proapp.controller('historyController', ['$scope','$http', function ($scope,$http) {
     var storage = window.localStorage;
-    setTimeout(function () {
-        $scope.$apply(function () {
-            storage["name"] = $scope.userNameInHistory;
-        });
-    }, 10);
+    //setTimeout(function () {
+    //    $scope.$apply(function () {
+    //        storage["name"] = $scope.userNameInHistory;
+    //    });
+    //}, 10);
     var nowProductId;
     var nowPrice;
+
     $scope.currentPrice=function (productId,price,vipPrice,currentNum) {
         nowProductId=productId;
         if (storage["isSignIn"] === "no") {
@@ -75,7 +76,6 @@ proapp.controller('historyController', ['$scope','$http', function ($scope,$http
         }
         angular.element(".priceOf" + productId).html("价格:"+currentNum*nowPrice);
     }
-
     $scope.priceProductChange = function (memberName) {
         var currentNumber = angular.element(".number" + nowProductId).val();
         angular.element(".priceOf" + nowProductId).html("价格:"+currentNumber*nowPrice);
@@ -88,7 +88,6 @@ proapp.controller('historyController', ['$scope','$http', function ($scope,$http
         if(currentNumber === '0'){
             location.reload();
         }
-
 
     }
 }]);

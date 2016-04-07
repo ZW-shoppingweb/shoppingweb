@@ -17,7 +17,7 @@
             <a class="navbar-brand" href="#">购物网站</a>
         </div>
         <div>
-            <a hidden>{{ currentUserName='${memberName}'}}</a>
+            <a hidden>{{ userNameCurrent='${memberName}'}}</a>
             <ul class="nav navbar-nav">
                 <li><a href="<c:url value="/productList"/>">首页</a></li>
             </ul>
@@ -48,7 +48,6 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="javascript:void(0);" ng-click="userCtrl.loginShow()" ng-bind="userCtrl.isSignIn"></a></li>
                 <li><a id="userNameInNav">${memberName}</a></li>
-                <%--<a ng-bind="userCtrl.userNameInNav"></a>--%>
                 <li><a href="javascript:void(0);" ng-click="userCtrl.registerShow()" ng-bind="userCtrl.isRegister"></a>
                 </li>
                 <li><a href="javascript:void(0);" ng-click="userCtrl.signOut()" ng-bind="userCtrl.isSignOut"></a></li>

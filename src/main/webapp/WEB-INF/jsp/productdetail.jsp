@@ -19,7 +19,7 @@
             <p class="price2"> ￥${product.productVipPrice}/for VIP</p>
             <p class="number">数目: <input type="number" name="productNum" ng-model="productNum" max="10" min="1"/></p>
             <button class="buy btn btn-primary" >立即购买</button>
-            <button class="buy btn btn-primary" ng-click="addCart()">加入购物车</button>
+            <button class="buy btn btn-primary" ng-click="addCart('${memberName}')">加入购物车</button>
             <br>
         </div>
     </div>
@@ -39,7 +39,6 @@
     <c:if test="${!empty history }">
         <c:forEach items="${history }" var="hy">
             <div class="indexProduct">
-                <a hidden>{{ userNameInHistory='${memberName}'}}</a>
                 <a href="<c:url value="/product/${hy.product.productId}?userName=${memberName}"/>">
                     <img src="${hy.product.productImage }"><br>
                     <p>${hy.product.productName}</p>

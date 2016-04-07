@@ -29,6 +29,8 @@ public class ShopCartService {
 
     public boolean insertToCart(ShopCart shopCart){
         if(shopCartMapper.findExistedShopCart(shopCart) !=null){
+            long nowtime = System.currentTimeMillis();
+            shopCart.setAddProductTime(new java.sql.Timestamp(nowtime));
            return (shopCartMapper.updateShopCart(shopCart))>0;
         }
         else {
