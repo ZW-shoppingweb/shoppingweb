@@ -17,12 +17,13 @@
             <a class="navbar-brand" href="#">购物网站</a>
         </div>
         <div>
+            <a hidden>{{ currentUserName='${memberName}'}}</a>
             <ul class="nav navbar-nav">
                 <li><a href="<c:url value="/productList"/>">首页</a></li>
             </ul>
             <div class="dropdown">
                 <button type="button" class="btn dropdown-toggle"
-                        data-toggle="dropdown" id="cartShow" ng-click="userCtrl.shopCartShow()">我的购物车
+                        data-toggle="dropdown" id="cartShow" ng-click="userCtrl.shopCartShow('${memberName}')">我的购物车
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">

@@ -6,14 +6,19 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
     _this.showNotSamePasswordTips = false;
     _this.showExistedUserTips = false;
     _this.showNotCorrectLoginTips = false;
-    var storage = window.sessionStorage;
+    var storage = window.localStorage;
+    setTimeout(function () {
+        $scope.$apply(function () {
+            storage["name"] = _this.currentUserName;
+        });
+    }, 10);
+    console.log("11"+storage["name"]);
     if (storage["name"] === undefined || storage["name"] === "") {
         signOutInfo();
     }
     else {
         signInInfo();
     }
-
     _this.loginShow = function () {
         if (storage["isSignIn"] === "no") {
             angular.element(".loginForm").show();
@@ -81,7 +86,7 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
                 signOutInfo();
             }
         });
-
+        window.localStorage.removeItem("name");
     }
     _this.hideForm = function () {
         angular.element(".loginForm").hide();
@@ -100,18 +105,16 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
         _this.isSignOut = null;
         storage["isSignIn"] = "no";
         angular.element("#userNameInNav").html("");
-        window.sessionStorage.removeItem("name");
     }
-    _this.shopCartShow = function () {
+    _this.shopCartShow = function (memberName) {
+        showCart(memberName);
         signInInfo();
-        showCart();
-
     }
-    function showCart()
+    function showCart(memberName)
     {
         $http({
             method: 'POST',
-            data: storage["name"],
+            data: memberName,
             url: "/shoppingweb/shopCartShow"
 
         })

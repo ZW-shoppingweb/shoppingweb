@@ -3,7 +3,7 @@
  */
 proapp.controller('priceController', ['$scope', '$location', '$http', function ($scope, $location, $http) {
     $scope.productNum=1;
-    var storage = window.sessionStorage;
+    var storage = window.localStorage;
     if (storage["isSignIn"] === "no") {
         $scope.noUsePrice = false;
     }
@@ -11,7 +11,6 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
         $scope.noUsePrice = true;
     }
     $scope.addCart = function () {
-        var storage = window.sessionStorage;
         $http({
             method: 'POST',
             data: {userName: storage["name"], productId: $scope.productId, productNum: $scope.productNum},
@@ -58,7 +57,7 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
 
 }]);
 proapp.controller('historyController', ['$scope','$http', function ($scope,$http) {
-    var storage = window.sessionStorage;
+    var storage = window.localStorage;
     setTimeout(function () {
         $scope.$apply(function () {
             storage["name"] = $scope.userNameInHistory;

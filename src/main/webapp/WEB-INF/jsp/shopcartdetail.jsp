@@ -21,7 +21,7 @@
                 </a>
                 <p>当前数量:${cart.productNum}</p>
                 <p>
-                    <input ng-model="priceInput${cart.product.productId}" class="number${cart.product.productId}" type="number" max="10" min="0" ng-change="priceProductChange('${cart.product.productId}')"/>
+                    <input ng-model="priceInput${cart.product.productId}" class="number${cart.product.productId}" type="number" max="10" min="0" step="1" ng-change="priceProductChange('${cart.product.productId}')"/>
                 </p>
                 <p ng-show="isnotVipAndNoChange">价格:{{ ${cart.productNum}*'${cart.product.productPrice}'}}</p>
                 <p ng-show="isVipAndNoChange">价格:{{ ${cart.productNum}*'${cart.product.productVipPrice}'}}</p>
