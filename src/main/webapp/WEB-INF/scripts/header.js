@@ -44,7 +44,13 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
                 //storage["name"] =data.name;
                 storage["isSignIn"] = "yes";
                 signInInfo();
-                location.reload();
+                var web=location.href;
+                if(web.indexOf('?userName=')>0){
+                    location.href=web+data.name;
+                }
+                else{
+                    location.reload();
+                }
             }
             else {
                 _this.showNotCorrectLoginTips = true;
@@ -65,7 +71,13 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
                     //storage["name"] =data.name;
                     storage["isSignIn"] = "yes";
                     signInInfo();
-                    location.reload();
+                    var web=location.href;
+                    if(web.indexOf('?userName=')>0){
+                        location.href=web+data.name;
+                    }
+                    else{
+                        location.reload();
+                    }
                     angular.element(".registerForm").hide();
                 }
                 else {

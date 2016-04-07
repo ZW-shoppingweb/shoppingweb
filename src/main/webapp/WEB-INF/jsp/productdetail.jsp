@@ -27,8 +27,8 @@
         <div>
             <h3>商品详情</h3>
             <hr color=#Gray>
-            <p class="detailInfo">city: ${product.productCity} &nbsp&nbsp&nbspintroduce: ${product.productIntroduce}
-                &nbsp&nbsp&nbspcity: ${product.productCity}</p>
+            <p class="detailInfo">city: ${product.productCity} &nbsp;&nbsp;&nbsp;introduce: ${product.productIntroduce}
+                &nbsp;&nbsp;&nbsp;city: ${product.productCity}</p>
             <img class="detailImg" src="${product.productDetailsImg}">
 
         </div>
