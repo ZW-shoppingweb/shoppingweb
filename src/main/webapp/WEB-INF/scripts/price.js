@@ -63,40 +63,32 @@ proapp.controller('historyController', ['$scope','$http', function ($scope,$http
             storage["name"] = $scope.userNameInHistory;
         });
     }, 10);
-    function notshow(){
-        $scope.isnotVipAndNoChange=false;
-        $scope.isVipAndNoChange=false;
-        $scope.isnotVipAndChange=false;
-        $scope.isVipAndChange=false;
-    }
-    if (storage["isSignIn"] === "no") {
-        notshow();
-        $scope.isnotVipAndNoChange=true;
-    }
-    else {
-        notshow();
-        $scope.isVipAndNoChange = true;
-    }
-    $scope.priceProductChange = function (productId) {
+    var nowProductId;
+    var nowPrice;
+    $scope.currentPrice=function (productId,price,vipPrice,currentNum) {
+        nowProductId=productId;
         if (storage["isSignIn"] === "no") {
-            notshow();
-            $scope.isnotVipAndChange = true;
+            nowPrice=price;
         }
         else {
-            notshow();
-            $scope.isVipAndChange = true;
+            nowPrice=vipPrice;
         }
-        console.log(angular.element(".number" + productId).val())
-        var currentNumber = angular.element(".number" + productId).val();
+        angular.element(".priceOf" + productId).html("价格:"+currentNum*nowPrice);
+    }
+
+    $scope.priceProductChange = function (memberName) {
+        var currentNumber = angular.element(".number" + nowProductId).val();
+        angular.element(".priceOf" + nowProductId).html("价格:"+currentNumber*nowPrice);
         $http({
             method: 'POST',
-            data: {userName: storage["name"], productId: productId, productNum: currentNumber},
+            data: {userName: memberName, productId: nowProductId, productNum: currentNumber},
             url: "/shoppingweb/productCart"
-        }).success(function (response, status, headers, config) {
+        }).success(function () {
         });
         if(currentNumber === '0'){
             location.reload();
         }
+
 
     }
 }]);

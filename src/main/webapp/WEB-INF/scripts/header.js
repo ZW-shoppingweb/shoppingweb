@@ -120,8 +120,8 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
         })
             .success(function (data, status, headers, config) {
                 $scope.productName1 = data.cartProduct[0].product.productName;
-                $scope.productName2 = data.cartProduct[1].product.productName;
                 $scope.productNum1 = data.cartProduct[0].productNum;
+                $scope.productName2 = data.cartProduct[1].product.productName;
                 $scope.productNum2 = data.cartProduct[1].productNum;
                 $scope.productTotalPrice = 0;
                 if (data.searchUser) {
