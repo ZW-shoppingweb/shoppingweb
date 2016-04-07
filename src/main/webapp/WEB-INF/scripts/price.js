@@ -58,14 +58,8 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
 }]);
 proapp.controller('historyController', ['$scope','$http', function ($scope,$http) {
     var storage = window.localStorage;
-    //setTimeout(function () {
-    //    $scope.$apply(function () {
-    //        storage["name"] = $scope.userNameInHistory;
-    //    });
-    //}, 10);
     var nowProductId;
     var nowPrice;
-
     $scope.currentPrice=function (productId,price,vipPrice,currentNum) {
         nowProductId=productId;
         if (storage["isSignIn"] === "no") {
@@ -76,18 +70,45 @@ proapp.controller('historyController', ['$scope','$http', function ($scope,$http
         }
         angular.element(".priceOf" + productId).html("价格:"+currentNum*nowPrice);
     }
-    $scope.priceProductChange = function (memberName) {
-        var currentNumber = angular.element(".number" + nowProductId).val();
-        angular.element(".priceOf" + nowProductId).html("价格:"+currentNumber*nowPrice);
-        $http({
-            method: 'POST',
-            data: {userName: memberName, productId: nowProductId, productNum: currentNumber},
-            url: "/shoppingweb/productCart"
-        }).success(function () {
-        });
-        if(currentNumber === '0'){
-            location.reload();
-        }
-
-    }
+    //$scope.priceProductChange = function (memberName) {
+    //    var currentNumber = angular.element(".number" + nowProductId).val();
+    //    angular.element(".priceOf" + nowProductId).html("价格:"+currentNumber*nowPrice);
+    //    $http({
+    //        method: 'POST',
+    //        data: {userName: memberName, productId: nowProductId, productNum: currentNumber},
+    //        url: "/shoppingweb/productCart"
+    //    }).success(function () {
+    //    });
+    //    if(currentNumber === '0'){
+    //        location.reload();
+    //    }
+    //}
 }]);
+
+function priceProductChange(memberName,productId,price,vipPrice){
+    console.log(memberName+"22");
+    var storage = window.localStorage;
+    var nowProductId=productId;
+    var nowPrice;
+    var currentNumber = $(".number" + nowProductId).val();
+    if (storage["isSignIn"] === "no") {
+        nowPrice=price;
+    }
+    else {
+        nowPrice=vipPrice;
+    }
+    $(".priceOf" + nowProductId).html("价格:"+currentNumber*nowPrice);
+    var datas={userName: memberName, productId: nowProductId, productNum: currentNumber};
+    $.ajax({
+        type: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data: JSON.stringify(datas),
+        dataType: 'json',
+        url: "/shoppingweb/productCart"
+    });
+    if(currentNumber === '0'){
+        location.reload();
+    }
+}

@@ -21,10 +21,13 @@
                 </a>
                 <a hidden>{{ price${cart.product.productId} = '${cart.productNum}'}}</a>
                 <p>数量:
-                    <input ng-model="priceInput${cart.product.productId}" value="{{price${cart.product.productId}}}"
+                    <%--<input ng-model="priceInput${cart.product.productId}" value="{{price${cart.product.productId}}}"--%>
+                           <%--class="number${cart.product.productId}"--%>
+                           <%--type="number" max="10" min="0" step="1"--%>
+                           <%--ng-change="priceProductChange('${memberName}')"/>--%>
+                    <input value="${cart.productNum}" type="number" max="10" min="0" step="1"
                            class="number${cart.product.productId}"
-                           type="number" max="10" min="0" step="1"
-                           ng-change="priceProductChange('${memberName}')"/>
+                           onchange="priceProductChange('${memberName}',${cart.product.productId},${cart.product.productPrice},${cart.product.productVipPrice})"/>
                 </p>
                 <p class="priceOf${cart.product.productId}" ></p>
                 <br><br><br>

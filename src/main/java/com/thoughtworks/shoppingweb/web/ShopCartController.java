@@ -24,7 +24,7 @@ public class ShopCartController {
     ShopCartService shopCartService;
 
     @RequestMapping(value = "/productCart", method = RequestMethod.POST)
-    public ResponseEntity loginPage(@RequestBody ShopCart shopCart) {
+    public ResponseEntity productCart(@RequestBody ShopCart shopCart) {
         return new ResponseEntity(shopCartService.insertToCart(shopCart), HttpStatus.OK);
     }
     @RequestMapping(value = "/shopCartShow", method = RequestMethod.POST)
