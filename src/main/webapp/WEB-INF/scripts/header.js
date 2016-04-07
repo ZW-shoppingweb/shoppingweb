@@ -68,7 +68,6 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
                 url: "/shoppingweb/registerAction"
             }).success(function (data) {
                 if (data.isLogin === "yes") {
-                    //storage["name"] =data.name;
                     storage["isSignIn"] = "yes";
                     signInInfo();
                     var web=location.href;
