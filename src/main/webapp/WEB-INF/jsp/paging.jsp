@@ -16,6 +16,7 @@
     <a href="" ng-class={'NoUseHrefClass':noUseHrefPre} ng-click="nextPage(${indexPage.prevPageNum})">上一页</a>
     <a class='NoUseHrefClass'>{{ currentPageNum='${indexPage.currentPageNum}'}}</a>
     <a href="" ng-class={'NoUseHrefClass':noUseHrefNext} ng-click="nextPage(${indexPage.nextPageNum})">下一页</a>
+    <a hidden>{{ maxPageNum='${indexPage.maxPageNum}'}}</a>
     <a href="" ng-class={'NoUseHrefClass':noUseHrefEnd} ng-click="nextPage(${indexPage.maxPageNum})">尾页</a>
   </form>
 </div>

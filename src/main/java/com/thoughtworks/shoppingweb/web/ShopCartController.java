@@ -6,6 +6,7 @@ package com.thoughtworks.shoppingweb.web;
 
 import com.thoughtworks.shoppingweb.domain.ShopCart;
 import com.thoughtworks.shoppingweb.service.ShopCartService;
+import com.thoughtworks.shoppingweb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,8 @@ public class ShopCartController {
 
     @Autowired
     ShopCartService shopCartService;
+    @Autowired
+    UserService userService;
 
     @RequestMapping(value = "/productCart", method = RequestMethod.POST)
     public ResponseEntity productCart(@RequestBody ShopCart shopCart) {
@@ -34,6 +37,7 @@ public class ShopCartController {
         List<ShopCart> allCartProduct = shopCartService.allCartProduct(userName);
         result.put("cartProduct",cartProduct);
         result.put("allCartProduct",allCartProduct);
+        result.put("searchUser",userService.searchUser(userName));
 
         return new ResponseEntity(result, HttpStatus.OK);
     }

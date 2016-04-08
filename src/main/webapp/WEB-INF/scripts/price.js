@@ -51,10 +51,7 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
             .error(function (response, status, headers, config) {
 
             });
-
     }
-
-
 }]);
 proapp.controller('historyController', ['$scope','$http', function ($scope,$http) {
     var storage = window.localStorage;

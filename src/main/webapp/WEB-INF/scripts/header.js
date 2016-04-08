@@ -7,12 +7,8 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
     _this.showExistedUserTips = false;
     _this.showNotCorrectLoginTips = false;
     var storage = window.localStorage;
-    setTimeout(function () {
-        $scope.$apply(function () {
-            storage["name"] = _this.currentUserName;
-        });
-    }, 10);
-    if (storage["name"] === undefined || storage["name"] === "") {
+    var isLogin=angular.element("#userNameInNav").html();
+    if(isLogin == ""){
         signOutInfo();
     }
     else {
@@ -96,7 +92,6 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
         var pos=web.indexOf('=');
         location.href=web.substring(0,pos+1);
         signOutInfo();
-        window.localStorage.removeItem("name");
     }
     _this.hideForm = function () {
         angular.element(".loginForm").hide();
@@ -114,12 +109,10 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
         _this.isRegister = "免费注册";
         _this.isSignOut = null;
         storage["isSignIn"] = "no";
-        storage["name"] = "";
         angular.element("#userNameInNav").html("");
     }
     _this.shopCartShow = function (memberName) {
         showCart(memberName);
-        signInInfo();
     }
     function showCart(memberName)
     {
