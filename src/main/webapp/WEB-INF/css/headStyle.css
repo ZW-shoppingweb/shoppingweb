@@ -1,4 +1,4 @@
-.registerForm, .loginForm,.addressTable{
+.registerForm, .loginForm,.addressTable,.addressForm{
     width: 550px;
     left:300px;
     margin: 100px auto;
@@ -9,6 +9,7 @@
     display: none;
     background-color: #999999;
 }
+
 .center{
     text-align: center;
 }

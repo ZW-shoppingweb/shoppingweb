@@ -7,6 +7,10 @@
     <select id="addresses" resultType="Address">
          SELECT * FROM Address WHERE userName=#{userName}
     </select>
+    <select id="getCheckAddress" resultType="Address">
+        SELECT * FROM Address ORDER BY addressId DESC limit 0,1
+    </select>
+
     <insert id="insertAddress" parameterType="Address" >
         insert into address
         (addressId,firstName,lastName,emailAddress,userName,province,city,street)

@@ -31,5 +31,6 @@ public class AddressService {
         return insertResult;
 
     }
+    public Address getCheckAddress(){return addressMapper.getCheckAddress();}
 
 }

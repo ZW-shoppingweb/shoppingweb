@@ -73,19 +73,20 @@ proapp.controller('historyController', ['$scope','$http', function ($scope,$http
         }
         angular.element(".priceOf" + productId).html("价格:"+currentNum*nowPrice);
     }
-    $scope.addNewAddress=function(){
-        angular.element(".addressForm").show();
-        angular.element(".submitOldAddress").hide();
-    }
+
     $scope.checkout=function(member){
         angular.element(".addressTable").show();
         angular.element(".btncheck").hide();
         }
+    $scope.addNewAddress=function(){
+        angular.element(".addressForm").show();
+    }
     $scope.hideMessage=function(){
         angular.element(".messageOfEmptyOrder").hide();
     }
     $scope.hideForm=function(){
         angular.element(".addressTable").hide();
+        angular.element(".addressForm").hide();
         angular.element(".btncheck").show();
     }
     $scope.submitOrder=function (memberName,totalNum,totalPrice) {

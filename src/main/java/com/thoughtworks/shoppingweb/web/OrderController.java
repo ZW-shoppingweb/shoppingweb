@@ -29,14 +29,11 @@ public class OrderController {
     AddressService addressService;
 
     @RequestMapping(value = "/submitOrder", method = RequestMethod.POST)
-    public String productCart(@ModelAttribute Address address, Model model) {
-        System.out.println(address.getUserName());
-           addressService.insertAddress(address);
-            model.addAttribute("addressId",address.getAddressId());
-            model.addAttribute("userName",address.getUserName());
+    public ResponseEntity productCart(@RequestBody Orders orders) {
 
-       return "orderdetail";
+        return new ResponseEntity(orderService.insertToOrder(orders), HttpStatus.OK);
     }
+
     @RequestMapping(value = "/goToSumitOrderPage", method = RequestMethod.GET)
     public String goToMyShopCart(@RequestParam(value="userName",
             defaultValue = "", required = false) String userName, Model model) {
