@@ -1,7 +1,9 @@
 package com.thoughtworks.shoppingweb.web;
 
+import com.thoughtworks.shoppingweb.domain.Address;
 import com.thoughtworks.shoppingweb.domain.Orders;
 import com.thoughtworks.shoppingweb.domain.ShopCart;
+import com.thoughtworks.shoppingweb.service.AddressService;
 import com.thoughtworks.shoppingweb.service.OrderService;
 import com.thoughtworks.shoppingweb.service.ShopCartService;
 import com.thoughtworks.shoppingweb.service.UserService;
@@ -10,10 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,11 +25,17 @@ public class OrderController {
     ShopCartService shopCartService;
     @Autowired
     UserService userService;
+    @Autowired
+    AddressService addressService;
 
     @RequestMapping(value = "/submitOrder", method = RequestMethod.POST)
-    public ResponseEntity productCart(@RequestBody Orders orders) {
+    public String productCart(@ModelAttribute Address address, Model model) {
+        System.out.println(address.getUserName());
+           addressService.insertAddress(address);
+            model.addAttribute("addressId",address.getAddressId());
+            model.addAttribute("userName",address.getUserName());
 
-        return new ResponseEntity(orderService.insertToOrder(orders), HttpStatus.OK);
+       return "orderdetail";
     }
     @RequestMapping(value = "/goToSumitOrderPage", method = RequestMethod.GET)
     public String goToMyShopCart(@RequestParam(value="userName",

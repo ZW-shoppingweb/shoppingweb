@@ -1,6 +1,8 @@
 package com.thoughtworks.shoppingweb.web;
 
+import com.thoughtworks.shoppingweb.domain.Address;
 import com.thoughtworks.shoppingweb.domain.ShopCart;
+import com.thoughtworks.shoppingweb.service.AddressService;
 import com.thoughtworks.shoppingweb.service.ShopCartService;
 import com.thoughtworks.shoppingweb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class ShopCartController {
     ShopCartService shopCartService;
     @Autowired
     UserService userService;
+    @Autowired
+    AddressService addressService;
+
 
     @RequestMapping(value = "/productCart", method = RequestMethod.POST)
     public ResponseEntity productCart(@RequestBody ShopCart shopCart) {
@@ -34,7 +39,6 @@ public class ShopCartController {
         result.put("cartProduct",cartProduct);
         result.put("allCartProduct",allCartProduct);
         result.put("searchUser",userService.searchUser(userName));
-
         return new ResponseEntity(result, HttpStatus.OK);
     }
     @RequestMapping(value = "/goToMyShopCart", method = RequestMethod.GET)
@@ -42,6 +46,8 @@ public class ShopCartController {
             defaultValue = "", required = false) String userName, Model model) {
         model.addAttribute("allCartProduct",shopCartService.allCartProduct(userName));
         model.addAttribute("user",userName);
+        List<Address> getAllAddresses=addressService.getaddresses(userName);
+        model.addAttribute("allAddresses",getAllAddresses);
         return "shopcartdetail";
     }
 }

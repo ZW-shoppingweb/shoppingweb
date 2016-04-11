@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface AddressMapper {
     public List<Address> addresses(String userName);
+    public int insertAddress(Address address);
 }

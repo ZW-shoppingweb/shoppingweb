@@ -12,5 +12,8 @@ public class Address {
     private String lastName;
     private String emailAddress;
     private String userName;
+    private String province;
+    private String city;
+    private String street;
     private String statsuOrder;
 }

@@ -1,3 +1,6 @@
+/**
+ * Created by cxzhao on 3/30/16.
+ */
 proapp.controller('priceController', ['$scope', '$location', '$http', function ($scope, $location, $http) {
     $scope.productNum=1;
     var storage = window.localStorage;
@@ -54,7 +57,9 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
 
 }]);
 proapp.controller('historyController', ['$scope','$http', function ($scope,$http) {
+    angular.element(".addressTable").hide();
     angular.element(".addressForm").hide();
+    angular.element(".addNewAddress").hide();
     var storage = window.localStorage;
     var nowProductId;
     var nowPrice;
@@ -68,21 +73,20 @@ proapp.controller('historyController', ['$scope','$http', function ($scope,$http
         }
         angular.element(".priceOf" + productId).html("价格:"+currentNum*nowPrice);
     }
-    $scope.checkout=function(member){
-        console.log("nihao");
+    $scope.addNewAddress=function(){
         angular.element(".addressForm").show();
-        angular.element(".btncheck").hide();
-        $http({
-            method: 'POST',
-            data: member,
-            url: "/shoppingweb/shopCartShow"
-
-        }).success(function (data, status, headers, config) {
-            console.log("success devilery data", data);
-        });
+        angular.element(".submitOldAddress").hide();
     }
+    $scope.checkout=function(member){
+        angular.element(".addressTable").show();
+        angular.element(".btncheck").hide();
+        }
     $scope.hideMessage=function(){
         angular.element(".messageOfEmptyOrder").hide();
+    }
+    $scope.hideForm=function(){
+        angular.element(".addressTable").hide();
+        angular.element(".btncheck").show();
     }
     $scope.submitOrder=function (memberName,totalNum,totalPrice) {
         if(totalNum <= 0){

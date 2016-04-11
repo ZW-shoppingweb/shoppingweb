@@ -30,7 +30,7 @@
             </div>
         </c:forEach>
     </c:if>
-    <button class="btn btn-primary btncheck" ng-click="checkout('${memberName}')">确认</button>
+    <button class="btn btn-primary btncheck" ng-click="checkout()">确定订单</button>
     <%@ include file="address.jsp" %>
 </div>
 </body>
