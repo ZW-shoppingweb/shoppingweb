@@ -1,5 +1,5 @@
-.registerForm, .loginForm{
-    width: 500px;
+.registerForm, .loginForm,.addressForm{
+    width: 550px;
     left:300px;
     margin: 100px auto;
     padding: 40px;

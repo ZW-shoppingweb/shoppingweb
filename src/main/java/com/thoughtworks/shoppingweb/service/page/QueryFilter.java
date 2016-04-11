@@ -16,6 +16,5 @@ public class QueryFilter {
     private String pageId;
     private  int start;
     private  int size;
-
-
 }
+

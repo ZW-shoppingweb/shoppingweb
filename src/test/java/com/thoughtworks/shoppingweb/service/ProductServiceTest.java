@@ -2,6 +2,7 @@ package com.thoughtworks.shoppingweb.service;
 import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.persistence.ProductMapper;
 import com.thoughtworks.shoppingweb.service.page.PaginationData;
+import com.thoughtworks.shoppingweb.service.page.QueryFilter;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -30,16 +31,21 @@ public class ProductServiceTest {
 
     @Test
     public void testGetProductPaginationData() throws Exception {
-
+        QueryFilter queryFilter=new QueryFilter();
+        queryFilter.setProductCategory("1");
+        queryFilter.setMinPrice("0");
+        queryFilter.setMaxPrice("500");
+        queryFilter.setStart(0);
+        queryFilter.setSize(16);
         List<Product> mockedList = getProducts();
-        Mockito.when(productMapper.getPaginationProductList("productCategory","1","0","500","productPrice","ASC",0, 16)).thenReturn(mockedList.subList(0, 12));
-        Mockito.when(productMapper.getPaginationProductList("productCategory","1","0","500","productPrice","ASC",16, 16)).thenReturn(Collections.<Product>emptyList());
+        Mockito.when(productMapper.getPaginationProductList(queryFilter)).thenReturn(mockedList.subList(0, 12));
+        Mockito.when(productMapper.getPaginationProductList(queryFilter)).thenReturn(Collections.<Product>emptyList());
 
         PaginationData pd = new PaginationData();
 
         pd.setCurrentPageNum(1);
         pd.setPageSize(16);
-        pd.createQueryFilter("productCategory","1","0","500","productPrice","ASC");
+        pd.setQueryFilter(queryFilter);
 
         pd.setMaxCount(mockedList.size());
 
@@ -62,7 +68,7 @@ public class ProductServiceTest {
         for (int i = 0; i < 12; i++){
             Product product=new Product();
             product.setProductCategory("1");
-            product.setProductPrice((double) 490);
+            product.setProductPrice((double) 300);
             mockedList.add(product);
         }
         for (int i = 12; i < 28; i++) {

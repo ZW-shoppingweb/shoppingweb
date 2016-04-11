@@ -1,3 +1,6 @@
+/**
+ * Created by cxzhao on 3/30/16.
+ */
 proapp.controller('priceController', ['$scope', '$location', '$http', function ($scope, $location, $http) {
     $scope.productNum=1;
     var storage = window.localStorage;
@@ -54,6 +57,7 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
 
 }]);
 proapp.controller('historyController', ['$scope','$http', function ($scope,$http) {
+    angular.element(".addressForm").hide();
     var storage = window.localStorage;
     var nowProductId;
     var nowPrice;
@@ -67,6 +71,22 @@ proapp.controller('historyController', ['$scope','$http', function ($scope,$http
         }
         angular.element(".priceOf" + productId).html("价格:"+currentNum*nowPrice);
     }
+    $scope.checkout=function(member){
+        console.log("nihao");
+        angular.element(".addressForm").show();
+        angular.element(".btncheck").hide();
+        $http({
+            method: 'POST',
+            data: member,
+            url: "/shoppingweb/shopCartShow"
+
+        }).success(function (data, status, headers, config) {
+
+                console.log("success devilery data", data);
+            })
+            .error(function (response, status, headers, config) {
+
+            });}
     $scope.hideMessage=function(){
         angular.element(".messageOfEmptyOrder").hide();
     }
