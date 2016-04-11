@@ -18,7 +18,7 @@ public interface ShopCartMapper {
     public int addShopCartToOrder(ShopCart shopCart);
 
     public ShopCart findExistedShopCart(ShopCart shopCart);
-
+    public int deleteShopCartByUser(ShopCart shopCart);
 //    public int getAllProductNumOfUser(String userName);
 }
 

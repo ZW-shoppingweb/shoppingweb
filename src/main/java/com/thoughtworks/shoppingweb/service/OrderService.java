@@ -1,8 +1,10 @@
 package com.thoughtworks.shoppingweb.service;
 
 import com.thoughtworks.shoppingweb.domain.Orders;
+import com.thoughtworks.shoppingweb.domain.OrdersProduct;
 import com.thoughtworks.shoppingweb.domain.ShopCart;
 import com.thoughtworks.shoppingweb.persistence.OrderMapper;
+import com.thoughtworks.shoppingweb.persistence.OrderProductMapper;
 import com.thoughtworks.shoppingweb.persistence.ShopCartMapper;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ public class OrderService {
     private OrderMapper orderMapper;
     @Autowired
     private ShopCartMapper shopCartMapper;
+    @Autowired
+    private OrderProductMapper orderProductMapper;
     private final static Logger logPrint = Logger.getLogger(OrderService.class);
 
     public OrderMapper getOrderMapper() {
@@ -27,14 +31,29 @@ public class OrderService {
         this.orderMapper = orderMapper;
     }
 
+    public ShopCartMapper getShopCartMapper() {
+        return shopCartMapper;
+    }
+
+    public void setShopCartMapper(ShopCartMapper shopCartMapper) {
+        this.shopCartMapper = shopCartMapper;
+    }
+
     public boolean insertToOrder(Orders orders){
         boolean insertResult;
         try {
             int orderId=orderMapper.insertToOrder(orders);
             ShopCart shopCart=new ShopCart();
             shopCart.setUserName(orders.getUserName());
-            shopCart.setOrderId(orders.getOrderId());
-            insertResult= (shopCartMapper.addShopCartToOrder(shopCart)>0 && orderId>0);
+            List<ShopCart> shopCarts=shopCartMapper.allCartProduct(orders.getUserName());
+            int num=0;
+            for (ShopCart shopCart1:shopCarts){
+                OrdersProduct ordersProduct=new OrdersProduct(orders.getOrderId(),shopCart1.getProduct().getProductId(),
+                        Integer.parseInt(shopCart1.getProductNum()));
+                num+=orderProductMapper.insertProductToOrder(ordersProduct);
+            }
+            int delete=shopCartMapper.deleteShopCartByUser(shopCart);
+            return (orderId>0 && num == shopCarts.size() && delete>0);
         }catch (Exception e) {
             logPrint.error(e);
             insertResult = false;

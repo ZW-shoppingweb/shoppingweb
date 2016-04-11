@@ -3,10 +3,8 @@ CREATE table shopCart (
     userName varchar(40),
     productId varchar(32) NOT NULL,
     productNum INT NOT NULL ,
-    orderId int(11),
     addProductTime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT userNameInShopCart FOREIGN KEY (userName) REFERENCES USER (userName) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT productIdInShopCart FOREIGN KEY (productId) REFERENCES product (productId) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT orderIdInShopCart FOREIGN KEY (orderId) REFERENCES orders (orderId) ON DELETE CASCADE ON UPDATE CASCADE,
     primary key (id)
 );
