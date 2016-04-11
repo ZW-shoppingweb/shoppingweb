@@ -30,6 +30,17 @@
         <a class="btn btn-primary" href="/shoppingweb/productList">确定</a>
         <button class="btn btn-primary" ng-click="hideMessage()">取消</button>
     </div>
+    <div>
+        我的订单列表
+        <c:if test="${!empty orderList }">
+            <c:forEach items="${orderList }" var="order">
+                <p>${order.orderId}</p>
+                <p>数量:${order.productNum}</p>
+                <p>总价:${order.totalPrice}</p>
+                <br><br><br>
+            </c:forEach>
+        </c:if>
+    </div>
 </div>
 </body>
 </html>

@@ -55,6 +55,7 @@ public class OrderController {
         model.addAttribute("totalNum",totalNum);
         model.addAttribute("totalPrice",totalPrice);
         model.addAttribute("allCartProduct",shopCarts);
+        model.addAttribute("orderList",orderService.selectOrderByUserName(userName));
         return "orderdetail";
     }
 }

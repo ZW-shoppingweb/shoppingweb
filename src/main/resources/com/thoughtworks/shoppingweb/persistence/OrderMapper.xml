@@ -8,5 +8,7 @@
         INSERT INTO orders(addressId,userName,productNum,totalPrice)
         VALUES (#{addressId},#{userName},#{productNum},#{totalPrice})
     </insert>
-
+    <select id="selectOrderByUserName" resultType="Orders">
+        SELECT * FROM orders WHERE userName=#{userName}
+    </select>
 </mapper>

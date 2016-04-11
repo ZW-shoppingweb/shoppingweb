@@ -13,6 +13,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OrderService {
 
@@ -44,5 +46,8 @@ public class OrderService {
         }
         return insertResult;
 
+    }
+    public List<Orders> selectOrderByUserName(String userName){
+        return orderMapper.selectOrderByUserName(userName);
     }
 }
