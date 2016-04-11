@@ -79,3 +79,14 @@
     width: 800px;
     height: 40px;
 }
+.messageOfEmptyOrder{
+    text-align: center;
+    width: 300px;
+    left:400px;
+    padding-top: 80px;
+    top:200px;
+    height: 200px;
+    position: fixed;
+    display: none;
+    background-color: #999999;
+}

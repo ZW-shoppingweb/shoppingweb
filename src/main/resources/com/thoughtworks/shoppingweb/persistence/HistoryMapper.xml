@@ -20,7 +20,7 @@
     </update>
 
     <select id="getHistoryByUser"  resultMap="HistoryInfo">
-        SELECT * FROM history WHERE userName=#{userName} order by seeTime desc limit 4;
+        SELECT * FROM history WHERE userName=#{userName} ORDER BY seeTime DESC limit 4;
     </select>
     <resultMap id="HistoryInfo" type="History">
         <collection property="product" javaType="Product" column="productId" ofType="Product" select="selectProductInHistory" />

@@ -64,14 +64,23 @@ proapp.controller('historyController', ['$scope','$http', function ($scope,$http
         }
         angular.element(".priceOf" + productId).html("价格:"+currentNum*nowPrice);
     }
+    $scope.hideMessage=function(){
+        angular.element(".messageOfEmptyOrder").hide();
+    }
     $scope.submitOrder=function (memberName,totalNum,totalPrice) {
-        $http({
-            method: 'POST',
-            data: {addressId:1,userName: memberName,productNum:totalNum,totalPrice:totalPrice},
-            url: "/shoppingweb/submitOrder"
-        }).success(function () {
-            alert("成功提交订单");
-        });
+        if(totalNum <= 0){
+            angular.element(".messageOfEmptyOrder").show();
+        }
+        else {
+            angular.element(".messageOfEmptyOrder").hide();
+            $http({
+                method: 'POST',
+                data: {addressId:1,userName: memberName,productNum:totalNum,totalPrice:totalPrice},
+                url: "/shoppingweb/submitOrder"
+            }).success(function () {
+                alert("成功提交订单");
+            });
+        }
     }
 }]);
 

@@ -24,7 +24,12 @@
             </div>
         </c:forEach>
     </c:if>
-    <button class="btn btn-primary" style="text-align: right" ng-click="submitOrder('${memberName}',${totalNum},${totalPrice})">提交订单</button>
+    <button class="btn btn-primary" ng-click="submitOrder('${memberName}',${totalNum},${totalPrice})">提交订单</button>
+    <div class="messageOfEmptyOrder">
+        <p>订单为空,是否去添加商品?</p>
+        <a class="btn btn-primary" href="/shoppingweb/productList">确定</a>
+        <button class="btn btn-primary" ng-click="hideMessage()">取消</button>
+    </div>
 </div>
 </body>
 </html>

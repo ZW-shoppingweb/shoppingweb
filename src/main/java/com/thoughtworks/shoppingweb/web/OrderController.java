@@ -4,7 +4,7 @@ package com.thoughtworks.shoppingweb.web;
  * Created by cxzhao on 3/22/16.
  */
 
-import com.thoughtworks.shoppingweb.domain.Order;
+import com.thoughtworks.shoppingweb.domain.Orders;
 import com.thoughtworks.shoppingweb.domain.ShopCart;
 import com.thoughtworks.shoppingweb.service.OrderService;
 import com.thoughtworks.shoppingweb.service.ShopCartService;
@@ -19,9 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class OrderController {
@@ -34,9 +32,9 @@ public class OrderController {
     UserService userService;
 
     @RequestMapping(value = "/submitOrder", method = RequestMethod.POST)
-    public ResponseEntity productCart(@RequestBody Order order) {
+    public ResponseEntity productCart(@RequestBody Orders orders) {
 
-        return new ResponseEntity(orderService.insertToOrder(order), HttpStatus.OK);
+        return new ResponseEntity(orderService.insertToOrder(orders), HttpStatus.OK);
     }
     @RequestMapping(value = "/goToSumitOrderPage", method = RequestMethod.GET)
     public String goToMyShopCart(@RequestParam(value="userName",

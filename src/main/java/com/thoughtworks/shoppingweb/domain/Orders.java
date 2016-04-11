@@ -6,7 +6,7 @@ import lombok.Data;
  * Created by szwang on 4/11/16.
  */
 @Data
-public class Order {
+public class Orders {
     private int orderId;
     private int addressId;
     private String userName;
