@@ -1,6 +1,3 @@
-/**
- * Created by cxzhao on 3/30/16.
- */
 proapp.controller('priceController', ['$scope', '$location', '$http', function ($scope, $location, $http) {
     $scope.productNum=1;
     var storage = window.localStorage;
@@ -81,12 +78,9 @@ proapp.controller('historyController', ['$scope','$http', function ($scope,$http
             url: "/shoppingweb/shopCartShow"
 
         }).success(function (data, status, headers, config) {
-
-                console.log("success devilery data", data);
-            })
-            .error(function (response, status, headers, config) {
-
-            });}
+            console.log("success devilery data", data);
+        });
+    }
     $scope.hideMessage=function(){
         angular.element(".messageOfEmptyOrder").hide();
     }

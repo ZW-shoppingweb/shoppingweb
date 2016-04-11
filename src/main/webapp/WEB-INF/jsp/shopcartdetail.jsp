@@ -30,7 +30,6 @@
             </div>
         </c:forEach>
     </c:if>
-    <a class="btn btn-primary" href="/shoppingweb/goToSumitOrderPage?userName=${memberName}">去提交订单</a>
     <button class="btn btn-primary btncheck" ng-click="checkout('${memberName}')">确认</button>
     <%@ include file="address.jsp" %>
 </div>

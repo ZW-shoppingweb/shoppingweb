@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: cxzhao
-  Date: 4/11/16
-  Time: 11:41 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <form class="addressForm" name="addressForm" ng-submit="historyCtrl.addressAction()">
     <div class="form-group">
@@ -35,7 +28,7 @@
     </div>
 
     <div class="center">
-        <input type="submit" class="btn btn-primary" value="保存订单"/>
+        <a class="btn btn-primary" href="/shoppingweb/goToSumitOrderPage?userName=${memberName}">保存订单</a>
         <button type="button" class="btn btn-primary" ng-click="userCtrl.hideForm()">返回</button>
     </div>
 </form>

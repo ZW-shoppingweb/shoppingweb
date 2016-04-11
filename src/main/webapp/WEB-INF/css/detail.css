@@ -90,3 +90,13 @@
     display: none;
     background-color: #999999;
 }
+.orderListStyle{
+    margin-top: -240px;
+    margin-right: 30px;
+    text-align: left;
+    float: right;
+}
+.orderListStyle span{
+    display: inline-block;
+    width: 50px;
+}
