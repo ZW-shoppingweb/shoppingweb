@@ -102,6 +102,7 @@ proapp.controller('historyController', ['$scope','$http', function ($scope,$http
                 url: "/shoppingweb/submitOrder"
             }).success(function () {
                 alert("成功提交订单");
+                location.reload();
             });
         }
     }

@@ -5,9 +5,6 @@ import lombok.Data;
 import java.sql.Timestamp;
 import java.util.List;
 
-/**
- * Created by szwang on 3/22/16.
- */
 @Data
 public class History {
     private int historyId;

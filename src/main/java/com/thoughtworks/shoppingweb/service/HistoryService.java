@@ -1,10 +1,5 @@
 package com.thoughtworks.shoppingweb.service;
 
-
-/**
- * Created by cxzhao on 3/22/16.
- */
-
 import com.thoughtworks.shoppingweb.domain.History;
 import com.thoughtworks.shoppingweb.domain.User;
 import com.thoughtworks.shoppingweb.persistence.HistoryMapper;

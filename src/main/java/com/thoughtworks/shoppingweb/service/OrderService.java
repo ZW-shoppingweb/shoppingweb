@@ -1,10 +1,5 @@
 package com.thoughtworks.shoppingweb.service;
 
-
-/**
- * Created by cxzhao on 3/22/16.
- */
-
 import com.thoughtworks.shoppingweb.domain.Orders;
 import com.thoughtworks.shoppingweb.domain.ShopCart;
 import com.thoughtworks.shoppingweb.persistence.OrderMapper;
@@ -38,7 +33,7 @@ public class OrderService {
             int orderId=orderMapper.insertToOrder(orders);
             ShopCart shopCart=new ShopCart();
             shopCart.setUserName(orders.getUserName());
-            shopCart.setOrderId(orderId);
+            shopCart.setOrderId(orders.getOrderId());
             insertResult= (shopCartMapper.addShopCartToOrder(shopCart)>0 && orderId>0);
         }catch (Exception e) {
             logPrint.error(e);

@@ -1,10 +1,6 @@
 package com.thoughtworks.shoppingweb.service;
 
 
-/**
- * Created by cxzhao on 3/22/16.
- */
-
 import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.persistence.ProductMapper;
 import com.thoughtworks.shoppingweb.service.page.PaginationData;

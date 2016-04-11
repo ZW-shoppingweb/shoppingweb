@@ -23,16 +23,16 @@ public class UserController {
     }
 
     @RequestMapping(value = "/loginAction", method = RequestMethod.POST)
-    public ResponseEntity loginPage(@RequestBody UserParams userParams,HttpServletRequest request) {
+    public ResponseEntity loginPage(@RequestBody UserForm userForm,HttpServletRequest request) {
         User user = new User();
-        user.setUserName(userParams.getUserName());
+        user.setUserName(userForm.getUserName());
         HttpSession session = request.getSession(true);
-        session.setAttribute("memberName",userParams.getUserName());
-        user.setPassword(userParams.getPassword());
+        session.setAttribute("memberName",userForm.getUserName());
+        user.setPassword(userForm.getPassword());
         Map result = new HashMap();
         if (userService.validateUser(user)) {
             result.put("isLogin", "yes");
-            result.put("name",userParams.getUserName());
+            result.put("name",userForm.getUserName());
         } else {
             result.put("isLogin", "no");
         }
@@ -40,16 +40,16 @@ public class UserController {
     }
 
     @RequestMapping(value = "/registerAction", method = RequestMethod.POST)
-    public ResponseEntity registerPage(@RequestBody UserParams userParams,HttpServletRequest request) {
+    public ResponseEntity registerPage(@RequestBody UserForm userForm,HttpServletRequest request) {
         User user = new User();
-        user.setUserName(userParams.getUserName());
-        user.setPassword(userParams.getPassword());
+        user.setUserName(userForm.getUserName());
+        user.setPassword(userForm.getPassword());
         HttpSession session = request.getSession(true);
-        session.setAttribute("memberName",userParams.getUserName());
+        session.setAttribute("memberName",userForm.getUserName());
         Map result = new HashMap();
         if (userService.addUser(user)) {
             result.put("isLogin", "yes");
-            result.put("name",userParams.getUserName());
+            result.put("name",userForm.getUserName());
         } else {
             result.put("isLogin", "no");
         }

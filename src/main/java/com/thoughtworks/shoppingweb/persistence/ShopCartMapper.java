@@ -1,10 +1,6 @@
 package com.thoughtworks.shoppingweb.persistence;
 
 
-/**
- * Created by cxzhao on 3/22/16.
- */
-
 import com.thoughtworks.shoppingweb.domain.ShopCart;
 
 import java.util.List;
@@ -24,8 +20,6 @@ public interface ShopCartMapper {
     public ShopCart findExistedShopCart(ShopCart shopCart);
 
 //    public int getAllProductNumOfUser(String userName);
-//
-//    public double getAllPriceOfUser(String userName);
 }
 
 

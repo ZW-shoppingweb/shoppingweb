@@ -2,9 +2,6 @@ package com.thoughtworks.shoppingweb.domain;
 
 import lombok.Data;
 
-/**
- * Created by szwang on 4/11/16.
- */
 @Data
 public class Orders {
     private int orderId;

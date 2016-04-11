@@ -1,9 +1,5 @@
 package com.thoughtworks.shoppingweb.web;
 
-/**
- * Created by cxzhao on 3/22/16.
- */
-
 import com.thoughtworks.shoppingweb.domain.ShopCart;
 import com.thoughtworks.shoppingweb.service.ShopCartService;
 import com.thoughtworks.shoppingweb.service.UserService;

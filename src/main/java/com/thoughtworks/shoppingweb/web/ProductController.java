@@ -1,9 +1,5 @@
 package com.thoughtworks.shoppingweb.web;
 
-/**
- * Created by cxzhao on 3/22/16.
- */
-
 import com.thoughtworks.shoppingweb.service.page.PaginationData;
 import com.thoughtworks.shoppingweb.domain.*;
 import com.thoughtworks.shoppingweb.service.*;
@@ -88,7 +84,6 @@ public class ProductController {
         HttpSession session = request.getSession(true);
         session.setAttribute("memberName",userName);
         model.addAttribute("history",historyService.getHistoryByUser(userName));
-//        model.addAttribute("user",userName);
         return "productdetail";
     }
 
