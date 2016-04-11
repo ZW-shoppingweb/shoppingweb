@@ -1,6 +1,3 @@
-/**
- * Created by cxzhao on 3/30/16.
- */
 proapp.controller('priceController', ['$scope', '$location', '$http', function ($scope, $location, $http) {
     $scope.productNum=1;
     var storage = window.localStorage;
@@ -67,23 +64,18 @@ proapp.controller('historyController', ['$scope','$http', function ($scope,$http
         }
         angular.element(".priceOf" + productId).html("价格:"+currentNum*nowPrice);
     }
-    //$scope.priceProductChange = function (memberName) {
-    //    var currentNumber = angular.element(".number" + nowProductId).val();
-    //    angular.element(".priceOf" + nowProductId).html("价格:"+currentNumber*nowPrice);
-    //    $http({
-    //        method: 'POST',
-    //        data: {userName: memberName, productId: nowProductId, productNum: currentNumber},
-    //        url: "/shoppingweb/productCart"
-    //    }).success(function () {
-    //    });
-    //    if(currentNumber === '0'){
-    //        location.reload();
-    //    }
-    //}
+    $scope.submitOrder=function (memberName,totalNum,totalPrice) {
+        $http({
+            method: 'POST',
+            data: {addressId:1,userName: memberName,productNum:totalNum,totalPrice:totalPrice},
+            url: "/shoppingweb/submitOrder"
+        }).success(function () {
+            alert("成功提交订单");
+        });
+    }
 }]);
 
 function priceProductChange(memberName,productId,price,vipPrice){
-    console.log(memberName+"22");
     var storage = window.localStorage;
     var nowProductId=productId;
     var nowPrice;

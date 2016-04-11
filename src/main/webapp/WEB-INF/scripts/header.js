@@ -8,7 +8,7 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
     _this.showNotCorrectLoginTips = false;
     var storage = window.localStorage;
     var isLogin=angular.element("#userNameInNav").html();
-    if(isLogin == ""){
+    if(isLogin === ""){
         signOutInfo();
     }
     else {
@@ -39,18 +39,22 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
             if (data.isLogin === "yes") {
                 storage["isSignIn"] = "yes";
                 signInInfo();
-                var web=location.href;
-                if(web.indexOf('?userName=')>0){
-                    location.href=web+data.name;
-                }
-                else{
-                    location.reload();
-                }
+                changeUrl(data);
             }
             else {
                 _this.showNotCorrectLoginTips = true;
             }
         });
+    }
+    function changeUrl(data){
+        var web=location.href;
+        var pos=web.indexOf('?userName=');
+        if(pos>0){
+            location.href=web.substring(0,pos)+"?userName="+data.name;
+        }
+        else{
+            location.reload();
+        }
     }
     _this.registerAction = function () {
         if (_this.passwordOnce == _this.passwordTwice && _this.passwordOnce != undefined) {
@@ -65,13 +69,7 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
                 if (data.isLogin === "yes") {
                     storage["isSignIn"] = "yes";
                     signInInfo();
-                    var web=location.href;
-                    if(web.indexOf('?userName=')>0){
-                        location.href=web+data.name;
-                    }
-                    else{
-                        location.reload();
-                    }
+                    changeUrl(data);
                     angular.element(".registerForm").hide();
                 }
                 else {
@@ -88,9 +86,6 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
         var url = '/shoppingweb/signOutAction';
         $http.get(url).success(function (data) {
         });
-        var web=location.href;
-        var pos=web.indexOf('=');
-        location.href=web.substring(0,pos+1);
         signOutInfo();
     }
     _this.hideForm = function () {

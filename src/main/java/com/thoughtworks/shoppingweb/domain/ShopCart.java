@@ -13,5 +13,6 @@ public class ShopCart {
     private String productId;
     private String productNum;
     private Product product;
+    private int orderId;
     private Timestamp addProductTime;
 }

@@ -5,7 +5,7 @@
 
 <mapper namespace="com.thoughtworks.shoppingweb.persistence.ShopCartMapper">
     <select id="allCartProduct"  resultMap="allShopCartInfo">
-        SELECT * FROM shopcart WHERE userName=#{userName} AND productNum > 0
+        SELECT * FROM shopcart WHERE userName=#{userName} AND productNum > 0 AND orderId is null
     </select>
     <resultMap id="allShopCartInfo" type="ShopCart">
         <collection property="product" javaType="Product" column="productId" ofType="Product" select="selectUserProductInCart" />
@@ -15,7 +15,7 @@
     </select>
 
     <select id="findExistedShopCart" resultType="ShopCart">
-        SELECT * FROM shopcart WHERE userName=#{userName} AND productId=#{productId}
+        SELECT * FROM shopcart WHERE userName=#{userName} AND productId=#{productId} AND orderId is null
     </select>
 
     <update id="updateShopCart" parameterType="ShopCart" >
@@ -27,7 +27,8 @@
         INSERT INTO shopCart(userName,productId,productNum) VALUES (#{userName},#{productId},#{productNum})
     </insert>
     <select id="cartProduct" resultMap="ShopCartInf">
-        SELECT * FROM shopcart WHERE userName=#{userName} AND productNum > 0 ORDER BY shopCart.addProductTime DESC LIMIT 0,2
+        SELECT * FROM shopcart WHERE userName=#{userName} AND productNum > 0 AND orderId is null
+         ORDER BY shopCart.addProductTime DESC LIMIT 0,2
     </select>
     <resultMap id="ShopCartInf" type="ShopCart">
         <collection property="product" javaType="Product" column="productId" ofType="Product" select="selectProductInShopCart" />
@@ -36,4 +37,10 @@
         SELECT * FROM  product WHERE productId=#{productId}
     </select>
 
+    <!--<select id="getAllProductNumOfUser"  resultType="java.lang.Integer">-->
+        <!--SELECT SUM(productNum) FROM shopcart WHERE userName=#{userName} AND productNum > 0 AND orderId is null-->
+    <!--</select>-->
+    <update id="addShopCartToOrder" parameterType="ShopCart" >
+        UPDATE shopcart SET orderId=#{orderId} WHERE userName=#{userName}
+    </update>
 </mapper>

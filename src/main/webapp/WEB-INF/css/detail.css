@@ -67,11 +67,15 @@
     width: 100px;
     float: left;
 }
-.cartProduct p{
+.cartProduct p,.orderProduct p{
     width: 150px;
     float: left;
 }
 .cartProduct input{
     width: 100px;
     border: 1px solid black;
+}
+.orderProduct{
+    width: 800px;
+    height: 40px;
 }

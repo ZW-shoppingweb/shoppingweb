@@ -10,27 +10,21 @@
 <body ng-app="userApp">
 <%@ include file="head.jsp" %>
 <div  class="contenText" ng-controller="historyController">
-    <h3>我的购物车</h3>
+    <h3>我的订单</h3>
+    <p>一共购买${totalNum}件商品,总价${totalPrice}</p>
     <c:if test="${!empty allCartProduct }">
         <c:forEach items="${allCartProduct }" var="cart">
-            <div class="cartProduct" ng-init="currentPrice(${cart.product.productId},${cart.product.productPrice},${cart.product.productVipPrice},${cart.productNum})">
-                <a hidden>{{ userNameInHistory='${memberName}'}}</a>
+            <div class="orderProduct" ng-init="currentPrice(${cart.product.productId},${cart.product.productPrice},${cart.product.productVipPrice},${cart.productNum})">
                 <a href="<c:url value="/product/${cart.product.productId}?userName=${memberName}"/>">
-                    <img src="${cart.product.productImage }"><br>
                     <p>${cart.product.productName}</p>
                 </a>
-                <a hidden>{{ price${cart.product.productId} = '${cart.productNum}'}}</a>
-                <p>数量:
-                    <input value="${cart.productNum}" type="number" max="10" min="0" step="1"
-                           class="number${cart.product.productId}"
-                           onchange="priceProductChange('${memberName}',${cart.product.productId},${cart.product.productPrice},${cart.product.productVipPrice})"/>
-                </p>
+                <p>数量:${cart.productNum}</p>
                 <p class="priceOf${cart.product.productId}" ></p>
                 <br><br><br>
             </div>
         </c:forEach>
     </c:if>
-    <a class="btn btn-primary" href="/shoppingweb/goToSumitOrderPage?userName=${memberName}">去提交订单</a>
+    <button class="btn btn-primary" style="text-align: right" ng-click="submitOrder('${memberName}',${totalNum},${totalPrice})">提交订单</button>
 </div>
 </body>
 </html>
