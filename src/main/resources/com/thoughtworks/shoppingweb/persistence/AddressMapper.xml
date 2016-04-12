@@ -10,7 +10,7 @@
     <select id="selectAddressById" resultType="Address">
         SELECT * FROM Address WHERE addressId=#{addressId}
     </select>
-    <select id="getCheckAddress" resultType="Address">
+    <select id="getLastAddress" resultType="Address">
         SELECT * FROM Address ORDER BY addressId DESC limit 0,1
     </select>
 
