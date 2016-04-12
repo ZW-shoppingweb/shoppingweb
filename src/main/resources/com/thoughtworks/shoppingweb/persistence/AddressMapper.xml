@@ -16,8 +16,8 @@
 
     <insert id="insertAddress" parameterType="Address" >
         insert into address
-        (addressId,firstName,lastName,emailAddress,userName,province,city,street,statusOrder)
+        (firstName,lastName,emailAddress,userName,province,city,street,statusOrder)
         values
-        (#{addressId},#{firstName},#{lastName},#{emailAddress},#{userName},#{province},#{city},#{street},#{statusOrder})
+        (#{firstName},#{lastName},#{emailAddress},#{userName},#{province},#{city},#{street},#{statusOrder})
     </insert>
 </mapper>

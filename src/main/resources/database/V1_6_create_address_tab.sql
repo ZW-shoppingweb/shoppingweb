@@ -8,7 +8,7 @@ create table Address
     province varchar(40) not null,
     city varchar(40) not null,
     street varchar(40) not null,
-    statusorder varchar(40) not null,
+    statusorder varchar(40) not null UNIQUE,
     primary key (addressId),
 	constraint primaryname foreign key (userName) references USER (userName) ON DELETE CASCADE ON UPDATE CASCADE
 );

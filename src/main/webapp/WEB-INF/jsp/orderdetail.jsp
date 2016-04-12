@@ -28,7 +28,7 @@
         姓:${address.firstName}
         名:${address.lastName}
         邮箱:${address.emailAddress}</p>
-    <p>收货地址:${address.province}${address.city}${address.street}<br></p>
+    <p>收货地址:${address.province}省${address.city}市${address.street}街<br></p>
     <button class="btn btn-primary" ng-click="submitOrder('${memberName}',${totalNum},${totalPrice},${address.addressId})">提交订单</button>
     <div class="messageOfEmptyOrder">
         <p>订单为空,是否去添加商品?</p>
