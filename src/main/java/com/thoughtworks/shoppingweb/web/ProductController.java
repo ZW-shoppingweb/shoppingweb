@@ -77,15 +77,29 @@ public class ProductController {
         Product product = productService.getProduct(id);
         if (product == null) throw new ProductNotFoundException();
         model.addAttribute(product);
-        if(userName == null || userName.equals("")) {
-            userName = UUID.randomUUID().toString();
-        }
-        historyService.insertHistory(userName,id);
-        HttpSession session = request.getSession(true);
-        session.setAttribute("memberName",userName);
-        model.addAttribute("history",historyService.getHistoryByUser(userName));
+        User user=createUser(userName,request);
+        createHistory(user,id,model);
         return "productdetail";
     }
 
-
+    public User createUser(String userName,HttpServletRequest request){
+        if(userName == null || userName.equals("")) {
+            userName = UUID.randomUUID().toString();
+        }
+        User user =new User();
+        user.setUserName(userName);
+        HttpSession session = request.getSession(true);
+        session.setAttribute("memberName",userName);
+        return user;
+    }
+    public void createHistory(User user,String id,Model model){
+        History history = new History();
+        history.setHistoryId(1);
+        history.setUserName(user.getUserName());
+        history.setProductId(id);
+        long nowtime = System.currentTimeMillis();
+        history.setSeeTime(new java.sql.Timestamp(nowtime));
+        historyService.insertHistory(user,history);
+        model.addAttribute("history",historyService.getHistoryByUser(user.getUserName()));
+    }
 }

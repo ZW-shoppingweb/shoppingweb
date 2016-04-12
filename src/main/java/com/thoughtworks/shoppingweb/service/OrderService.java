@@ -39,6 +39,10 @@ public class OrderService {
         this.shopCartMapper = shopCartMapper;
     }
 
+    public void setOrderProductMapper(OrderProductMapper orderProductMapper) {
+        this.orderProductMapper = orderProductMapper;
+    }
+
     public boolean insertToOrder(Orders orders){
         boolean insertResult;
         try {

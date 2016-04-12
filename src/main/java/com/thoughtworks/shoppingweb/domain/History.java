@@ -13,4 +13,5 @@ public class History {
     private Timestamp seeTime;
 
     private Product product;
+
 }
