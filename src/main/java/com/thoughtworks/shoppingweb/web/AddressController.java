@@ -26,9 +26,11 @@ public class AddressController {
     public String productCart(@ModelAttribute Address address, Model model) {
         if(address.getAddressId()==null) {
             addressService.insertAddress(address);
-            address.setAddressId(addressService.getCheckAddress().getAddressId());
+            address.setAddressId(addressService.getLastAddress().getAddressId());
+        } else {
+            address = addressService.selectAddressById(address);
         }
-        model.addAttribute("address",addressService.selectAddressById(address));
+        model.addAttribute("address", address);
         String userName=address.getUserName();
         selectOrderInfo(userName,model);
         return "orderdetail";
@@ -52,5 +54,12 @@ public class AddressController {
         model.addAttribute("totalPrice",totalPrice);
         model.addAttribute("allCartProduct",shopCarts);
         model.addAttribute("orderList",orderService.selectOrderByUserName(userName));
+    }
+
+    public void setAddressService(AddressService addressService) {
+        this.addressService = addressService;
+    }
+    public void setOrderService(OrderService orderService) {
+        this.orderService = orderService;
     }
 }

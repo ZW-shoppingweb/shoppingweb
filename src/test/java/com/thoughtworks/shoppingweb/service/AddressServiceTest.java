@@ -30,31 +30,45 @@ public class AddressServiceTest {
     }
 
     @Test
-    public void testGetAddress() throws Exception {
+    public void shouldGetAddressWhenSelectByUserName() throws Exception {
         List<Address> mockedList = getAddresses();
-        when(addressMapper.addresses("123456")).thenReturn(mockedList.subList(0,3));
-        List<Address> address=addressService.getaddresses("123456");
+        String userName="123456";
+        when(addressMapper.addresses(userName)).thenReturn(mockedList.subList(0,3));
+        List<Address> address=addressService.getaddresses(userName);
         assertEquals(3,address.size());
     }
-
     @Test
-    public void testGetCheckAddress() throws Exception {
+    public void shouldGetAddressWhenSelectNotByUserName() throws Exception {
         List<Address> mockedList = getAddresses();
-        when(addressMapper.getCheckAddress()).thenReturn(mockedList.get(mockedList.size()-1));
-
-        assertEquals(mockedList.get(mockedList.size()-1).getUserName(),addressService.getCheckAddress().getUserName());
+        String userName="1";
+        when(addressMapper.addresses(userName)).thenReturn(Collections.<Address>emptyList());
+        List<Address> address=addressService.getaddresses(userName);
+        assertEquals(0,address.size());
     }
 
+
     @Test
-    public void testInsertAddress() throws Exception {
+    public void shouldGetLastAddressWhenUseLastAddressFunction() throws Exception {
+        List<Address> mockedList = getAddresses();
+        when(addressMapper.getLastAddress()).thenReturn(mockedList.get(mockedList.size()-1));
+        assertEquals(mockedList.get(mockedList.size()-1).getUserName(),addressService.getLastAddress().getUserName());
+    }
+    @Test
+    public void ShouldGetTrueWhenInsertAddressSuccess() throws Exception {
         Address address=new Address();
        when(addressMapper.insertAddress(address)).thenReturn(1);
         assertEquals(true,addressService.insertAddress(address));
     }
+    @Test
+    public void ShouldGetFalseWhenInsertAddressFailed() throws Exception {
+        Address address=new Address();
+        when(addressMapper.insertAddress(address)).thenReturn(0);
+        assertEquals(false,addressService.insertAddress(address));
+    }
 
 
     @Test
-    public void testSelectAddressById() throws Exception {
+    public void shouldGetAddressByAddressId() throws Exception {
         Address address=new Address();
         address.setUserName("11111");
         address.setAddressId("12");
@@ -62,6 +76,18 @@ public class AddressServiceTest {
         when(addressMapper.selectAddressById(address)).thenReturn(mockedList.get(mockedList.size()-1));
        Address address1=addressService.selectAddressById(address);
         assertEquals(mockedList.get(mockedList.size()-1).getUserName(),address1.getUserName());
+
+    }
+
+    @Test
+    public void shouldNotGetAddressNotByAddressId() throws Exception {
+        Address address=new Address();
+        address.setUserName("11111");
+        address.setAddressId("1");
+        List<Address> mockedList = getAddresses();
+        when(addressMapper.selectAddressById(address)).thenReturn(new Address());
+        Address address1=addressService.selectAddressById(address);
+        assertEquals(null,address1.getUserName());
 
     }
 

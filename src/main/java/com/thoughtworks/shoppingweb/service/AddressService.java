@@ -31,7 +31,7 @@ public class AddressService {
         return insertResult;
 
     }
-    public Address getCheckAddress(){return addressMapper.getCheckAddress();}
+    public Address getLastAddress(){return addressMapper.getLastAddress();}
     public Address selectAddressById(Address address){return addressMapper.selectAddressById(address);}
 
     public void setAddressMapper(AddressMapper addressMapper) {

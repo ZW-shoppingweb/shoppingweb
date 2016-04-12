@@ -8,6 +8,11 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
         $scope.noUsePrice = true;
     }
     $scope.addCart = function (memberName) {
+        var reg = new RegExp("^[0-9]*$");
+        if(!reg.test($scope.productNum)){
+            alert("请输入1-10数字!");
+        }
+        else {
         $http({
             method: 'POST',
             data: {userName: memberName, productId: $scope.productId, productNum: $scope.productNum},
@@ -19,7 +24,7 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
             })
             .error(function (response, status, headers, config) {
 
-            });
+            });}
 
     }
     function showCart(memberName) {

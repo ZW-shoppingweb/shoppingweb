@@ -36,7 +36,6 @@ public class OrderControllerTest {
         ResponseEntity responseEntity=orderController.productToOrder(orders);
         Mockito.verify(orderService).insertToOrder(Matchers.<Orders>anyObject());
         assertEquals(false,responseEntity.getBody());
-
     }
 
 }

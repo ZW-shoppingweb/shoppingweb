@@ -35,24 +35,15 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void testProductList() throws Exception {
+    public void shouldGetCurrentPageNumWhenPageIdIsOne() throws Exception {
         List<Product> mokitoList = new ArrayList<Product>();
         QueryFilter queryFilter = getQueryFilter();
-        PaginationData paginationData = new PaginationData();
-        paginationData.setQueryFilter(queryFilter);
         int expectedPageNum = 1;
-        paginationData.setCurrentPageNum(expectedPageNum);
-
-        Mockito.when(productService.getProductPaginationData(Matchers.<PaginationData>anyObject())).thenReturn(paginationData);
-
         Model returnModel = new ExtendedModelMap();
         productController.productList(queryFilter, returnModel);
-
         PaginationData paginationDataReturn = (PaginationData) returnModel.asMap().get("indexPage");
         Mockito.verify(productService).getProductPaginationData(Matchers.<PaginationData>anyObject());
         assertThat(expectedPageNum, is(paginationDataReturn.getCurrentPageNum()));
-
-
     }
 
     private QueryFilter getQueryFilter() {
@@ -65,7 +56,7 @@ public class ProductControllerTest {
         return queryFilter;
     }
     @Test
-    public void testGetCurrentPageNum() throws Exception {
+    public void shouldGetCurrentPageWhenPageIdIsNull() throws Exception {
         QueryFilter queryFilter=getQueryFilter();
         queryFilter.setPageId(null);
         Model returnModel = new ExtendedModelMap();
@@ -73,6 +64,15 @@ public class ProductControllerTest {
         PaginationData paginationDataReturn = (PaginationData) returnModel.asMap().get("indexPage");
 
         assertEquals(1,paginationDataReturn.getCurrentPageNum());
+    }
+
+    @Test
+    public void shouldGetDetailProductWhenInputProductId() throws Exception {
+        Product productdetail=new Product();
+        Mockito.when(productService.getProduct("123456")).thenReturn(productdetail);
+        Model returnModel = new ExtendedModelMap();
+       Product product=(Product) returnModel.asMap().get("product");
+        assertEquals(productdetail.getProductId(),product.getProductId());
 
     }
 }
