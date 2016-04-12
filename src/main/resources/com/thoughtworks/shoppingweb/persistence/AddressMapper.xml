@@ -14,7 +14,7 @@
         SELECT * FROM Address ORDER BY addressId DESC limit 0,1
     </select>
 
-    <insert id="insertAddress" parameterType="Address" >
+    <insert id="insertAddress" useGeneratedKeys="true" keyProperty="addressId" parameterType="Address" >
         insert into address
         (firstName,lastName,emailAddress,userName,province,city,street,statusOrder)
         values

@@ -15,8 +15,12 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
+    public void setOrderService(OrderService orderService) {
+        this.orderService = orderService;
+    }
+
     @RequestMapping(value = "/submitOrder", method = RequestMethod.POST)
-    public ResponseEntity productCart(@RequestBody Orders orders) {
+    public ResponseEntity productToOrder(@RequestBody Orders orders) {
         return new ResponseEntity(orderService.insertToOrder(orders), HttpStatus.OK);
     }
 }
