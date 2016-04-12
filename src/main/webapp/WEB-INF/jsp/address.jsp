@@ -1,17 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: cxzhao
-  Date: 4/11/16
-  Time: 11:41 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <form class="addressTable" name="addressForm" action="/shoppingweb/submitAddress" method="post">
     <label>收货地址</label><br>
     <c:if test="${!empty allAddresses}">
         <c:forEach items="${allAddresses}" var="address">
             <input type="radio" name="addressId" id="address" value="${address.addressId}"/>
-            姓:${address.firstName}名:${address.lastName}邮箱:${address.emailAddress}地址:${address.province}<br>
+            姓:${address.firstName}名:${address.lastName}邮箱:${address.emailAddress}地址:${address.province}${address.city}${address.street}<br>
         </c:forEach>
     </c:if>
     <input type="text" name="userName" value="${user}" hidden>

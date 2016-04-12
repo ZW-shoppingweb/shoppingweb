@@ -4,11 +4,9 @@ import com.thoughtworks.shoppingweb.domain.Address;
 
 import java.util.List;
 
-/**
- * Created by cxzhao on 4/11/16.
- */
 public interface AddressMapper {
     public List<Address> addresses(String userName);
     public Address getCheckAddress();
     public int insertAddress(Address address);
+    public Address selectAddressById(Address address);
 }

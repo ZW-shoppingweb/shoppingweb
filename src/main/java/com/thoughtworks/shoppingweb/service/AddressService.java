@@ -32,5 +32,5 @@ public class AddressService {
 
     }
     public Address getCheckAddress(){return addressMapper.getCheckAddress();}
-
+    public Address selectAddressById(Address address){return addressMapper.selectAddressById(address);}
 }

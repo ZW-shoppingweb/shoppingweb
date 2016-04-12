@@ -7,6 +7,9 @@
     <select id="addresses" resultType="Address">
          SELECT * FROM Address WHERE userName=#{userName}
     </select>
+    <select id="selectAddressById" resultType="Address">
+        SELECT * FROM Address WHERE addressId=#{addressId}
+    </select>
     <select id="getCheckAddress" resultType="Address">
         SELECT * FROM Address ORDER BY addressId DESC limit 0,1
     </select>

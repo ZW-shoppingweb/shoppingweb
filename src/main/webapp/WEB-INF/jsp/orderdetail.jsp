@@ -24,7 +24,12 @@
             </div>
         </c:forEach>
     </c:if>
-    <button class="btn btn-primary" ng-click="submitOrder('${memberName}',${totalNum},${totalPrice})">提交订单</button>
+    <p>收货人:<br>
+        姓:${address.firstName}
+        名:${address.lastName}
+        邮箱:${address.emailAddress}</p>
+    <p>收货地址:${address.province}${address.city}${address.street}<br></p>
+    <button class="btn btn-primary" ng-click="submitOrder('${memberName}',${totalNum},${totalPrice},${address.addressId})">提交订单</button>
     <div class="messageOfEmptyOrder">
         <p>订单为空,是否去添加商品?</p>
         <a class="btn btn-primary" href="/shoppingweb/productList">确定</a>

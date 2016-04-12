@@ -1,6 +1,3 @@
-/**
- * Created by cxzhao on 3/30/16.
- */
 proapp.controller('priceController', ['$scope', '$location', '$http', function ($scope, $location, $http) {
     $scope.productNum=1;
     var storage = window.localStorage;
@@ -89,7 +86,7 @@ proapp.controller('historyController', ['$scope','$http', function ($scope,$http
         angular.element(".addressForm").hide();
         angular.element(".btncheck").show();
     }
-    $scope.submitOrder=function (memberName,totalNum,totalPrice) {
+    $scope.submitOrder=function (memberName,totalNum,totalPrice,addressId) {
         if(totalNum <= 0){
             angular.element(".messageOfEmptyOrder").show();
         }
@@ -97,7 +94,7 @@ proapp.controller('historyController', ['$scope','$http', function ($scope,$http
             angular.element(".messageOfEmptyOrder").hide();
             $http({
                 method: 'POST',
-                data: {addressId:1,userName: memberName,productNum:totalNum,totalPrice:totalPrice},
+                data: {addressId:addressId,userName: memberName,productNum:totalNum,totalPrice:totalPrice},
                 url: "/shoppingweb/submitOrder"
             }).success(function () {
                 alert("成功提交订单");
