@@ -23,7 +23,7 @@
                        ng-maxlength="20" required/>
             </div>
         </div>
-        <input type="text" name="userName" value="${user}" hidden>
+        <input type="text" name="userName" value="${memberName}" hidden>
         <div class="form-group">
             <label>地址</label><br>
             <input type="text"  placeholder="省" id="province"
