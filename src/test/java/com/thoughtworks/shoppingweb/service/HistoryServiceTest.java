@@ -9,7 +9,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -40,13 +39,8 @@ public class HistoryServiceTest {
         history.setProductId("1");
         history.setUserName("wsz");
 
-        History history1 = new History();
-        history1.setProductId("1");
-        history1.setUserName("wsz");
-        history1.setSeeTime(new Timestamp(System.currentTimeMillis()));
-
         when(userMapper.findUserByName(user)).thenReturn(user);
-        when(historyMapper.findHistory(history)).thenReturn(history1);
+        when(historyMapper.findHistory(history)).thenReturn(history);
         when(historyMapper.updateTime(history)).thenReturn(1);
 
         assertEquals(true, historyService.insertHistory(user,history));

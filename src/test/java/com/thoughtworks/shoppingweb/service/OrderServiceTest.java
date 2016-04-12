@@ -71,13 +71,7 @@ public class OrderServiceTest {
     }
     @Test
     public void shouldNotNullWhenOrderExistedInOrder() throws Exception {
-        Orders orders=new Orders();
         String userName="wsz";
-        orders.setUserName(userName);
-        orders.setAddressId(1);
-        orders.setProductNum(1);
-        orders.setTotalPrice(100);
-        Mockito.when(orderMapper.insertToOrder(orders)).thenReturn(1);
         Mockito.when(orderMapper.selectOrderByUserName(userName)).thenReturn(new ArrayList<Orders>());
         assertNotNull(orderService.selectOrderByUserName(userName));
     }
