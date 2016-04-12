@@ -14,6 +14,7 @@ public class ShopCartService {
     @Autowired
     private ShopCartMapper shopCartMapper;
     private final static Logger logPrint = Logger.getLogger(ShopCartService.class);
+
     public ShopCartMapper getShopCartMapper() {
         return shopCartMapper;
     }
