@@ -32,7 +32,7 @@
 
     </select>
 
-    <select id="getNumOfProducts" resultType="int" >
+    <select id="getNumOfProducts" resultType="int" parameterType="com.thoughtworks.shoppingweb.service.page.QueryFilter" >
         SELECT COUNT(1) FROM product
         <where>
         <if test="productCategory!=null and productCategory!=''">

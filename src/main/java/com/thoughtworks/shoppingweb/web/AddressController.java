@@ -22,7 +22,6 @@ public class AddressController {
     UserService userService;
     @Autowired
     OrderService orderService;
-
     @RequestMapping(value = "/submitAddress", method = RequestMethod.POST)
     public String productCart(@ModelAttribute Address address, Model model) {
         if(address.getAddressId()==null) {

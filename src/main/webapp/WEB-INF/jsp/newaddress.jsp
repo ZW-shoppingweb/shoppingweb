@@ -9,6 +9,8 @@
 <form class="addressForm" name="addressForm" action="/shoppingweb/submitAddress" method="post">
         <div class="form-group">
             <label>收件人</label><br>
+            <%double number=Math.random()*100;%>
+            <input type="text" name="statusOrder" value="<%=number%>" hidden/>
             <input type="text"  placeholder="名" id="firstName" ng-model="firstName"
                    required name="firstName">
             <input type="text" placeholder="姓" id="lastName"

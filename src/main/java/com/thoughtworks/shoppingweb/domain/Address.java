@@ -12,5 +12,5 @@ public class Address {
     private String province;
     private String city;
     private String street;
-    private String statsuOrder;
+    private String statusOrder;
 }

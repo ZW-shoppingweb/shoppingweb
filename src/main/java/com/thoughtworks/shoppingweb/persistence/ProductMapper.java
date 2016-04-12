@@ -20,9 +20,7 @@ public interface ProductMapper {
 
     public List<Product> getPaginationProductList(QueryFilter queryFilter);
 
-    public int getNumOfProducts(@Param("productCategory") String productCategory,
-                                @Param("minPrice") String minPrice,
-                                @Param("maxPrice") String maxPrice);
+    public int getNumOfProducts(QueryFilter queryFilter);
 
 }
 

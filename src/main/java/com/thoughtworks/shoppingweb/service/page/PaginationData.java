@@ -10,8 +10,9 @@ import java.util.Collection;
  */
 @Data
 public class PaginationData {
+
+
     private int currentPageNum;
-    private int pageSize;
     private long maxCount;
     private List<?> pageData;
     private QueryFilter queryFilter;
@@ -33,10 +34,10 @@ public class PaginationData {
     }
 
     public long getMaxPageNum() {
-        if (maxCount % pageSize > 0) {
-            return maxCount / pageSize + 1;
+        if (maxCount % queryFilter.getSize() > 0) {
+            return maxCount / queryFilter.getSize() + 1;
         }
-        return maxCount / pageSize;
+        return maxCount / queryFilter.getSize();
     }
 
 }

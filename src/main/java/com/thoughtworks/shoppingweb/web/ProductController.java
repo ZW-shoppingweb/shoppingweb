@@ -23,40 +23,34 @@ public class ProductController {
     HistoryService historyService;
     @Autowired
     UserService userService;
-    public static final String DEFAULT_PAGE_SIZE = "16";
-    public static final String DEFAULT_PAGE_NUM = "1";
+
+    public static final int DEFAULT_PAGE_NUM = 1;
     private final static Logger log = Logger.getLogger(ProductController.class);
 
     @RequestMapping(value = "/productList", method = RequestMethod.POST)
     public String productList(@ModelAttribute QueryFilter queryFilter, Model model) {
         PaginationData paginationData = new PaginationData();
         paginationData.setQueryFilter(queryFilter);
-        paginationData.setCurrentPageNum(1);
-        if (queryFilter.getPageId() != "" && queryFilter.getPageId() != null) {
-            paginationData.setCurrentPageNum(Integer.parseInt(queryFilter.getPageId()));
-        }
-        paginationData.setPageSize(16);
-        paginationData.getMaxPageNum();
-        paginationData = productService.getProductPaginationData(paginationData);
+        paginationData.setCurrentPageNum(getCurrentPage(queryFilter));
+        productService.getProductPaginationData(paginationData);
         model.addAttribute("indexPage", paginationData);
         model.addAttribute("query", queryFilter);
         return "index";
     }
+    private int getCurrentPage(QueryFilter queryFilter) {
+        if (queryFilter.getPageId() != "" && queryFilter.getPageId() != null) {
+            return Integer.parseInt(queryFilter.getPageId());
+        }
+        return  DEFAULT_PAGE_NUM;
+    }
 
     @RequestMapping(value = "/productList", method = RequestMethod.GET)
-    public String productListAll(
-            @RequestParam(value = "pageId", required = false,
-                    defaultValue = DEFAULT_PAGE_NUM) int pageId,
-            @RequestParam(value = "pageSize",
-                    defaultValue = DEFAULT_PAGE_SIZE, required = false) int pageSize,
-            Model model) {
-
+    public String productListAll(Model model) {
         PaginationData paginationData = new PaginationData();
         QueryFilter queryFilter = new QueryFilter();
         paginationData.setQueryFilter(queryFilter);
-        paginationData.setPageData(productService.getAllProduct(pageId, pageSize));
-        paginationData.setCurrentPageNum(pageId);
-        paginationData.setPageSize(pageSize);
+        paginationData.setPageData(productService.getAllProduct(1, 16));
+        paginationData.setCurrentPageNum(1);
         paginationData = productService.getProductPaginationData(paginationData);
         model.addAttribute("indexPage", paginationData);
         return "index";

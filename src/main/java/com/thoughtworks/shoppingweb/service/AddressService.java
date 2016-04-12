@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by cxzhao on 4/11/16.
@@ -20,7 +21,6 @@ public class AddressService {
         return addressMapper.addresses(username);
     }
     public boolean insertAddress(Address address){
-        address.setStatsuOrder("checkout");
         boolean insertResult;
         try {
             insertResult= (addressMapper.insertAddress(address)>0);

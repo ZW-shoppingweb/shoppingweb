@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by cxzhao on 3/25/16.
@@ -31,20 +32,14 @@ public class ProductServiceTest {
 
     @Test
     public void testGetProductPaginationData() throws Exception {
-        QueryFilter queryFilter=new QueryFilter();
-        queryFilter.setProductCategory("1");
-        queryFilter.setMinPrice("0");
-        queryFilter.setMaxPrice("500");
-        queryFilter.setStart(0);
-        queryFilter.setSize(16);
+        QueryFilter queryFilter=getQueryFilter();
         List<Product> mockedList = getProducts();
-        Mockito.when(productMapper.getPaginationProductList(queryFilter)).thenReturn(mockedList.subList(0, 12));
-        Mockito.when(productMapper.getPaginationProductList(queryFilter)).thenReturn(Collections.<Product>emptyList());
+
+        when(productMapper.getPaginationProductList(queryFilter)).thenReturn(mockedList.subList(0, 12)).thenReturn(Collections.<Product>emptyList());
 
         PaginationData pd = new PaginationData();
 
         pd.setCurrentPageNum(1);
-        pd.setPageSize(16);
         pd.setQueryFilter(queryFilter);
 
         pd.setMaxCount(mockedList.size());
@@ -61,6 +56,13 @@ public class ProductServiceTest {
 
         assertEquals(0, pd.getPageData().size());
 
+    }
+    private QueryFilter getQueryFilter(){
+        QueryFilter queryFilter=new QueryFilter();
+        queryFilter.setProductCategory("1");
+        queryFilter.setMinPrice("0");
+        queryFilter.setMaxPrice("500");
+        return queryFilter;
     }
 
     private List<Product> getProducts() {
