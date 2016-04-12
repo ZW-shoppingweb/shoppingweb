@@ -32,7 +32,7 @@ public class ShopCartController {
         return new ResponseEntity(shopCartService.insertToCart(shopCart), HttpStatus.OK);
     }
     @RequestMapping(value = "/shopCartShow", method = RequestMethod.POST)
-    public ResponseEntity loginPage(@RequestBody String userName) {
+    public ResponseEntity shopCartShow(@RequestBody String userName) {
         Map result = new HashMap();
         List<ShopCart> cartProduct = shopCartService.cartProduct(userName);
         List<ShopCart> allCartProduct = shopCartService.allCartProduct(userName);
@@ -45,7 +45,6 @@ public class ShopCartController {
     public String goToMyShopCart(@RequestParam(value="userName",
             defaultValue = "", required = false) String userName, Model model) {
         model.addAttribute("allCartProduct",shopCartService.allCartProduct(userName));
-        model.addAttribute("user",userName);
         List<Address> getAllAddresses=addressService.getaddresses(userName);
         model.addAttribute("allAddresses",getAllAddresses);
         return "shopcartdetail";
