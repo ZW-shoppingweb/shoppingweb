@@ -35,5 +35,6 @@ public class AddressService {
     public Address selectAddressById(Address address){return addressMapper.selectAddressById(address);}
 
     public void setAddressMapper(AddressMapper addressMapper) {
+        this.addressMapper=addressMapper;
     }
 }
