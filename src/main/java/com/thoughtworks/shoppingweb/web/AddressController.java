@@ -31,6 +31,10 @@ public class AddressController {
         }
         model.addAttribute("address",addressService.selectAddressById(address));
         String userName=address.getUserName();
+        selectOrderInfo(userName,model);
+        return "orderdetail";
+    }
+    public boolean selectOrderInfo(String userName, Model model){
         List<ShopCart> shopCarts=shopCartService.allCartProduct(userName);
         int totalNum=0;
         double totalPrice=0.00;
@@ -48,6 +52,11 @@ public class AddressController {
         model.addAttribute("totalPrice",totalPrice);
         model.addAttribute("allCartProduct",shopCarts);
         model.addAttribute("orderList",orderService.selectOrderByUserName(userName));
-        return "orderdetail";
+        if(totalNum == 0){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 }
