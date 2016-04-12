@@ -18,21 +18,17 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
-
     @RequestMapping(value = "/loginAction", method = RequestMethod.POST)
     public ResponseEntity loginPage(@RequestBody UserForm userForm,HttpServletRequest request) {
         User user = new User();
         user.setUserName(userForm.getUserName());
-        HttpSession session = request.getSession(true);
-        session.setAttribute("memberName",userForm.getUserName());
         user.setPassword(userForm.getPassword());
         Map result = new HashMap();
         if (userService.validateUser(user)) {
             result.put("isLogin", "yes");
             result.put("name",userForm.getUserName());
+            HttpSession session = request.getSession(true);
+            session.setAttribute("memberName",userForm.getUserName());
         } else {
             result.put("isLogin", "no");
         }
@@ -44,12 +40,12 @@ public class UserController {
         User user = new User();
         user.setUserName(userForm.getUserName());
         user.setPassword(userForm.getPassword());
-        HttpSession session = request.getSession(true);
-        session.setAttribute("memberName",userForm.getUserName());
         Map result = new HashMap();
         if (userService.addUser(user)) {
             result.put("isLogin", "yes");
             result.put("name",userForm.getUserName());
+            HttpSession session = request.getSession(true);
+            session.setAttribute("memberName",userForm.getUserName());
         } else {
             result.put("isLogin", "no");
         }

@@ -25,7 +25,6 @@ public class OrderControllerTest {
         Mockito.when(orderService.insertToOrder(Matchers.<Orders>anyObject())).thenReturn(true);
         ResponseEntity responseEntity=orderController.productToOrder(orders);
         Mockito.verify(orderService).insertToOrder(Matchers.<Orders>anyObject());
-        assertNotNull(orderController.productToOrder(orders));
         assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
         assertEquals(true,responseEntity.getBody());
 
