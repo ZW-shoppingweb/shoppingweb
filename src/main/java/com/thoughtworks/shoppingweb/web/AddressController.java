@@ -30,7 +30,6 @@ public class AddressController {
         }
         model.addAttribute("address",addressService.selectAddressById(address));
         String userName=address.getUserName();
-        System.out.println("==============================="+userName);
         selectOrderInfo(userName,model);
         return "orderdetail";
     }
@@ -49,7 +48,6 @@ public class AddressController {
                 totalPrice+=(productNum*shopCart.getProduct().getProductPrice());
             }
         }
-        //System.out.println("==============================="+userName);
         model.addAttribute("totalNum",totalNum);
         model.addAttribute("totalPrice",totalPrice);
         model.addAttribute("allCartProduct",shopCarts);
