@@ -3,7 +3,6 @@ package com.thoughtworks.shoppingweb.domain;
 import lombok.Data;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 @Data
 public class History {
