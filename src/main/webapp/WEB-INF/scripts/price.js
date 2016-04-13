@@ -108,7 +108,6 @@ proapp.controller('historyController', ['$scope','$http', function ($scope,$http
         }
     }
 }]);
-
 function priceProductChange(memberName,productId,price,vipPrice){
     var storage = window.localStorage;
     var nowProductId=productId;
