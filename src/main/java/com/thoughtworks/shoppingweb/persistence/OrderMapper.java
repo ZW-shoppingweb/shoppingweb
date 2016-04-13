@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 public interface OrderMapper {
-    @Transactional
+
     public int insertToOrder(Orders orders);
     public List<Orders> selectOrderByUserName(String userName);
 }

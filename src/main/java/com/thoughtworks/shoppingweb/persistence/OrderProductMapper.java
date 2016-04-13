@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 public interface OrderProductMapper {
-    @Transactional
+
     public int insertProductToOrder(OrdersProduct ordersProduct);
 }
 
