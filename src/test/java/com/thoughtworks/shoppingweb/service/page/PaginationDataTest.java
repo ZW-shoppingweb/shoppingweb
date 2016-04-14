@@ -2,6 +2,7 @@ package com.thoughtworks.shoppingweb.service.page;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,38 +22,39 @@ public class PaginationDataTest {
         paginationData = new PaginationData();
     }
 
-    //@Test
+    @Test
     public void testGetCurrentPageNum(){
         paginationData.setCurrentPageNum(1);
         assertEquals(1, paginationData.getCurrentPageNum());
     }
 
-    //@Test
+    @Test
     public void testPrevPageNum(){
-        paginationData.getQueryFilter().setSize(1);
         paginationData.setMaxCount(3);
         paginationData.setCurrentPageNum(2);
-
         assertEquals(1, paginationData.getPrevPageNum());
     }
 
-    //@Test
+    @Test
     public void testNextPageNum() {
-        paginationData.getQueryFilter().setSize(10);
-        paginationData.setMaxCount(90);
-        paginationData.setCurrentPageNum(8);
-        assertEquals(9, paginationData.getNextPageNum());
+        QueryFilter queryFilter=new QueryFilter();
+        paginationData.setQueryFilter(queryFilter);
+        paginationData.setMaxCount(33);
+        paginationData.getMaxPageNum();
+        paginationData.setCurrentPageNum(2);
+        assertEquals(3, paginationData.getNextPageNum());
     }
 
-    //@Test
+    @Test
     public void testNextPageNumWhenAtLastPage() {
-        paginationData.getQueryFilter().setSize(10);
-        paginationData.setMaxCount(90);
-        paginationData.setCurrentPageNum(9);
-        assertEquals(9, paginationData.getNextPageNum());
+        QueryFilter queryFilter=new QueryFilter();
+        paginationData.setQueryFilter(queryFilter);
+        paginationData.setMaxCount(32);
+        paginationData.setCurrentPageNum(2);
+        assertEquals(2, paginationData.getNextPageNum());
 
-        paginationData.setMaxCount(98);
-        assertEquals(10, paginationData.getNextPageNum());
+        paginationData.setMaxCount(33);
+        assertEquals(3, paginationData.getNextPageNum());
     }
 
 

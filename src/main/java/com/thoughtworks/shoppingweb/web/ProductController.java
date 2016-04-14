@@ -70,7 +70,7 @@ public class ProductController {
             defaultValue = "", required = false) String userName, Model model,HttpServletRequest request) {
         Product product = productService.getProduct(id);
         if (product == null) throw new ProductNotFoundException();
-        model.addAttribute(product);
+        model.addAttribute("product",product);
         User user=createUser(userName,request);
         createHistory(user,id,model);
         return "productdetail";

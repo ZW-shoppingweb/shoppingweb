@@ -1,16 +1,21 @@
 package com.thoughtworks.shoppingweb.web;
 
+import com.thoughtworks.shoppingweb.domain.History;
 import com.thoughtworks.shoppingweb.domain.Product;
+import com.thoughtworks.shoppingweb.domain.User;
+import com.thoughtworks.shoppingweb.service.HistoryService;
 import com.thoughtworks.shoppingweb.service.ProductService;
 import com.thoughtworks.shoppingweb.service.page.PaginationData;
 import com.thoughtworks.shoppingweb.service.page.QueryFilter;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Matchers;
-import org.mockito.Mockito;
+import org.mockito.*;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,14 +29,19 @@ import static org.mockito.Matchers.anyObject;
  * Created by cxzhao on 3/29/16.
  */
 public class ProductControllerTest {
-    ProductService productService;
+    @InjectMocks
     ProductController productController;
+    @Mock
+    ProductService productService;
+    @Mock
+    HistoryService historyService;
 
     @Before
     public void setup() {
-        productController = new ProductController();
-        productService = Mockito.mock(ProductService.class);
-        productController.setProductService(productService);
+        MockitoAnnotations.initMocks(this);
+        productController.productService=productService;
+        productController.historyService=historyService;
+
     }
 
     @Test
@@ -66,12 +76,19 @@ public class ProductControllerTest {
         assertEquals(1,paginationDataReturn.getCurrentPageNum());
     }
 
-    //@Test
+    @Test
     public void shouldGetDetailProductWhenInputProductId() throws Exception {
         Product productdetail=new Product();
+        History history=new History();
+        User user=new User();
+        user.setUserName("1");
+        productdetail.setProductId("123456");
         Mockito.when(productService.getProduct("123456")).thenReturn(productdetail);
+        Mockito.when(historyService.insertHistory(user,history)).thenReturn(true);
         Model returnModel = new ExtendedModelMap();
-       Product product=(Product) returnModel.asMap().get("product");
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        productController.getProduct("123456",user.getUserName(),returnModel,request);
+        Product product=(Product) returnModel.asMap().get("product");
         assertEquals(productdetail.getProductId(),product.getProductId());
 
     }
