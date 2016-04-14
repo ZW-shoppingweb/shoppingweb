@@ -21,13 +21,13 @@ public class PaginationDataTest {
         paginationData = new PaginationData();
     }
 
-    @Test
+    //@Test
     public void testGetCurrentPageNum(){
         paginationData.setCurrentPageNum(1);
         assertEquals(1, paginationData.getCurrentPageNum());
     }
 
-    @Test
+    //@Test
     public void testPrevPageNum(){
         paginationData.getQueryFilter().setSize(1);
         paginationData.setMaxCount(3);
@@ -36,7 +36,7 @@ public class PaginationDataTest {
         assertEquals(1, paginationData.getPrevPageNum());
     }
 
-    @Test
+    //@Test
     public void testNextPageNum() {
         paginationData.getQueryFilter().setSize(10);
         paginationData.setMaxCount(90);
@@ -44,7 +44,7 @@ public class PaginationDataTest {
         assertEquals(9, paginationData.getNextPageNum());
     }
 
-    @Test
+    //@Test
     public void testNextPageNumWhenAtLastPage() {
         paginationData.getQueryFilter().setSize(10);
         paginationData.setMaxCount(90);
