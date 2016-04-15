@@ -1,2 +1,2 @@
-INSERT INTO USER(userName,passWord) VALUES('123456','123456xin','member');
-INSERT INTO USER(userName,passWord) VALUES('wsz','123456','member');
+INSERT INTO user(userName,passWord,userType) VALUES('123456','123456xin','member');
+INSERT INTO user(userName,passWord,userType) VALUES('wsz','123456','member');
