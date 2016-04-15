@@ -10,5 +10,5 @@ create table Address
     street varchar(40) not null,
     statusorder varchar(40) not null UNIQUE,
     primary key (addressId),
-	constraint primaryname foreign key (userName) references USER (userName) ON DELETE CASCADE ON UPDATE CASCADE
+	constraint primaryname foreign key (userName) references user (userName) ON DELETE CASCADE ON UPDATE CASCADE
 );
