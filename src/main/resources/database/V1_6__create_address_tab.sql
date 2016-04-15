@@ -1,4 +1,4 @@
-create table Address
+create table address
 (
     addressId int(11) NOT NULL AUTO_INCREMENT,
     firstName varchar(40) not null,
