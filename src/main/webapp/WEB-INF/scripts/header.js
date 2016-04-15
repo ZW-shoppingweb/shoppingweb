@@ -29,7 +29,8 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
             method: 'POST',
             url: "/shoppingweb/loginAction",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             data: {
                 userName: _this.userName,
@@ -63,6 +64,10 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
                 data: {
                     userName: _this.userNameUnique,
                     password: _this.passwordOnce
+                },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
                 url: "/shoppingweb/registerAction"
             }).success(function (data) {
