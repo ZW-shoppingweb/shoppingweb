@@ -5,7 +5,7 @@
 
 <mapper namespace="com.thoughtworks.shoppingweb.persistence.ShopCartMapper">
     <select id="allCartProduct"  resultMap="allShopCartInfo">
-        SELECT * FROM shopcart WHERE userName=#{userName} AND productNum > 0
+        SELECT * FROM shopCart WHERE userName=#{userName} AND productNum > 0
     </select>
     <resultMap id="allShopCartInfo" type="ShopCart">
         <collection property="product" javaType="Product" column="productId" ofType="Product" select="selectUserProductInCart" />
@@ -15,11 +15,11 @@
     </select>
 
     <select id="findExistedShopCart" resultType="ShopCart">
-        SELECT * FROM shopcart WHERE userName=#{userName} AND productId=#{productId}
+        SELECT * FROM shopCart WHERE userName=#{userName} AND productId=#{productId}
     </select>
 
     <update id="updateShopCart" parameterType="ShopCart" >
-        UPDATE shopcart SET productNum=#{productNum},addProductTime=#{addProductTime} WHERE userName=#{userName} AND productId=#{productId}
+        UPDATE shopCart SET productNum=#{productNum},addProductTime=#{addProductTime} WHERE userName=#{userName} AND productId=#{productId}
     </update>
 
 
@@ -27,7 +27,7 @@
         INSERT INTO shopCart(userName,productId,productNum) VALUES (#{userName},#{productId},#{productNum})
     </insert>
     <select id="cartProduct" resultMap="ShopCartInf">
-        SELECT * FROM shopcart WHERE userName=#{userName} AND productNum > 0
+        SELECT * FROM shopCart WHERE userName=#{userName} AND productNum > 0
          ORDER BY shopCart.addProductTime DESC LIMIT 0,2
     </select>
     <resultMap id="ShopCartInf" type="ShopCart">
@@ -41,9 +41,9 @@
         <!--SELECT SUM(productNum) FROM shopcart WHERE userName=#{userName} AND productNum > 0 AND orderId is null-->
     <!--</select>-->
     <update id="addShopCartToOrder" parameterType="ShopCart" >
-        UPDATE shopcart SET orderId=#{orderId} WHERE userName=#{userName}
+        UPDATE shopCart SET orderId=#{orderId} WHERE userName=#{userName}
     </update>
     <delete id="deleteShopCartByUser" parameterType="ShopCart">
-        DELETE FROM shopcart WHERE userName=#{userName}
+        DELETE FROM shopCart WHERE userName=#{userName}
     </delete>
 </mapper>
