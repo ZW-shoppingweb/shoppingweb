@@ -16,7 +16,7 @@
   </insert>
 
   <select id="searchUser" resultType="User">
-    SELECT * FROM  USER WHERE userName=#{userName}
+    SELECT * FROM  user WHERE userName=#{userName}
   </select>
 </mapper>
 

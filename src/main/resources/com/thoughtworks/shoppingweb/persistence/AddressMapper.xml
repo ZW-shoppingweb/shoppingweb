@@ -5,13 +5,13 @@
 
 <mapper namespace="com.thoughtworks.shoppingweb.persistence.AddressMapper">
     <select id="addresses" resultType="Address">
-         SELECT * FROM Address WHERE userName=#{userName}
+         SELECT * FROM address WHERE userName=#{userName}
     </select>
     <select id="selectAddressById" resultType="Address">
-        SELECT * FROM Address WHERE addressId=#{addressId}
+        SELECT * FROM address WHERE addressId=#{addressId}
     </select>
     <select id="getLastAddress" resultType="Address">
-        SELECT * FROM Address ORDER BY addressId DESC limit 0,1
+        SELECT * FROM address ORDER BY addressId DESC limit 0,1
     </select>
 
     <insert id="insertAddress" useGeneratedKeys="true" keyProperty="addressId" parameterType="Address" >
