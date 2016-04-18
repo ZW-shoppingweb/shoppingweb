@@ -24,7 +24,7 @@ description = 'Shopping Web Site'
 
 flyway {
     driver = 'com.mysql.jdbc.Driver'
-    url = 'jdbc:mysql://localhost:3306/shoppingdb?useSSL=false'
+    url = 'jdbc:mysql://localhost:3306/shoppingdb?useSSL=false&useUnicode=true&characterEncoding=UTF-8'
     user = 'root'
     password = 'root'
     locations = [ 'classpath:database']
