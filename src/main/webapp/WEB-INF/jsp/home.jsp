@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Shopping</title>
-    <link rel="StyleSheet" href='<c:url value="/css/jetstore.css"/>' type="text/css" media="screen"/>
+    <link rel="StyleSheet" href='<c:url value="/css/home.css"/>' type="text/css" media="screen"/>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="application/javascript" src="<c:url value="/js/jquery.bxslider.min.js"/>"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>

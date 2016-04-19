@@ -1,0 +1,94 @@
+body {
+    font-family: "微软雅黑", "Microsoft Yahei", Arial, Helvetica, sans-serif, "宋体";
+    font-size: 14px;
+}
+@media screen and (max-device-width: 800px) {
+    .category-list{  display: none;  }
+    　　
+}
+.home-category-list {
+    top: 50px;
+    position: relative;
+}
+
+.category-list {
+    position: absolute;
+    left: 0;
+    height: 400px;
+    background-color: rgba(248, 247, 247, .8);
+}
+
+.home-category-nav {
+    padding: 12px 0;
+}
+
+.home-category-nav-item {
+    height: 57px;
+    line-height: 57px;
+}
+
+.category-nav-link {
+    padding: 0px 30px;
+    width: 150px;
+    color: #3a3a3a;
+    font-size: 14px;
+    display: block;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    outline: 0;
+}
+
+div {
+    display: block;
+}
+
+.bx-wrapper {
+    position: relative;
+    max-width: 83%;
+    float: right;
+}
+
+.bx-wrapper img {
+    height: 400px;
+    max-width: 100%;
+    display: block;
+}
+
+.bx-wrapper .bx-pager .bx-pager-item,
+.bx-wrapper .bx-controls-auto .bx-controls-auto-item {
+    display: none;
+}
+
+.bx-wrapper .bx-pager.bx-default-pager a {
+    display: none;
+}
+
+/* DIRECTION CONTROLS (NEXT / PREV) */
+
+.bx-wrapper .bx-prev {
+    left: 10px;
+    background: url("../images/controls.png") no-repeat 0 -32px;
+}
+
+.bx-wrapper .bx-next {
+    right: 10px;
+    background: url("../images/controls.png") no-repeat -43px -32px;
+}
+
+.bx-wrapper .bx-controls-direction a {
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+    outline: 0;
+    width: 32px;
+    height: 32px;
+    text-indent: -9999px;
+    z-index: 9999;
+}
+
+.bx-wrapper .bx-controls-direction a.disabled {
+    display: none;
+}
