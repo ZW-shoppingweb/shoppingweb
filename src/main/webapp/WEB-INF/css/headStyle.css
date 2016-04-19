@@ -64,6 +64,7 @@ body {
 }
 
 .headContent{
+
     width: 100%;
     height: 20%;
     padding-top: 1%;
@@ -146,6 +147,7 @@ body {
     line-height: 200%;
 }
 .dropdownMenu{
+    z-index:9999;
     border: 1px solid lightgray;
     font-size: 1em;
     font-family: Verdana;
@@ -171,10 +173,9 @@ body {
         /*background-color: #1b6d85;*/
     }
     .cartBtn{
-        float: right;
+        float: left;
     }
 }
-
 /**************************/
 /*.navTag{*/
     /*margin-left: 20px;*/

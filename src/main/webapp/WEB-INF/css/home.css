@@ -46,6 +46,7 @@ div {
 }
 
 .bx-wrapper {
+    z-index:100;
     position: relative;
     max-width: 83%;
     float: right;
