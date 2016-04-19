@@ -3,4 +3,10 @@ proapp.controller('HomeController', ['$scope', '$location', '$http', function ($
         document.getElementById("productCategoryInput").value = id;
         document.getElementById("process").submit();
     }
+    $(function(){
+        $('.bxslider').bxSlider({
+            auto: true,
+            autoControls: true
+        });
+    });
 }]);
