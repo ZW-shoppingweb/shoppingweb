@@ -101,30 +101,5 @@
             </div>
         </div>
         <br/>
-        <div class="navTag">
-            <ul class="nav nav-tabs nav-stacked">
-                <input type="hidden" id="productCategoryInput" name="productCategory" ng-model="productCategory" value="${productCategory}"/>
-                <li ng-class={'activeStyle':active1}>
-                    <a ng-click="category(1)">女装</a>
-                </li>
-                <li ng-class={'activeStyle':active2}>
-                    <a ng-click="category(2)">男装</a>
-                </li>
-                <li ng-class={'activeStyle':active3}>
-                    <a ng-click="category(3)">家居家纺</a>
-
-                </li>
-                <li ng-class={'activeStyle':active4}>
-                    <a ng-click="category(4)">汽车用品</a>
-                </li>
-                <li ng-class={'activeStyle':active5}>
-                    <a ng-click="category(5)">玩具</a>
-                </li>
-                <li ng-class={'activeStyle':active6}>
-                    <a ng-click="category('')">全部</a>
-                </li>
-                <a hidden>{{ productCategory='${query.productCategory}'}}</a>
-            </ul>
-        </div>
     </form>
 </div>

@@ -29,6 +29,7 @@ public class ProductController {
 
     @RequestMapping(value = "/productList", method = RequestMethod.POST)
     public String productList(@ModelAttribute QueryFilter queryFilter, Model model) {
+        System.out.println("====="+queryFilter.getProductCategory());
         PaginationData paginationData = new PaginationData();
         paginationData.setQueryFilter(queryFilter);
         paginationData.setCurrentPageNum(getCurrentPage(queryFilter));

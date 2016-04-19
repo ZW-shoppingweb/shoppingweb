@@ -1,46 +1,42 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Shopping</title>
     <link rel="StyleSheet" href="css/jpetstore.css" type="text/css" media="screen"/>
-    <link href="css/libs/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/libs/bootstrap-theme.min.css" rel="stylesheet"/>
 
-    <script type="application/javascript" src="js/jquery-2.2.1.min.js"></script>
-    <script type="application/javascript" src="js/bootstrap.min.js"></script>
-    <script type="application/javascript" src="js/angular.min.js"></script>
-    <script type="application/javascript" src="scripts/index.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
+<body ng-app="userApp">
+<%@ include file="head.jsp" %>
+<script type="application/javascript" src="<c:url value="/scripts/home.js"/>"></script>
+<div ng-controller="HomeController as homeCtrl" class="home-category-list">
+<form action="/shoppingweb/productList" method="post" id="process">
+    <div>
+        <ul>
+            <input type="hidden" id="productCategoryInput" name="productCategory" ng-model="productCategory" value="${productCategory}"/>
+            <li ng-class={'activeStyle':active1}>
+                <a ng-click="category(1)">女装</a>
+            </li>
+            <li ng-class={'activeStyle':active2}>
+                <a ng-click="category(2)">男装</a>
+            </li>
+            <li ng-class={'activeStyle':active3}>
+                <a ng-click="category(3)">家居家纺</a>
 
-<body>
-<div ng-app="app">
-    <div ng-controller="UserController">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <h1><a href="indexofshoppingweb">Welcome to ShoppingMall</a></h1>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                               aria-expanded="false">Option <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="login">Login</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+            </li>
+            <li ng-class={'activeStyle':active4}>
+                <a ng-click="category(4)">汽车用品</a>
+            </li>
+            <li ng-class={'activeStyle':active5}>
+                <a ng-click="category(5)">玩具</a>
+            </li>
+            <li ng-class={'activeStyle':active6}>
+                <a ng-click="category('')">全部</a>
+            </li>
+        </ul>
     </div>
-</div>
+</form>
+    </div>
 </body>
 </html>
