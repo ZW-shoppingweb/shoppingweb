@@ -1,56 +1,49 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link href="<c:url value="/css/libs/bootstrap.min.css"/>" rel="stylesheet"/>
+<link href="<c:url value="/css/libs/bootstrap-theme.min.css"/>" rel="stylesheet"/>
+<script type="application/javascript" src="<c:url value="/js/jquery-2.2.1.min.js"/>"></script>
+<script type="application/javascript" src="<c:url value="/js/bootstrap.min.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/js/angular.min.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/js/angular-messages.min.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/scripts/header.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/scripts/search.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/scripts/price.js"/>"></script>
-
 <link rel="StyleSheet" href='<c:url value="/css/headStyle.css"/>' type="text/css" media="screen"/>
 
 <div ng-controller="userController as userCtrl">
-    <nav class="navbar navbar-inverse" role="navigation">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">购物网站</a>
+    <div class="headContent">
+        <div class="imgLogo">
+            <a href="<c:url value="/productList"/>"><img src="<c:url value="/images/logo.jpg"/>"/></a>
         </div>
-        <div>
-            <a hidden>{{ userNameCurrent='${memberName}'}}</a>
-            <ul class="nav navbar-nav">
-                <li><a href="<c:url value="/productList"/>">首页</a></li>
-            </ul>
-            <div class="dropdown">
-                <button type="button" class="btn dropdown-toggle"
-                        data-toggle="dropdown" id="cartShow" ng-click="userCtrl.shopCartShow('${memberName}')">我的购物车
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="-1"  href="#">最新加入购物车的两件商品:</a>
-                    </li>
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="-1" id="productName1"  href="#">名称: {{productName1}} 数目:{{productNum1}}</a>
-                    </li>
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="-1" id="productName2" href="#">名称:{{productName2}} 数目:{{productNum2}}</a>
-                    </li>
-                    <li role="presentation" class="divider"></li>
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="#" id="productTotalPrice">总价:{{productTotalPrice}}</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="/shoppingweb/goToMyShopCart?userName=${memberName}">去我的购物车</a>
-                    </li>
-                </ul>
+        <div class="cartBtn">
+            <button id="cartShow" ng-click="userCtrl.shopCartShow('${memberName}')">
+                <img src="<c:url value="/images/cart.jpg"/>"/>购物车
+            </button>
+            <div class="dropdownMenu">
+                <p class="center">最新加入购物车的两件商品</p>
+                <p id="productName1">名称: {{productName1}} 数目:{{productNum1}}</p>
+                <p id="productName2">名称:{{productName2}} 数目:{{productNum2}}</p>
+                <p id="productTotalPrice">总价:{{productTotalPrice}}</p>
+                <hr>
+                <p class="center"><a href="/shoppingweb/goToMyShopCart?userName=${memberName}">去我的购物车</a></p>
             </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="javascript:void(0);" ng-click="userCtrl.loginShow()" ng-bind="userCtrl.isSignIn"></a></li>
-                <li><a id="userNameInNav">${memberName}</a></li>
-                <li><a href="javascript:void(0);" ng-click="userCtrl.registerShow()" ng-bind="userCtrl.isRegister"></a>
-                </li>
-                <li><a href="javascript:void(0);" ng-click="userCtrl.signOut()" ng-bind="userCtrl.isSignOut"></a></li>
-            </ul>
         </div>
-    </nav>
+        <div class="loginAndRegister">
+            <a href="javascript:void(0);" ng-click="userCtrl.loginShow()" ng-bind="userCtrl.isSignIn"></a>
+            <a id="userNameInNav">${memberName}</a>
+            <a href="javascript:void(0);" ng-click="userCtrl.registerShow()" ng-bind="userCtrl.isRegister"></a>
+            <a href="javascript:void(0);" ng-click="userCtrl.signOut()" ng-bind="userCtrl.isSignOut"></a>
+        </div>
+        <%--<div class="searchAndCart">--%>
+            <div class="search">
+                <input type="text" placeholder="搜索商品" class="formControl">
+                <button class="btnPrimary">搜索</button>
+            </div>
+
+        <%--</div>--%>
+    </div>
+
     <script type="text/ng-template" id="my-common-messages">
         <div ng-message="required">*必填项,不能为空</div>
     </script>
@@ -63,18 +56,7 @@
 
 </div>
 
-<div class="headContent" ng-controller="SearchController as searchCtrl">
-    <div class="imgLogo">
-        <img src="<c:url value="/images/logo.jpg"/>"/>
-    </div>
-    <div class="search">
-        <div class="input-group">
-            <input type="text" placeholder="搜索商品" class="form-control">
-               <span class="input-group-btn">
-                  <button class="btn btn-primary">搜索</button>
-               </span>
-        </div>
-    </div>
+<div  ng-controller="SearchController as searchCtrl">
     <form action="/shoppingweb/productList" method="post" id="processForm">
         <div class="searchPrice">
             <label>价格区间</label>

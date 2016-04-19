@@ -53,9 +53,9 @@
 .detailImg{
     width: 600px;
 }
-.navtag{
-    position: fixed;
-}
+/*.navtag{*/
+    /*position: fixed;*/
+/*}*/
 .NotInCommonPrice{
     text-decoration:line-through;
 }

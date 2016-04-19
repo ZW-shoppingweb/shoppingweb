@@ -1,17 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Product</title>
-
+    <title>Shopping</title>
     <link rel="StyleSheet" href="<c:url value="/css/detail.css"/>" type="text/css" media="screen"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
+
 <body ng-app="userApp">
 <%@ include file="head.jsp" %>
 <div class="contenText">
     <div class="titleDetail" ng-controller="priceController">
-            <a hidden>{{productId='${product.productId}'}}</a>
+        <a hidden>{{productId='${product.productId}'}}</a>
         <img class="productImg" src="${product.productImage}">
         <div class="rightDetail">
             <span class="productName">${product.productName}</span>
@@ -42,7 +43,7 @@
                 <a href="<c:url value="/product/${hy.product.productId}?userName=${memberName}"/>">
                     <img src="${hy.product.productImage }"><br>
                     <p>${hy.product.productName}</p>
-                    <%--<p>${hy.seeTime}</p>--%>
+                        <%--<p>${hy.seeTime}</p>--%>
                     <br/></a>
             </div>
         </c:forEach>

@@ -113,6 +113,7 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
     }
     _this.shopCartShow = function (memberName) {
         showCart(memberName);
+        $(".dropdownMenu").toggle();
     }
     function showCart(memberName)
     {

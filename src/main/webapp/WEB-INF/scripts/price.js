@@ -28,7 +28,7 @@ proapp.controller('priceController', ['$scope', '$location', '$http', function (
 
     }
     function showCart(memberName) {
-        $("#cartShow").dropdown('toggle');
+        $(".dropdownMenu").show();
         $http({
             method: 'POST',
             data: memberName,

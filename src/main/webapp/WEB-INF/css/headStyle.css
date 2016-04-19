@@ -1,114 +1,225 @@
-.registerForm, .loginForm,.addressTable,.addressForm{
-    width: 550px;
-    left:300px;
-    margin: 100px auto;
-    padding: 40px;
-    top:30px;
-    height: 400px;
-    position: fixed;
-    display: none;
-    background-color: #999999;
+body {
+    margin: 0;
+    padding: 0;
 }
-
+.forms{
+    width: 25%;
+    left:30%;
+    top:20%;
+    position: fixed;
+    padding:0 3%;
+    display: none;
+    box-shadow: 0 0 1px 1px rgba(0,0,0,.2);
+    background-color: white;
+    font-family: Verdana;
+    font-size: 1em;
+    height: 50%;
+}
+.registerForm{
+   padding-bottom: 6%;
+}
+.registerForm .btnPrimary{
+    margin-top: 20%;
+}
+.formControl{
+    width: 100%;
+    height: 15%;
+    font-size: 1em;
+    border: 1px solid lightgray;
+    float: left;
+}
 .center{
     text-align: center;
 }
-.registerForm p, .loginForm p{
-    font-size: 20px;
+.formContent{
+    width: 100%;
+    height: 70%;
 }
-.registerForm .btn-primary,.loginForm .btn-primary{
-    width: 100px;
+.btnPrimary{
+    margin-top: 1%;
+    width: 100%;
+    height: 13%;
+    background-color: #0088cc;
+    color: white;
+    font-size: 1em;
+    border:0;
+    display: block;
+    vertical-align: bottom;
 }
-.navbar-nav{
-    padding-right: 40px;
+
+.close{
+    margin-top: 2%;
+    float: right;
+    border: 0.7px solid lightgrey;
+    background-color: white;
+    font-size: 0.9em;
 }
 .message{
+    height: 36%;
+    width: 100%;
     color: brown;
     display: block;
-    margin-top: -10px;
-    height: 25px;
+    text-align: left;
+    font-size: 0.8em;
 }
 
-
 .headContent{
-    margin-top: -30px;
     width: 100%;
-    height: 150px;
+    height: 20%;
+    padding-top: 1%;
     box-shadow: 0 0 1px 1px rgba(0,0,0,.2);
     background-color: white;
+    color:black;
+    font-size: 1em;
     display: inline-block;
 }
 .headContent .imgLogo{
-    width: 350px;
-    height: 150px;
+    width: 20%;
+    height: 100%;
     float: left;
+    margin-left: 1%;
+    margin-right: 5%;
 
 }
 .headContent img{
-    width: 300px;
-    height: 150px;
+    width: 80%;
+    float: left;
 }
+.loginAndRegister{
+    position: absolute;
+    right: 7%;
+    width: 70%;
+    margin-bottom: 1%;
+    text-align: right;
+}
+.loginAndRegister a{
+    font-size: 1em;
+    font-family: Verdana;
+    margin-right: 1%;
+    text-decoration:none;
+    color: black;
+}
+/*.searchAndCart{*/
+    /*width: 100%;*/
+/*}*/
 .search{
-    float: right;
-    padding-top: 50px;
-    padding-right: 100px;
-    width: 600px;
-    height: 50px;
-
+    float: left;
+    padding-top: 3%;
+    width: 45%;
 }
-.search .form-control{
-    border: 2px solid #2b669a;
-}
-.search input {
-    width: 400px;
+.search .formControl{
+    width: 75%;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    float: left;
+    font-size: 1em;
+    border: 2px solid gray;
 }
 .search button{
-    width: 100px;
-}
-
-.navTag{
-    margin-left: 20px;
-    width: 150px;
-}
-ul.nav-tabs{
-    background-color: white;
-    width: 140px;
-    margin-top: 20px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
-}
-ul.nav-tabs li{
     margin: 0;
-    border-top: 1px solid #ddd;
+    padding: 0;
+    float: left;
+    width: 20%;
+    height: 34px;
+    color: white;
+    font-size: 1em;
+    border: 2px solid gray;
+    background-color: gray;
 }
-ul.nav-tabs li:first-child{
-    border-top: none;
-}
-ul.nav-tabs li a{
-    margin: 0;
-    padding: 8px 16px;
-    border-radius: 0;
-}
-.activeStyle a{
-    color: #fff;
-    background: #0088cc;
-    border: 1px solid #0088cc;
-}
-
-.searchPrice{
+.cartBtn{
     float: right;
-    padding-right: 100px;
-    padding-top: 50px;
+    width: 25%;
+    margin-top: 2.6%;
+    text-align: center;
 }
-.searchADSC{
-    padding-top: 50px;
-}
-.dropdown ul{
-    margin-top: 35px;
-    margin-left: 200px;
-}
-.dropdown .dropdown-toggle{
+.cartBtn button img{
+    width: 30%;
     height: 30px;
-    margin-bottom: -35px;
 }
+.cartBtn button{
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    background-color: white;
+    font-size: 1em;
+    vertical-align: bottom;
+    line-height: 200%;
+}
+.dropdownMenu{
+    border: 1px solid lightgray;
+    font-size: 1em;
+    font-family: Verdana;
+    background-color: white;
+    position: absolute;
+    display: none;
+    float: right;
+    right: 7%;
+    text-align: left;
+    width: 35%;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+.dropdownMenu a{
+    line-height: 250%;
+    text-decoration:none;
+    color: black;
+}
+@media screen and (max-width: 800px) {
+    .loginAndRegister {
+        width: 40%;
+        float: left;
+        background-color: #1b6d85;
+    }
+    .cartBtn{
+        float: right;
+    }
+}
+
+/**************************/
+/*.navTag{*/
+    /*margin-left: 20px;*/
+    /*width: 150px;*/
+/*}*/
+/*ul.nav-tabs{*/
+    /*background-color: white;*/
+    /*width: 140px;*/
+    /*margin-top: 20px;*/
+    /*border-radius: 4px;*/
+    /*border: 1px solid #ddd;*/
+    /*box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);*/
+/*}*/
+/*ul.nav-tabs li{*/
+    /*margin: 0;*/
+    /*border-top: 1px solid #ddd;*/
+/*}*/
+/*ul.nav-tabs li:first-child{*/
+    /*border-top: none;*/
+/*}*/
+/*ul.nav-tabs li a{*/
+    /*margin: 0;*/
+    /*padding: 8px 16px;*/
+    /*border-radius: 0;*/
+/*}*/
+/*.activeStyle a{*/
+    /*color: #fff;*/
+    /*background: #0088cc;*/
+    /*border: 1px solid #0088cc;*/
+/*}*/
+
+/*.searchPrice{*/
+    /*float: right;*/
+    /*padding-right: 100px;*/
+    /*padding-top: 50px;*/
+/*}*/
+/*.searchADSC{*/
+    /*padding-top: 50px;*/
+/*}*/
+/*.dropdowns ul{*/
+    /*margin-top: 35px;*/
+    /*margin-left: 200px;*/
+/*}*/
+/*.dropdowns .dropdownToggle{*/
+    /*height: 30px;*/
+    /*margin-bottom: -35px;*/
+/*}*/
+
