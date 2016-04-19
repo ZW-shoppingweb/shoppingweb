@@ -168,7 +168,7 @@ body {
     .loginAndRegister {
         width: 40%;
         float: left;
-        background-color: #1b6d85;
+        /*background-color: #1b6d85;*/
     }
     .cartBtn{
         float: right;

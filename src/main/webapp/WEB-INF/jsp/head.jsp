@@ -1,9 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link href="<c:url value="/css/libs/bootstrap.min.css"/>" rel="stylesheet"/>
-<link href="<c:url value="/css/libs/bootstrap-theme.min.css"/>" rel="stylesheet"/>
-<script type="application/javascript" src="<c:url value="/js/jquery-2.2.1.min.js"/>"></script>
-<script type="application/javascript" src="<c:url value="/js/bootstrap.min.js"/>"></script>
+<%--<link href="<c:url value="/css/libs/bootstrap.min.css"/>" rel="stylesheet"/>--%>
+<%--<link href="<c:url value="/css/libs/bootstrap-theme.min.css"/>" rel="stylesheet"/>--%>
+<%--<script type="application/javascript" src="<c:url value="/js/jquery-2.2.1.min.js"/>"></script>--%>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="application/javascript" src="<c:url value="/js/jquery.bxslider.min.js"/>"></script>
+
+<%--<script type="application/javascript" src="<c:url value="/js/bootstrap.min.js"/>"></script>--%>
 <script type="application/javascript" src="<c:url value="/js/angular.min.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/js/angular-messages.min.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/scripts/header.js"/>"></script>
@@ -54,31 +57,4 @@
     <%@ include file="login.jsp" %>
     <%@ include file="register.jsp" %>
 
-</div>
-
-<div  ng-controller="SearchController as searchCtrl">
-    <form action="/shoppingweb/productList" method="post" id="processForm">
-        <div class="searchPrice">
-            <label>价格区间</label>
-            <input type="number" placeholder="最小" name="minPrice">
-            <input type="number" placeholder="最大" name="maxPrice">
-            <button type="submit" class="btn btn-primary">筛选</button>
-        </div>
-        <div class="row">
-            <div class="searchADSC">
-                <label>按价格筛选</label>
-                <input type="radio" ng-model="priceA" name="productPrice" id="price1" value="ASC"/>升序
-                <input type="radio" ng-model="priceA" name="productPrice" id="price2" value="DESC"/>降序
-                <input type="radio" name="productPrice" checked="checked" value=""/>默认
-                <a hidden>{{ productPrice='${query.productPrice}'}}</a>
-                <br>
-                <label>按姓名筛选</label>
-                <input type="radio" name="productName" id="name1" value="ASC"/> 升序
-                <input type="radio" name="productName" id="name2" value="DESC"/> 降序
-                <input type="radio" name="productName" checked="checked" value=""/> 默认
-                <a hidden>{{ productName='${query.productName}'}}</a>
-            </div>
-        </div>
-        <br/>
-    </form>
 </div>
