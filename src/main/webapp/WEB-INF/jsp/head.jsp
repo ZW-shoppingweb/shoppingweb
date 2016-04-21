@@ -17,7 +17,7 @@
         <div class="imgLogo">
             <a href="<c:url value="/productList"/>"><img src="<c:url value="/images/logo.jpg"/>"/></a>
         </div>
-        <div class="cartBtn">
+        <div class="cartBtn" >
             <button id="cartShow" ng-click="userCtrl.shopCartShow('${memberName}')">
                 <img src="<c:url value="/images/cart.jpg"/>"/>
                 <span>购物车</span>

@@ -49,20 +49,22 @@
         </li>
     </ul>
 </div>
-
+<div class="newProducts">
     <h2>新品推荐</h2>
-    <div class="newProducts">
-            <c:if test="${!empty newProduct }">
-            <c:forEach items="${newProduct }" var="pro">
-            <div class="oneNewProduct">
-                <a  href="<c:url value="/product/${pro.productId}?userName=${memberName}"/>">
+    <div class="newProductlist">
+        <c:if test="${!empty newProduct }">
+        <c:forEach items="${newProduct }" var="pro">
+        <div class="oneNewProduct">
+            <a  href="<c:url value="/product/${pro.productId}?userName=${memberName}"/>">
                 <img src="${pro.productImage }"><br>
-                <p class="price">¥${pro.productPrice}元</p>
                 <p>${pro.productName}</p>
+                <p class="price">¥${pro.productPrice}元</p>
             </a>
-            </div>
-            </c:forEach>
-            </c:if>
+        </div>
+        </c:forEach>
+        </c:if>
     </div>
+    <br><br>
+</div>
 </body>
 </html>
