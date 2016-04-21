@@ -4,11 +4,7 @@
 <html>
 <head>
     <title>Shopping</title>
-    <link rel="StyleSheet" href='<c:url value="/css/home.less"/>' type="text/css" media="screen"/>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script type="application/javascript" src="<c:url value="/js/jquery.bxslider.min.js"/>"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body ng-app="userApp">
 <%@ include file="head.jsp" %>
@@ -40,16 +36,11 @@
         </ul>
 </form>
     </div>
-    <div class="bx-wrapper">
-        <div class="bx-viewport">
             <ul class="bxslider">
                 <li class="bx-clone"><img src="<c:url value="http://bpic.pic138.com/13/61/75/44bOOOPIC46_1024.jpg!/fw/780/quality/90/unsharp/true/compress/true"/>" /></li>
                 <li class="bx-clone"><img src="<c:url value="/images/s2.jpg"/>" /></li>
                 <li class="bx-clone"><img src="<c:url value="http://bpic.pic138.com/11/31/58/39b1OOOPICee.jpg!/fw/780/quality/90/unsharp/true/compress/true"/>" /></li>
-                <li class="bx-clone"><img src="<c:url value="http://bpic.pic138.com/14/85/69/70bOOOPIC76_1024.jpg!/fw/780/quality/90/unsharp/true/compress/true"/>" /></li>
             </ul>
-        </div>
-    </div>
     </div>
 
 </body>

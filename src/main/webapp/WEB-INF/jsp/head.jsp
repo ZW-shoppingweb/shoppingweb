@@ -1,19 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--<link href="<c:url value="/css/libs/bootstrap.min.css"/>" rel="stylesheet"/>--%>
-<%--<link href="<c:url value="/css/libs/bootstrap-theme.min.css"/>" rel="stylesheet"/>--%>
-<%--<script type="application/javascript" src="<c:url value="/js/jquery-2.2.1.min.js"/>"></script>--%>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script type="application/javascript" src="<c:url value="/js/jquery.bxslider.min.js"/>"></script>
-
-<%--<script type="application/javascript" src="<c:url value="/js/bootstrap.min.js"/>"></script>--%>
 <script type="application/javascript" src="<c:url value="/js/angular.min.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/js/angular-messages.min.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/scripts/header.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/scripts/search.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/scripts/price.js"/>"></script>
-<%--<link rel="StyleSheet" href='<c:url value="/css/headStyle.css"/>' type="text/css" media="screen"/>--%>
 <link rel="stylesheet/less" type="text/css" href='<c:url value="/css/headStyle.less"/>' />
+<link rel="stylesheet/less" type="text/css" href='<c:url value="/css/home.less"/>' />
+
 <script src="<c:url value="/js/less.js"/>" type="text/javascript"></script>
 
 <div ng-controller="userController as userCtrl">
