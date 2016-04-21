@@ -12,7 +12,9 @@
 <script type="application/javascript" src="<c:url value="/scripts/header.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/scripts/search.js"/>"></script>
 <script type="application/javascript" src="<c:url value="/scripts/price.js"/>"></script>
-<link rel="StyleSheet" href='<c:url value="/css/headStyle.css"/>' type="text/css" media="screen"/>
+<%--<link rel="StyleSheet" href='<c:url value="/css/headStyle.css"/>' type="text/css" media="screen"/>--%>
+<link rel="stylesheet/less" type="text/css" href='<c:url value="/css/headStyle.less"/>' />
+<script src="<c:url value="/js/less.js"/>" type="text/javascript"></script>
 
 <div ng-controller="userController as userCtrl">
     <div class="headContent">
@@ -21,7 +23,8 @@
         </div>
         <div class="cartBtn">
             <button id="cartShow" ng-click="userCtrl.shopCartShow('${memberName}')">
-                <img src="<c:url value="/images/cart.jpg"/>"/>购物车
+                <img src="<c:url value="/images/cart.jpg"/>"/>
+                <span>购物车</span>
             </button>
             <div class="dropdownMenu">
                 <p class="center">最新加入购物车的两件商品</p>
@@ -38,13 +41,10 @@
             <a href="javascript:void(0);" ng-click="userCtrl.registerShow()" ng-bind="userCtrl.isRegister"></a>
             <a href="javascript:void(0);" ng-click="userCtrl.signOut()" ng-bind="userCtrl.isSignOut"></a>
         </div>
-        <%--<div class="searchAndCart">--%>
-            <div class="search">
-                <input type="text" placeholder="搜索商品" class="formControl">
-                <button class="btnPrimary">搜索</button>
-            </div>
-
-        <%--</div>--%>
+       <div class="search">
+            <input type="text" placeholder="搜索商品" class="formControl">
+            <button class="btnPrimary">搜索</button>
+        </div>
     </div>
 
     <script type="text/ng-template" id="my-common-messages">

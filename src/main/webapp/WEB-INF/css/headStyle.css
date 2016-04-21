@@ -1,6 +1,10 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: Verdana;
+    background-color: white;
+    color:black;
+    font-size: 1em;
 }
 .forms{
     width: 25%;
@@ -10,9 +14,7 @@ body {
     padding:0 3%;
     display: none;
     box-shadow: 0 0 1px 1px rgba(0,0,0,.2);
-    background-color: white;
-    font-family: Verdana;
-    font-size: 1em;
+    z-index:10000;
     height: 50%;
 }
 .registerForm{
@@ -24,7 +26,6 @@ body {
 .formControl{
     width: 100%;
     height: 15%;
-    font-size: 1em;
     border: 1px solid lightgray;
     float: left;
 }
@@ -41,7 +42,6 @@ body {
     height: 13%;
     background-color: #0088cc;
     color: white;
-    font-size: 1em;
     border:0;
     display: block;
     vertical-align: bottom;
@@ -64,26 +64,23 @@ body {
 }
 
 .headContent{
-
     width: 100%;
-    height: 20%;
+    height: 100px;
     padding-top: 1%;
     box-shadow: 0 0 1px 1px rgba(0,0,0,.2);
-    background-color: white;
-    color:black;
-    font-size: 1em;
     display: inline-block;
 }
 .headContent .imgLogo{
-    width: 20%;
-    height: 100%;
+    width: 15%;
+    height: 100px;
     float: left;
     margin-left: 1%;
     margin-right: 5%;
 
 }
 .headContent img{
-    width: 80%;
+    width: 150px;
+    height: 80px;
     float: left;
 }
 .loginAndRegister{
@@ -94,11 +91,9 @@ body {
     text-align: right;
 }
 .loginAndRegister a{
-    font-size: 1em;
-    font-family: Verdana;
+    color: black;
     margin-right: 1%;
     text-decoration:none;
-    color: black;
 }
 /*.searchAndCart{*/
     /*width: 100%;*/
@@ -107,25 +102,25 @@ body {
     float: left;
     padding-top: 3%;
     width: 45%;
+    height: 100%;
+    /*background-color: #2aabd2;*/
+    /*display: inline-block;
+    vertical-align: bottom;*/
 }
 .search .formControl{
     width: 75%;
-    height: 30px;
-    margin: 0;
-    padding: 0;
     float: left;
+    height: 30px;
     font-size: 1em;
     border: 2px solid gray;
 }
 .search button{
-    margin: 0;
-    padding: 0;
     float: left;
     width: 20%;
-    height: 34px;
-    color: white;
     font-size: 1em;
-    border: 2px solid gray;
+    height: 32px;
+    color: white;
+    border: 1px solid gray;
     background-color: gray;
 }
 .cartBtn{
@@ -139,18 +134,16 @@ body {
     height: 30px;
 }
 .cartBtn button{
+    font-size: 1em;
     border-radius: 5px;
     border: 1px solid lightgray;
     background-color: white;
-    font-size: 1em;
     vertical-align: bottom;
     line-height: 200%;
 }
 .dropdownMenu{
     z-index:9999;
     border: 1px solid lightgray;
-    font-size: 1em;
-    font-family: Verdana;
     background-color: white;
     position: absolute;
     display: none;
