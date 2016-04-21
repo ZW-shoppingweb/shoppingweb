@@ -42,5 +42,8 @@ public class ProductService {
         return paginationData;
 
     }
+    public List<Product> getThreeNewProduct(){
+        return productMapper.getThreeNewProduct();
+    }
 }
 

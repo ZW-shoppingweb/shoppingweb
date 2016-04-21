@@ -22,6 +22,8 @@ public interface ProductMapper {
 
     public int getNumOfProducts(QueryFilter queryFilter);
 
+    public List<Product> getThreeNewProduct();
+
 }
 
 

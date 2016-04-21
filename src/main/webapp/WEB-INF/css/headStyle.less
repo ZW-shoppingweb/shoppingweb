@@ -126,11 +126,10 @@ body {
 .cartBtn{
     float: right;
     width: 120px;
-    height: 30px;
     margin-top: 30px;
     margin-right: 10%;
     text-align: right;
-    button{
+    #cartShow{
         font-size: 1em;
         border-radius: 5px;
         border: 1px solid lightgray;
@@ -138,7 +137,7 @@ body {
         img{
             float: left;
             width: 35%;
-            height: 30%;
+            height: 100%;
         }
         span{
             float: left;
@@ -151,12 +150,26 @@ body {
         width: 40%;
         float: right;
     }
+    .headContent{
+        min-width: 600px;
+    }
     .cartBtn{
         margin-top: 0px;
-        width: 120px;
-        height: 25px;
-        float: left;
+        position: absolute;
+        left: 40%;
+        #cartShow{
+            height: 30px;
+            span{
+                margin: 4px;
+            }
+        }
     }
+    .search{
+        width:80%; 
+        top: 8%;
+        position: absolute;
+        left: 170px;
+}
 }
 .dropdownMenu{
     z-index:9999;
@@ -176,4 +189,21 @@ body {
         color: black;
     }
 }
-
+.newProducts{
+    width: 100%;
+    margin-top:500px;
+    border: 1px solid lightgray;
+    height: 250px;
+    .oneNewProduct{
+        display: inline-block;
+        float: right;
+        margin-right: 5%;
+        img{
+            width: 80%;
+        }
+        a{
+            text-decoration:none;
+            color: black;
+        }
+    }
+}

@@ -9,7 +9,7 @@
 </head>
 
 <body ng-app="userApp">
-<%@ include file="head.jsp" %>
+<%@ include file="home.jsp" %>
 
 <div  ng-controller="SearchController as searchCtrl">
     <form action="/shoppingweb/productList" method="post" id="processForm">

@@ -11,6 +11,9 @@
     <select id="getAllProduct" resultType="Product">
         SELECT * FROM product  limit #{start},#{size}
     </select>
+    <select id="getThreeNewProduct" resultType="Product">
+        SELECT * FROM product ORDER BY productTime DESC LIMIT 3
+    </select>
     <select id="getPaginationProductList" parameterType="com.thoughtworks.shoppingweb.service.page.QueryFilter" resultType="Product">
         SELECT * FROM product
         <where>

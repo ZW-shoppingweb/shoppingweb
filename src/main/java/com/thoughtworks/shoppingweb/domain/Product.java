@@ -2,6 +2,8 @@ package com.thoughtworks.shoppingweb.domain;
 
 import lombok.Data;
 
+import java.sql.Timestamp;
+
 @Data
 public class Product {
 
@@ -14,4 +16,5 @@ public class Product {
     private String productDetailsImg;
     private String productIntroduce;
     private String productCategory;
+    private Timestamp productTime;
 }

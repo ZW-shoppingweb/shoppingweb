@@ -29,7 +29,6 @@ public class ProductController {
 
     @RequestMapping(value = "/productList", method = RequestMethod.POST)
     public String productList(@ModelAttribute QueryFilter queryFilter, Model model) {
-        System.out.println("====="+queryFilter.getProductCategory());
         PaginationData paginationData = new PaginationData();
         paginationData.setQueryFilter(queryFilter);
         paginationData.setCurrentPageNum(getCurrentPage(queryFilter));
@@ -56,7 +55,11 @@ public class ProductController {
         model.addAttribute("indexPage", paginationData);
         return "index";
     }
-
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String indexPage(Model model) {
+        model.addAttribute("newProduct", productService.getThreeNewProduct());
+        return "home";
+    }
 
     public void setProductService(ProductService productService) {
         this.productService = productService;
