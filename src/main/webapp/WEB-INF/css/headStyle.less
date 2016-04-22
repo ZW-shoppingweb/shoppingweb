@@ -197,17 +197,19 @@ body {
     }
 }
 .newProducts{
-    margin-top: 480px;
+    margin-top: 100px;
     padding:0px 10px 10px 250px;
     height: 250px;
     .newProductlist{
         border: 1px solid lightgray;
         padding: 15px;
-        height: auto;
+        height: 270px;
+        width: 95%;
+        display: inline-block;
+        overflow: hidden;
         .oneNewProduct{
-            display: inline-block;
+            float: left;
             margin: 0 6%;
-            text-align: center;
             img{
                 width: 80%;
             }
@@ -223,11 +225,13 @@ body {
 }
 @media screen and (max-width: 800px) {
     .newProducts{
+        margin-top: 150px;
         padding-left:10px;
         .newProductlist{
-            text-align: center;
+            height: auto;
             .oneNewProduct{
                 width: 40%;
+                margin: 0 30%;
             }
         }
     }
