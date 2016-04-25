@@ -4,58 +4,60 @@
 <html>
 <head>
     <title>Shopping</title>
-    <link rel="StyleSheet" href="<c:url value="/css/indexProject.css"/>" type="text/css" media="screen"/>
+    <link rel="stylesheet/less" type="text/css" href='<c:url value="/css/indexProject.less"/>' />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 
 <body ng-app="userApp">
-<%@ include file="home.jsp" %>
-
-<div  ng-controller="SearchController as searchCtrl">
-    <form action="/shoppingweb/productList" method="post" id="processForm">
-        <div class="searchPrice">
-            <label>价格区间</label>
-            <input type="number" placeholder="最小" name="minPrice">
-            <input type="number" placeholder="最大" name="maxPrice">
-            <button type="submit" class="btn btn-primary">筛选</button>
-        </div>
-        <div class="row">
-            <div class="searchADSC">
-                <label>按价格筛选</label>
-                <input type="radio" ng-model="priceA" name="productPrice" id="price1" value="ASC"/>升序
-                <input type="radio" ng-model="priceA" name="productPrice" id="price2" value="DESC"/>降序
-                <input type="radio" name="productPrice" checked="checked" value=""/>默认
-                <a hidden>{{ productPrice='${query.productPrice}'}}</a>
-                <br>
-                <label>按姓名筛选</label>
-                <input type="radio" name="productName" id="name1" value="ASC"/> 升序
-                <input type="radio" name="productName" id="name2" value="DESC"/> 降序
-                <input type="radio" name="productName" checked="checked" value=""/> 默认
-                <a hidden>{{ productName='${query.productName}'}}</a>
-            </div>
-        </div>
-        <br/>
-    </form>
-</div>
-<div>
+<%@ include file="head.jsp" %>
+<div class="filterProduct">
+    <div  ng-controller="SearchController as searchCtrl" class="filterRequest">
+        <form action="/shoppingweb/productList" method="post" id="processForm">
+            <span class="sort">新品</span>
+            <span class="sort"><label class="sortPriceShow">价格</label>
+                <ul class="sortPrice">
+                    <li><input type="radio" ng-model="priceA" name="productPrice" id="price1" value="ASC"/>升序</li>
+                    <li><input type="radio" ng-model="priceA" name="productPrice" id="price2" value="DESC"/>降序</li>
+                    <li><input type="radio" name="productPrice" checked="checked" value=""/>默认</li>
+                    <a hidden>{{ productPrice='${query.productPrice}'}}</a>
+                    <br>
+                </ul>
+            </span>
+            <span class="searchPrice sort">
+                <input type="number" placeholder="￥" name="minPrice">-
+                <input type="number" placeholder="￥" name="maxPrice">
+            </span>
+            <span class="sort"><label class="sortProductNameShow">商品名</label>
+                <ul class="searchADSC">
+                    <li><input type="radio" name="productName" id="name1" value="ASC"/> 升序</li>
+                    <li><input type="radio" name="productName" id="name2" value="DESC"/> 降序</li>
+                    <li><input type="radio" name="productName" checked="checked" value=""/> 默认</li>
+                    <a hidden>{{ productName='${query.productName}'}}</a>
+                    <br>
+                </ul>
+            </span>
+            <span class="sort"><button type="submit" class="btn btn-primary">筛选</button></span>
+            <br/>
+        </form>
+    </div>
     <div class="products">
-        <div class="allProjectList" ng-controller="historyController">
+        <div ng-controller="historyController">
             <c:if test="${!empty indexPage.pageData }">
-                <c:forEach items="${indexPage.pageData }" var="pro">
-                    <div class="indexProduct">
-                        <a  href="<c:url value="/product/${pro.productId}?userName=${memberName}"/>">
-                            <img src="${pro.productImage }"><br>
-                            <p class="price">¥${pro.productPrice}元</p>
-                            <p>${pro.productName}</p>
-                            <br/></a>
-                    </div>
-                </c:forEach>
+            <c:forEach items="${indexPage.pageData }" var="pro">
+            <div class="indexProduct">
+                <a  href="<c:url value="/product/${pro.productId}?userName=${memberName}"/>">
+                <img src="${pro.productImage }"><br>
+                <p class="price">¥${pro.productPrice}元</p>
+                <p>${pro.productName}</p>
+                <br/></a>
+            </div>
+            </c:forEach>
             </c:if>
         </div>
     </div>
+    <br/><br>
 </div>
-<br/><br>
 <%@ include file="paging.jsp" %>
-<br/><br>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

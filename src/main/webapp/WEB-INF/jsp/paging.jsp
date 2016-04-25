@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script type="application/javascript" src="<c:url value="/scripts/paging.js"/>"></script>
-<link rel="StyleSheet" href="<c:url value="/css/indexProject.css"/>" type="text/css" media="screen"/>
+<link rel="StyleSheet" href="<c:url value="/css/indexProject.less"/>" type="text/css" media="screen"/>
 
 <div class="aStyle" ng-controller="myPagingCtrl">
   <form id="formp" action="/shoppingweb/productList" method="post">

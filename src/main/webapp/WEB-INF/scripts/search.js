@@ -15,3 +15,28 @@ proapp.controller('SearchController', ['$scope', '$location', '$http', function 
         });
     }, 0);
 }]);
+$(function(){
+    $(".sortPrice").hide();
+    $(".sortPriceShow").bind('hover', function(){  
+        $(".sortPrice").show();  
+    });
+    $(".sortPrice").hover(function(){
+         $(".sortPrice").show();  
+    });
+    $(".sortPriceShow").bind('mouseout',function(){ 
+        $(".sortPrice").hide(); 
+    });
+　　$(".searchADSC").hide();
+    $(".sortProductNameShow").bind('hover', function(){  
+        $(".searchADSC").show();  
+    });
+    $(".searchADSC").hover(function(){
+         $(".searchADSC").show();  
+    });
+    $(".sortProductNameShow").bind('mouseout',function(){ 
+        $(".searchADSC").hide(); 
+    });
+   
+    
+
+})
