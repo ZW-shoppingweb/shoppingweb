@@ -7,12 +7,16 @@ import com.thoughtworks.shoppingweb.service.page.QueryFilter;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Controller
@@ -21,21 +25,22 @@ public class ProductController {
     ProductService productService;
     @Autowired
     HistoryService historyService;
-    @Autowired
-    UserService userService;
 
     public static final int DEFAULT_PAGE_NUM = 1;
     private final static Logger log = Logger.getLogger(ProductController.class);
 
     @RequestMapping(value = "/productList", method = RequestMethod.POST)
-    public String productList(@ModelAttribute QueryFilter queryFilter, Model model) {
+    public ResponseEntity productList(@RequestBody QueryFilter queryFilter,HttpServletRequest request) {
         PaginationData paginationData = new PaginationData();
         paginationData.setQueryFilter(queryFilter);
         paginationData.setCurrentPageNum(getCurrentPage(queryFilter));
         productService.getProductPaginationData(paginationData);
-        model.addAttribute("indexPage", paginationData);
-        model.addAttribute("query", queryFilter);
-        return "index";
+        HttpSession session = request.getSession(true);
+        session.setAttribute("pageInfo",paginationData);
+        session.setAttribute("query",queryFilter);
+        Map result = new HashMap();
+        result.put("indexPage",paginationData);
+        return new ResponseEntity(result, HttpStatus.OK);
     }
     private int getCurrentPage(QueryFilter queryFilter) {
         if (queryFilter.getPageId() != "" && queryFilter.getPageId() != null) {
@@ -44,20 +49,23 @@ public class ProductController {
         return  DEFAULT_PAGE_NUM;
     }
 
-    @RequestMapping(value = "/productList", method = RequestMethod.GET)
-    public String productListAll(Model model) {
+    @RequestMapping(value = "/productListPage", method = RequestMethod.GET)
+    public String productListAll(QueryFilter queryFilter,Model model,HttpServletRequest request) {
         PaginationData paginationData = new PaginationData();
-        QueryFilter queryFilter = new QueryFilter();
         paginationData.setQueryFilter(queryFilter);
         paginationData.setPageData(productService.getAllProduct(1, 16));
         paginationData.setCurrentPageNum(1);
         paginationData = productService.getProductPaginationData(paginationData);
-        model.addAttribute("indexPage", paginationData);
+        HttpSession session = request.getSession(true);
+        session.setAttribute("pageInfo",paginationData);
+        model.addAttribute("pageData", paginationData.getPageData());
         return "index";
     }
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String indexPage(Model model) {
-        model.addAttribute("newProduct", productService.getThreeNewProduct());
+        List<Product> products=productService.getNewProduct(new QueryFilter());
+        List<Product> products1=products.subList(0,3);
+        model.addAttribute("newProduct", products1);
         return "home";
     }
 

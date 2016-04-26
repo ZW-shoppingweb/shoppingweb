@@ -10,15 +10,16 @@
 
 <body ng-app="userApp">
 <%@ include file="head.jsp" %>
-<div class="filterProduct">
-    <div  ng-controller="SearchController as searchCtrl" class="filterRequest">
-        <form action="/shoppingweb/productList" method="post" id="processForm">
-            <span class="sort">新品</span>
+<div class="filterProduct" ng-controller="SearchController as searchCtrl">
+    <div   class="filterRequest">
+        <form method="post" id="processForm">
+            <span class="sort" ng-click="showNewProduct()">新品</span>
+            <!-- {{isNewProduct='yes'}} -->
             <span class="sort"><label class="sortPriceShow">价格</label>
                 <ul class="sortPrice">
-                    <li><input type="radio" ng-model="priceA" name="productPrice" id="price1" value="ASC"/>升序</li>
-                    <li><input type="radio" ng-model="priceA" name="productPrice" id="price2" value="DESC"/>降序</li>
-                    <li><input type="radio" name="productPrice" checked="checked" value=""/>默认</li>
+                    <li><input type="radio"  name="productPrice" id="price1" value="ASC" ng-click="filterProduct()"/>升序</li>
+                    <li><input type="radio"  name="productPrice" id="price2" value="DESC" ng-click="filterProduct()"/>降序</li>
+                    <li><input type="radio"  name="productPrice" checked="checked" value="" ng-click="filterProduct()"/>默认</li>
                     <a hidden>{{ productPrice='${query.productPrice}'}}</a>
                     <br>
                 </ul>
@@ -29,21 +30,29 @@
             </span>
             <span class="sort"><label class="sortProductNameShow">商品名</label>
                 <ul class="searchADSC">
-                    <li><input type="radio" name="productName" id="name1" value="ASC"/> 升序</li>
-                    <li><input type="radio" name="productName" id="name2" value="DESC"/> 降序</li>
-                    <li><input type="radio" name="productName" checked="checked" value=""/> 默认</li>
+                    <li><input type="radio" name="productName" id="name1" value="ASC" ng-click="filterProduct()"/> 升序</li>
+                    <li><input type="radio" name="productName" id="name2" value="DESC" ng-click="filterProduct()"/> 降序</li>
+                    <li><input type="radio" name="productName" checked="checked" value="" ng-click="filterProduct()"/> 默认</li>
                     <a hidden>{{ productName='${query.productName}'}}</a>
                     <br>
                 </ul>
             </span>
-            <span class="sort"><button type="submit" class="btn btn-primary">筛选</button></span>
+            <span class="sort"><button  ng-click="filterProduct()">筛选</button></span>
+            <span class="sort stock"><button  ng-click="showStock()">仅显示有货</button></span>
             <br/>
         </form>
     </div>
     <div class="products">
-        <div ng-controller="historyController">
-            <c:if test="${!empty indexPage.pageData }">
-            <c:forEach items="${indexPage.pageData }" var="pro">
+        <div class="indexProduct" ng-repeat="item in items">
+            <a  href="<c:url value="/product/{{item.productId}}?userName=${memberName}"/>">
+            <img src="{{item.productImage}}"><br>
+            <p class="price">¥{{item.productPrice}}元</p>
+            <p>{{item.productName}}</p>
+            <br/></a>
+        </div>
+        <div class="getProductList">
+            <c:if test="${!empty pageData }">
+            <c:forEach items="${pageData }" var="pro">
             <div class="indexProduct">
                 <a  href="<c:url value="/product/${pro.productId}?userName=${memberName}"/>">
                 <img src="${pro.productImage }"><br>
@@ -53,11 +62,12 @@
             </div>
             </c:forEach>
             </c:if>
+            <a hidden>{{ productCategory='${pageInfo.queryFilter.productCategory}'}}</a>
         </div>
     </div>
     <br/><br>
+    <%@ include file="paging.jsp" %>
 </div>
-<%@ include file="paging.jsp" %>
 <%@ include file="footer.jsp" %>
 </body>
 </html>

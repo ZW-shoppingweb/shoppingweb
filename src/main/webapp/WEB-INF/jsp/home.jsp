@@ -16,23 +16,23 @@
                 <input type="hidden" id="productCategoryInput" name="productCategory" ng-model="productCategory"
                        value="${productCategory}"/>
                 <li ng-class={'activeStyle':active1} class="home-category-nav-item">
-                    <a ng-click="category(1)" class="category-nav-link">女装</a>
+                    <a href="/shoppingweb/productListPage?productCategory=1" class="category-nav-link">女装</a>
                 </li>
                 <li ng-class={'activeStyle':active2} class="home-category-nav-item">
-                    <a ng-click="category(2)" class="category-nav-link">男装</a>
+                    <a href="/shoppingweb/productListPage?productCategory=2" class="category-nav-link">男装</a>
                 </li>
                 <li ng-class={'activeStyle':active3} class="home-category-nav-item">
-                    <a ng-click="category(3)" class="category-nav-link">家居家纺</a>
+                    <a href="/shoppingweb/productListPage?productCategory=3" class="category-nav-link">家居家纺</a>
 
                 </li>
                 <li ng-class={'activeStyle':active4} class="home-category-nav-item">
-                    <a ng-click="category(4)" class="category-nav-link">汽车用品</a>
+                    <a href="/shoppingweb/productListPage?productCategory=4" class="category-nav-link">汽车用品</a>
                 </li>
                 <li ng-class={'activeStyle':active5} class="home-category-nav-item">
-                    <a ng-click="category(5)" class="category-nav-link">玩具</a>
+                    <a href="/shoppingweb/productListPage?productCategory=5" class="category-nav-link">玩具</a>
                 </li>
                 <li ng-class={'activeStyle':active6} class="home-category-nav-item">
-                    <a ng-click="category('')" class="category-nav-link">全部</a>
+                    <a href="/shoppingweb/productListPage" class="category-nav-link">全部</a>
                 </li>
             </ul>
         </form>

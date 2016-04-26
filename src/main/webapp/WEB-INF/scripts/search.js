@@ -12,8 +12,90 @@ proapp.controller('SearchController', ['$scope', '$location', '$http', function 
                 document.getElementById("name1").checked = "checked";
             if ($scope.productName == "DESC")
                 document.getElementById("name2").checked = "checked";
+            $scope.maxPageNum=$scope.maxPageNums;
         });
     }, 0);
+    pageStyle(1);
+    function productList(pagesId){
+        $("#currentPageNum").html(pagesId);
+        var productPrices=$("input[name='productPrice']:checked").val();
+        var productNames=$("input[name='productName']:checked").val();
+        if($scope.isNewProduct === "yes"){
+            productPrices="";
+            productNames="";
+        }
+        else{
+            $scope.isNewProduct="no";
+        }
+        $http({
+            method: 'POST',
+            url: "/shoppingweb/productList",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            data: {
+                isNewProduct:$scope.isNewProduct,
+                productCategory:$scope.productCategory,
+                productPrice: productPrices,
+                productName: productNames,
+                minPrice: $("input[name='minPrice']").val(),
+                maxPrice: $("input[name='maxPrice']").val(),
+                productNum: $scope.productNum,
+                pageId:pagesId
+            }
+        }).success(function (datas) {
+            $(".getProductList").hide();
+            $scope.maxPageNum=datas.indexPage.maxPageNum;
+            console.log("^^^"+$scope.maxPageNum);
+            pageStyle(pagesId);
+            $scope.items=datas.indexPage.pageData;
+        });
+    }
+    $scope.filterProduct = function () {
+        $scope.isNewProduct="no";
+        $scope.productNum=0;
+        productList(1);
+    }
+    $scope.showStock=function(){
+        $scope.isNewProduct="no";
+        $scope.productNum=1;
+        productList(1);
+    }
+    $scope.showNewProduct=function(){
+        $scope.isNewProduct="yes";
+        $scope.productNum=0;
+        productList(1);
+    }
+    $scope.nextPage=function(pagesId){
+        if(pagesId=="pre"){
+            pagesId=parseInt($("#currentPageNum").html())-1;
+        }
+        if(pagesId=="next"){
+            pagesId=parseInt($("#currentPageNum").html())+1;
+        }
+        if(pagesId=="last"){
+            pagesId=$scope.maxPageNum;
+        }
+        productList(pagesId);
+        $("#currentPageNum").html(pagesId);
+        $('html, body').animate({scrollTop: 0},0);
+    }
+    function pageStyle(curNum){
+        $scope.noUseHrefHome=false;
+        $scope.noUseHrefPre=false;
+        $scope.noUseHrefNext=false;
+        $scope.noUseHrefEnd=false;
+        var lastNum =$scope.maxPageNum;
+        if(curNum == "1") {
+            $scope.noUseHrefHome=true;
+            $scope.noUseHrefPre=true;
+        }
+        if(lastNum == curNum){
+            $scope.noUseHrefNext=true;
+            $scope.noUseHrefEnd=true;
+       }
+    }
 }]);
 $(function(){
     $(".sortPrice").hide();
@@ -36,7 +118,4 @@ $(function(){
     $(".sortProductNameShow").bind('mouseout',function(){ 
         $(".searchADSC").hide(); 
     });
-   
-    
-
 })

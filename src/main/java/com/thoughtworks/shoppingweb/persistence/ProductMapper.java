@@ -1,10 +1,6 @@
 package com.thoughtworks.shoppingweb.persistence;
 
 
-/**
- * Created by cxzhao on 3/22/16.
- */
-
 import com.thoughtworks.shoppingweb.domain.Product;
 import com.thoughtworks.shoppingweb.service.page.QueryFilter;
 import org.apache.ibatis.annotations.Param;
@@ -22,7 +18,7 @@ public interface ProductMapper {
 
     public int getNumOfProducts(QueryFilter queryFilter);
 
-    public List<Product> getThreeNewProduct();
+    public List<Product> getNewProduct(QueryFilter queryFilter);
 
 }
 

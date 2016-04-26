@@ -5,7 +5,7 @@ proapp.controller('myPagingCtrl', ['$scope','$http',function ($scope,$http) {
     $scope.noUseHrefEnd=false;
     setTimeout(function () {
         $scope.$apply(function () {
-            var curNum =$scope.currentPageNum;
+            var curNum =$("#currentPageNum").html();
             var lastNum =$scope.maxPageNum;
             if(curNum === "1") {
                 $scope.noUseHrefHome=true;
@@ -17,9 +17,6 @@ proapp.controller('myPagingCtrl', ['$scope','$http',function ($scope,$http) {
             }
         });
     }, 0);
-    $scope.nextPage=function(pageId){
-        $scope.nextPageId=pageId;
-        $("#nextPageId").val(pageId);
-        $("#formp").submit();
-    }
+
+    
 }]);

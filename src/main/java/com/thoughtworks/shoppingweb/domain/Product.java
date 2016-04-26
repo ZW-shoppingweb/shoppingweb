@@ -17,4 +17,5 @@ public class Product {
     private String productIntroduce;
     private String productCategory;
     private Timestamp productTime;
+    private int productNum;
 }

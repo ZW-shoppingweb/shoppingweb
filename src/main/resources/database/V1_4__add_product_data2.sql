@@ -40,3 +40,5 @@ INSERT INTO product VALUES ('39', '劲霸男装', '中国武汉', 'http://img2.o
 INSERT INTO product VALUES ('40', '漂亮女装', '中国武汉', 'http://img2.ooopic.com/12/59/22/17bOOOPICaf_202.jpg', 'http://bpic.pic138.com/12/59/22/17b1OOOPICaf.jpg', '500.00', '218.00', '我美我自信', '1');
 ALTER TABLE `shoppingdb`.`product`
 ADD COLUMN `productTime` TIMESTAMP NOT NULL AFTER `productCategory`;
+ALTER TABLE `shoppingdb`.`product`
+ADD COLUMN `productNum` INT NOT NULL AFTER `productTime`;

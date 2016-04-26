@@ -11,8 +11,8 @@
     <select id="getAllProduct" resultType="Product">
         SELECT * FROM product  limit #{start},#{size}
     </select>
-    <select id="getThreeNewProduct" resultType="Product">
-        SELECT * FROM product ORDER BY productTime DESC LIMIT 3
+    <select id="getNewProduct" resultType="Product">
+        SELECT * FROM product ORDER BY productTime DESC limit #{start},#{size}
     </select>
     <select id="getPaginationProductList" parameterType="com.thoughtworks.shoppingweb.service.page.QueryFilter" resultType="Product">
         SELECT * FROM product
@@ -23,6 +23,9 @@
             <if test="minPrice!=null and minPrice!='' and maxPrice!=null and maxPrice!=''">
                 and productPrice BETWEEN ${minPrice} and ${maxPrice}
             </if>
+            <if test="productNum!=null and productNum!=''">
+                and productNum >= ${productNum}
+            </if>
         </where>
         <if test="productPrice != null and productPrice!=''">
             ORDER BY productPrice ${productPrice}
@@ -30,7 +33,9 @@
         <if test="productName != null and productName!=''">
             ORDER BY productName ${productName}
         </if>
-
+        <if test="isNewProduct =='yes'">
+            ORDER BY productTime DESC
+        </if>
         limit ${start},${size}
 
     </select>
@@ -38,12 +43,15 @@
     <select id="getNumOfProducts" resultType="int" parameterType="com.thoughtworks.shoppingweb.service.page.QueryFilter" >
         SELECT COUNT(1) FROM product
         <where>
-        <if test="productCategory!=null and productCategory!=''">
-            productCategory=#{productCategory}
-        </if>
-        <if test="minPrice!=null and minPrice!='' and maxPrice!=null and maxPrice!=''">
-            and productPrice BETWEEN #{minPrice} and #{maxPrice}
-        </if>
+            <if test="productCategory!=null and productCategory!=''">
+                productCategory=#{productCategory}
+            </if>
+            <if test="minPrice!=null and minPrice!='' and maxPrice!=null and maxPrice!=''">
+                and productPrice BETWEEN #{minPrice} and #{maxPrice}
+            </if>
+            <if test="productNum!=null and productNum!=''">
+                and productNum >= ${productNum}
+            </if>
     </where>
     </select>
 

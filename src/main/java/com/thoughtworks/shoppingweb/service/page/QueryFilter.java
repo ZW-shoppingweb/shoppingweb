@@ -10,10 +10,12 @@ import lombok.Data;
 public class QueryFilter {
     public static final int DEFAULT_PAGE_SIZE = 16;
     private String productCategory;
+    private String productNum;
+    private String isNewProduct;
     private String minPrice;
     private String maxPrice;
-    private  String productName;
-    private  String productPrice;
+    private  String productName="";
+    private  String productPrice="";
     private String pageId;
     private  int start;
     private  int size = DEFAULT_PAGE_SIZE;
