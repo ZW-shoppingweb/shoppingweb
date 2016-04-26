@@ -16,6 +16,7 @@ proapp.controller('SearchController', ['$scope', '$location', '$http', function 
         });
     }, 0);
     pageStyle(1);
+    
     function productList(pagesId){
         $("#currentPageNum").html(pagesId);
         var productPrices=$("input[name='productPrice']:checked").val();
@@ -42,17 +43,18 @@ proapp.controller('SearchController', ['$scope', '$location', '$http', function 
                 minPrice: $("input[name='minPrice']").val(),
                 maxPrice: $("input[name='maxPrice']").val(),
                 productNum: $scope.productNum,
-                pageId:pagesId
+                pageId:pagesId,
+                productTitle: $("#searchByName").val()
             }
         }).success(function (datas) {
             $(".getProductList").hide();
             $scope.maxPageNum=datas.indexPage.maxPageNum;
-            console.log("^^^"+$scope.maxPageNum);
             pageStyle(pagesId);
             $scope.items=datas.indexPage.pageData;
         });
     }
     $scope.filterProduct = function () {
+        console.log("**77");
         $scope.isNewProduct="no";
         $scope.productNum=0;
         productList(1);
