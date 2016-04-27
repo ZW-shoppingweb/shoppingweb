@@ -41,7 +41,7 @@
            </ul> 
         </div>
         <div class="footerNavItems">
-           <h4>Flyme OS</h4>
+           <h4>网上服务</h4>
            <ul>
                <li>云服务</li>
                <li>App下载</li>
@@ -69,7 +69,7 @@
         </div>
         <div class="footerNavItems">
            <h4>24小时全国服务热线</h4>
-           <p class="serviceTel">400-788-3333</p>
+           <p class="serviceTel">XXX-XXX-XXXX</p>
            <p class="serviceCall">24小时在线客服</p>
         </div>
     </div>

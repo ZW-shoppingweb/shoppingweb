@@ -144,5 +144,7 @@ proapp.controller('userController', ['$scope', '$http', function ($scope, $http)
 
             });
     }
-
+    _this.filterProduct=function(){
+        window.location="/shoppingweb/productListPage?productTitle="+$("#searchByName").val();
+    }
 }]);

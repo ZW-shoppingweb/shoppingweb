@@ -7,7 +7,6 @@
     <select id="findProductById" resultType="Product">
         SELECT * FROM product WHERE productId=#{productId}
     </select>
-
     <select id="getAllProduct" resultType="Product">
         SELECT * FROM product  limit #{start},#{size}
     </select>
@@ -25,6 +24,9 @@
             </if>
             <if test="productNum!=null and productNum!=''">
                 and productNum >= ${productNum}
+            </if>
+            <if test="productTitle!=null and productTitle!=''">
+                and productName LIKE CONCAT('%',#{productTitle},'%')
             </if>
         </where>
         <if test="productPrice != null and productPrice!=''">
@@ -51,6 +53,9 @@
             </if>
             <if test="productNum!=null and productNum!=''">
                 and productNum >= ${productNum}
+            </if>
+            <if test="productTitle!=null and productTitle!=''">
+                and productName LIKE CONCAT('%',#{productTitle},'%')
             </if>
     </where>
     </select>

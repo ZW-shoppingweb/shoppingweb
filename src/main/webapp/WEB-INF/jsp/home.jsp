@@ -9,6 +9,7 @@
 <body ng-app="userApp">
 <%@ include file="head.jsp" %>
 <script type="application/javascript" src="<c:url value="/scripts/home.js"/>"></script>
+<div class="categoryList">
 <div ng-controller="HomeController as homeCtrl" class="home-category-list">
     <div class="category-list">
         <form action="/shoppingweb/productList" method="post" id="process">
@@ -48,6 +49,7 @@
             <img src="<c:url value="http://bpic.pic138.com/11/31/58/39b1OOOPICee.jpg!/fw/780/quality/90/unsharp/true/compress/true"/>"/>
         </li>
     </ul>
+</div>
 </div>
 <div class="newProducts">
     <h2>新品推荐</h2>

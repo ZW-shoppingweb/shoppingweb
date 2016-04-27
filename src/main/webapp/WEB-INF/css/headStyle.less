@@ -1,12 +1,22 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Verdana;
-    background-color: white;
-    color:black;
-    font-size: 1em;
-}
 @colorBule: #0088cc;
+@colorWhite:white;
+@colorBlack:black;
+@boxShadow:0 0 1px 1px rgba(0,0,0,.2);
+@fontFamily:Verdana;
+@maginZero:0;
+@paddingZero:0;
+@borderLightGray:1px solid lightgray;
+@borderLightGray2px:2px solid gray;
+@buttonGray:gray;
+@fontSize:1em;
+body {
+    margin: @maginZero;
+    padding: @paddingZero;
+    font-family: @fontFamily;
+    background-color: @colorWhite;
+    color:@colorBlack;
+    font-size: @fontSize;
+}
 .forms{
     width: 25%;
     left:30%;
@@ -14,8 +24,8 @@ body {
     position: fixed;
     padding:0 3%;
     display: none;
-    background-color: white;
-    box-shadow: 0 0 1px 1px rgba(0,0,0,.2);
+    background-color: @colorWhite;
+    box-shadow: @boxShadow;
     z-index:10000;
     height: 50%;
     .formContent{
@@ -24,8 +34,8 @@ body {
         .formControl{
             width: 100%;
             height: 15%;
-            font-size: 1em;
-            border: 1px solid lightgray;
+            font-size: @fontSize;
+            border: @borderLightGray;
             float: left;
         }
         .message{
@@ -54,23 +64,23 @@ body {
 }
 .btnPrimary{
     background-color: @colorBule;
-    color: white;
+    color: @colorWhite;
     border:0;
-    font-size: 1em;
+    font-size: @fontSize;
 }
 .close{
     margin-top: 2%;
     float: right;
-    border: 0.7px solid lightgrey;
-    background-color: white;
+    border: @borderLightGray;
+    background-color: @colorWhite;
     font-size: 0.9em;
 }
 .headContent{
     width: 100%;
     height: 100px;
     padding-top: 1%;
-    box-shadow: 0 0 1px 1px rgba(0,0,0,.2);
-    background-color: white;
+    box-shadow: @boxShadow;
+    background-color: @colorWhite;
     .imgLogo{
         width: 15%;
         height: 100px;
@@ -93,7 +103,7 @@ body {
     right: 10%;
     text-align: right;
     a{
-        color: black;
+        color: @colorBlack;
         text-decoration:none;
         margin-right: 1%;
     }
@@ -110,15 +120,15 @@ body {
         width: 75%;
         float: left;
         height: 30px;
-        font-size: 1em;
-        border: 2px solid gray;
+        font-size: @fontSize;
+        border: @borderLightGray2px;
     }
     .btnPrimary{
         float: left;
         width: 20%;
         height: 36px;
-        border: 2px solid gray;
-        background-color: gray;
+        border: @borderLightGray2px;
+        background-color: @buttonGray;
     }
 }
 .cartBtn{
@@ -128,10 +138,10 @@ body {
     margin-right: 10%;
     text-align: right;
     #cartShow{
-        font-size: 1em;
+        font-size: @fontSize;
         border-radius: 5px;
-        border: 1px solid lightgray;
-        background-color: white;
+        border: @borderLightGray;
+        background-color: @colorWhite;
         img{
             float: left;
             width: 35%;
@@ -146,8 +156,6 @@ body {
 @media screen and (max-width: 800px) {
     .loginAndRegister {
         width: 40%;
-        // float: right;
-        // right: 1%;
         #userNameInNav{
             display: inline-block;
             overflow: hidden;
@@ -159,7 +167,7 @@ body {
     .cartBtn{
         margin-top: 0px;
         position: absolute;
-        left: 40%;
+        right: 20%;
         #cartShow{
             height: 30px;
             span{
@@ -176,14 +184,11 @@ body {
         position: absolute;
         left: 170px;
     }
-      
-    
-    
 }
 .dropdownMenu{
     z-index:9999;
-    border: 1px solid lightgray;
-    background-color: white;
+    border: @borderLightGray;
+    background-color: @colorWhite;
     position: absolute;
     display: none;
     right: 7%;
@@ -193,6 +198,6 @@ body {
     a{
         line-height: 250%;
         text-decoration:none;
-        color: black;
+        color: @colorBlack;
     }
 }

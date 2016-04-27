@@ -15,7 +15,7 @@
 <div ng-controller="userController as userCtrl">
     <div class="headContent">
         <div class="imgLogo">
-            <a href="<c:url value="/productList"/>"><img src="<c:url value="/images/logo.jpg"/>"/></a>
+            <a href="<c:url value="/productListPage"/>"><img src="<c:url value="/images/logo.jpg"/>"/></a>
         </div>
         <div class="cartBtn" >
             <button id="cartShow" ng-click="userCtrl.shopCartShow('${memberName}')">
@@ -38,8 +38,8 @@
             <a href="javascript:void(0);" ng-click="userCtrl.signOut()" ng-bind="userCtrl.isSignOut"></a>
         </div>
        <div class="search">
-            <input type="text" placeholder="搜索商品" class="formControl">
-            <button class="btnPrimary">搜索</button>
+            <input type="text" placeholder="搜索商品" class="formControl" id="searchByName" value="${pageInfo.queryFilter.productTitle}">
+            <button class="btnPrimary" ng-click="userCtrl.filterProduct()">搜索</button>
         </div>
     </div>
 

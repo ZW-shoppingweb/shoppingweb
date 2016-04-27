@@ -11,6 +11,7 @@ public class QueryFilter {
     public static final int DEFAULT_PAGE_SIZE = 16;
     private String productCategory;
     private String productNum;
+    private String productTitle;
     private String isNewProduct;
     private String minPrice;
     private String maxPrice;
