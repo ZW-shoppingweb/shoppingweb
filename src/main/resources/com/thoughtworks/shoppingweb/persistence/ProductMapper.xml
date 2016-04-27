@@ -13,37 +13,7 @@
     <select id="getNewProduct" resultType="Product">
         SELECT * FROM product ORDER BY productTime DESC limit #{start},#{size}
     </select>
-    <select id="getPaginationProductList" parameterType="com.thoughtworks.shoppingweb.service.page.QueryFilter" resultType="Product">
-        SELECT * FROM product
-        <where>
-            <if test="productCategory!=null and productCategory!=''">
-                productCategory=${productCategory}
-            </if>
-            <if test="minPrice!=null and minPrice!='' and maxPrice!=null and maxPrice!=''">
-                and productPrice BETWEEN ${minPrice} and ${maxPrice}
-            </if>
-            <if test="productNum!=null and productNum!=''">
-                and productNum >= ${productNum}
-            </if>
-            <if test="productTitle!=null and productTitle!=''">
-                and productName LIKE CONCAT('%',#{productTitle},'%')
-            </if>
-        </where>
-        <if test="productPrice != null and productPrice!=''">
-            ORDER BY productPrice ${productPrice}
-        </if>
-        <if test="productName != null and productName!=''">
-            ORDER BY productName ${productName}
-        </if>
-        <if test="isNewProduct =='yes'">
-            ORDER BY productTime DESC
-        </if>
-        limit ${start},${size}
-
-    </select>
-
-    <select id="getNumOfProducts" resultType="int" parameterType="com.thoughtworks.shoppingweb.service.page.QueryFilter" >
-        SELECT COUNT(1) FROM product
+    <sql id="filters">
         <where>
             <if test="productCategory!=null and productCategory!=''">
                 productCategory=#{productCategory}
@@ -57,7 +27,24 @@
             <if test="productTitle!=null and productTitle!=''">
                 and productName LIKE CONCAT('%',#{productTitle},'%')
             </if>
-    </where>
+        </where>
+    </sql>
+    <select id="getPaginationProductList" parameterType="com.thoughtworks.shoppingweb.service.page.QueryFilter" resultType="Product">
+        SELECT * FROM product <include refid="filters"/>
+        <if test="productPrice != null and productPrice!=''">
+            ORDER BY productPrice ${productPrice}
+        </if>
+        <if test="productName != null and productName!=''">
+            ORDER BY productName ${productName}
+        </if>
+        <if test="isNewProduct =='yes'">
+            ORDER BY productTime DESC
+        </if>
+        limit ${start},${size}
+    </select>
+
+    <select id="getNumOfProducts" resultType="int" parameterType="com.thoughtworks.shoppingweb.service.page.QueryFilter" >
+        SELECT COUNT(1) FROM product <include refid="filters"/>
     </select>
 
 
