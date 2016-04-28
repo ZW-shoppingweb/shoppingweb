@@ -42,3 +42,5 @@ ALTER TABLE `shoppingdb`.`product`
 ADD COLUMN `productTime` TIMESTAMP NOT NULL AFTER `productCategory`;
 ALTER TABLE `shoppingdb`.`product`
 ADD COLUMN `productNum` INT NOT NULL AFTER `productTime`;
+ALTER TABLE `shoppingdb`.`product`
+ADD COLUMN `productQuality` VARCHAR(1000) NULL AFTER `productNum`;

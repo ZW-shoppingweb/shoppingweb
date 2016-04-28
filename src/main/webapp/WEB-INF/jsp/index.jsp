@@ -15,7 +15,7 @@
 <div class="filterProduct" ng-controller="SearchController as searchCtrl">
     <div   class="filterRequest">
         <form method="post" id="processForm">
-            <span class="sort" ng-click="showNewProduct()">新品</span>
+            <span class="sort" ng-click="showNewProduct()"><a href="">新品</a></span>
             <span class="sort"><label class="sortPriceShow">价格</label>
                 <menu:menuTag name="productPrice" classes="sortPrice"  />
                 <a hidden>{{ productPrice='${query.productPrice}'}}</a>

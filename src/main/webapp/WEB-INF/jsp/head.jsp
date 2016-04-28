@@ -9,13 +9,13 @@
 <script type="application/javascript" src="<c:url value="/scripts/price.js"/>"></script>
 <link rel="stylesheet/less" type="text/css" href='<c:url value="/css/headStyle.less"/>' />
 <link rel="stylesheet/less" type="text/css" href='<c:url value="/css/home.less"/>' />
-
+<link rel="stylesheet/less" type="text/css" href='<c:url value="/css/detail.less"/>' />
 <script src="<c:url value="/js/less.js"/>" type="text/javascript"></script>
 
 <div ng-controller="userController as userCtrl">
     <div class="headContent">
         <div class="imgLogo">
-            <a href="<c:url value="/productListPage"/>"><img src="<c:url value="/images/logo.jpg"/>"/></a>
+            <a href="<c:url value="/index"/>"><img src="<c:url value="/images/logo.jpg"/>"/></a>
         </div>
         <div class="cartBtn" >
             <button id="cartShow" ng-click="userCtrl.shopCartShow('${memberName}')">

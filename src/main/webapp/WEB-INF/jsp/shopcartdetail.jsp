@@ -4,8 +4,6 @@
 <html>
 <head>
     <title>Product</title>
-
-    <link rel="StyleSheet" href="<c:url value="/css/detail.css"/>" type="text/css" media="screen"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body ng-app="userApp">

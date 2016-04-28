@@ -25,7 +25,5 @@ public class MenuTag extends SimpleTagSupport{
                 "<li><input type='radio'  name='"+name+"' checked='checked' value='' ng-click='filterProduct()'/>默认</li>" +
                 "</ul>";
         out.write(menuTag);
-        //out.write("价格：" + price);
-        //out.write("书店：" + store);
     }
 }
