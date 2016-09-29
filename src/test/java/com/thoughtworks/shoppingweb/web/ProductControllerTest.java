@@ -10,24 +10,21 @@ import com.thoughtworks.shoppingweb.service.page.QueryFilter;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.*;
-import org.springframework.http.HttpMethod;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
-
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
-/**
- * Created by cxzhao on 3/29/16.
- */
 public class ProductControllerTest {
     @InjectMocks
     ProductController productController;
@@ -44,21 +41,20 @@ public class ProductControllerTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         Mockito.when(request.getSession(true)).thenReturn(session);
-        productController.productService=productService;
-        productController.historyService=historyService;
+        productController.productService = productService;
+        productController.historyService = historyService;
 
     }
 
     @Test
-    public void shouldGetCurrentPageNumWhenPageIdIsOne() throws Exception {
-        List<Product> mokitoList = new ArrayList<Product>();
+    public void shouldCallGetCurrentPageNumWhenPageIdIsOne() throws Exception {
         QueryFilter queryFilter = getQueryFilter();
-        int expectedPageNum = 1;
-        Model returnModel = new ExtendedModelMap();
-        productController.productList(queryFilter, returnModel);
-        PaginationData paginationDataReturn = (PaginationData) returnModel.asMap().get("indexPage");
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        HttpSession session = mock(HttpSession.class);
+        when(request.getSession(true)).thenReturn(session);
+        ResponseEntity responseEntity = productController.productList(queryFilter, request);
         Mockito.verify(productService).getProductPaginationData(Matchers.<PaginationData>anyObject());
-        assertThat(expectedPageNum, is(paginationDataReturn.getCurrentPageNum()));
+        assertTrue(responseEntity.getBody().toString().contains("currentPageNum=1"));
     }
 
     private QueryFilter getQueryFilter() {
@@ -70,59 +66,62 @@ public class ProductControllerTest {
         queryFilter.setSize(16);
         return queryFilter;
     }
+
     @Test
     public void shouldGetCurrentPageWhenPageIdIsNull() throws Exception {
-        QueryFilter queryFilter=getQueryFilter();
+        QueryFilter queryFilter = getQueryFilter();
         queryFilter.setPageId(null);
-        Model returnModel = new ExtendedModelMap();
-        productController.productList(queryFilter, returnModel);
-        PaginationData paginationDataReturn = (PaginationData) returnModel.asMap().get("indexPage");
 
-        assertEquals(1,paginationDataReturn.getCurrentPageNum());
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        HttpSession session = mock(HttpSession.class);
+        when(request.getSession(true)).thenReturn(session);
+        ResponseEntity responseEntity = productController.productList(queryFilter, request);
+        assertTrue(responseEntity.getBody().toString().contains("currentPageNum=1"));
     }
 
     @Test
     public void shouldGetDetailProductWhenInputProductId() throws Exception {
-        Product productdetail=new Product();
-        History history=new History();
-        User user=new User();
+        Product productdetail = new Product();
+        History history = new History();
+        User user = new User();
         user.setUserName("1");
         productdetail.setProductId("123456");
         Mockito.when(productService.getProduct("123456")).thenReturn(productdetail);
-        Mockito.when(historyService.insertHistory(user,history)).thenReturn(true);
+        Mockito.when(historyService.insertHistory(user, history)).thenReturn(true);
         Model returnModel = new ExtendedModelMap();
-        productController.getProduct("123456",user.getUserName(),returnModel,request);
-        Product product=(Product) returnModel.asMap().get("product");
-        assertEquals(productdetail.getProductId(),product.getProductId());
+        productController.getProduct("123456", user.getUserName(), returnModel, request);
+        Product product = (Product) returnModel.asMap().get("product");
+        assertEquals(productdetail.getProductId(), product.getProductId());
 
     }
 
     @Test
     public void createHistory() throws Exception {
-        List<History> historys=new ArrayList<History>();
-        History history=new History();
-        User user=new User();
+        List<History> historys = new ArrayList<History>();
+        History history = new History();
+        User user = new User();
         user.setUserName("1");
         historys.add(history);
-        Mockito.when(historyService.insertHistory(user,history)).thenReturn(true);
+        Mockito.when(historyService.insertHistory(user, history)).thenReturn(true);
         Mockito.when(historyService.getHistoryByUser(user.getUserName())).thenReturn(historys);
         Model returnModel = new ExtendedModelMap();
-        productController.createHistory(user,"1",returnModel);
-        List<History> acturHistorys=(List<History>)returnModel.asMap().get("history");
-        assertEquals(historys,acturHistorys);
+        productController.createHistory(user, "1", returnModel);
+        List<History> acturHistorys = (List<History>) returnModel.asMap().get("history");
+        assertEquals(historys, acturHistorys);
     }
 
     @Test
     public void createUserWhenUserNameIsNotNull() throws Exception {
-        User user=new User();
+        User user = new User();
         user.setUserName("1");
-       User user1= productController.createUser(user.getUserName(),request);
-      assertEquals(user.getUserName(),user1.getUserName());
+        User user1 = productController.createUser(user.getUserName(), request);
+        assertEquals(user.getUserName(), user1.getUserName());
     }
+
     @Test
     public void createUserWhenUserNameIsNull() throws Exception {
-        User user=new User();
-        User user1= productController.createUser(user.getUserName(),request);
-       assertNotNull(user1.getUserName());
+        User user = new User();
+        User user1 = productController.createUser(user.getUserName(), request);
+        assertNotNull(user1.getUserName());
     }
 }

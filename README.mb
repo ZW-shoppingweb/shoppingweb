@@ -1,0 +1,15 @@
+Set up:
+Intellij Idea
+MySQL (if your password is different, you need to change password in build.gradle and spring config file)
+Chrome
+
+Step:
+import Project
+create database use command: CREATE DATABASE shoppingdb CHARACTER SET utf8 COLLATE utf8_general_ci;
+Run : gradle flywayMigrate to create table and set data.
+
+Run Application:
+gradle build
+gradle jettyRun
+
+URL:localhost:8080/shoppingweb/
